@@ -21,5 +21,6 @@ int main(int argc, char const *argv[])
 	cout<<test[test_list_node->getNumberOfNeighbors()-1]<<" HEllo "<<endl;
 	// delete Buffer;
 	free(test_list_node);
+	cout<<"hello"<<endl;
 	return 0;
 }
