@@ -3,6 +3,7 @@
 
 #include "list_node.h"
 #include "buffer.h"
+#include "Q.h"
 
 using namespace std
 
@@ -33,5 +34,7 @@ int main(int argc, char const *argv[])
 //
 int BFS(NodeIndex* outgoing, NodeIndex* incoming, uint32_t start, uint32_t dest)
 {
-
+   uint32_t* outFringe = malloc(outgoing->buf->getNumberOfVertices * sizeof(uint32_t))
+   uint32_t* inFringe = malloc(outgoing->buf->getNumberOfVertices * sizeof(uint32_t))
+  
 }
