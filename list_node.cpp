@@ -1,4 +1,9 @@
+#include <iostream>
+#include <cstdlib>  
+
 #include "list_node.h"
+
+using namespace std;
 
 list_node::list_node(int listNodeSize){
 	this->neighbor = new uint32_t[listNodeSize];

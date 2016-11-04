@@ -1,6 +1,11 @@
-#include "includes.h"
+#include <iostream>
+#include <cstdlib>  
+
 #include "list_node.h"
 #include "buffer.h"
+
+using namespace std
+
 
 int main(int argc, char const *argv[])
 {
@@ -23,4 +28,10 @@ int main(int argc, char const *argv[])
 	free(test_list_node);
 	cout<<"hello"<<endl;
 	return 0;
+}
+
+//
+int BFS(NodeIndex* outgoing, NodeIndex* incoming, uint32_t start, uint32_t dest)
+{
+
 }

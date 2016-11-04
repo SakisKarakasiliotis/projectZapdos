@@ -3,6 +3,13 @@
 
 #include "includes.h"
 
+#define INVALID -1
+#define FAIL 0
+#define OK 1
+
+typedef int ptr;
+typedef uint32_t OK_SUCCESS;
+
 class list_node
 {
 private:

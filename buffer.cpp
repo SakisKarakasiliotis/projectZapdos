@@ -1,5 +1,10 @@
-#include "includes.h"
+#include <iostream>
+#include <cstdlib>  
+
+#include "list_node.h"
 #include "buffer.h"
+
+using namespace std;
 
 buffer::buffer(int bufferSize){
 	this->vertices = new list_node(bufferSize);
