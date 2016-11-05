@@ -15,7 +15,7 @@ public:
 
 	OK_SUCCESS setNumberOfVertices(int);
 	int getNumberOfVertices();
-	
+
 	OK_SUCCESS setBufferSize(int);
 	int getBufferSize();
 
