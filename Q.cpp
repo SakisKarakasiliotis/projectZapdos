@@ -32,12 +32,12 @@ uint32_t queue::next(uint32_t position)
       return position + 1;
 }
 
-void queue::enqueue(uint32_t x)
+bool queue::enqueue(uint32_t x)
 {
    if(this->isFull())
    {
       cout<<"\nQueue overflow!!\n";
-      return;
+      return false;
    }
    q[rear]=x;
    rear = next(rear);
@@ -46,12 +46,12 @@ void queue::enqueue(uint32_t x)
    this->empty = false;
 }
 
-uint32_t queue::dequeue()
+int queue::dequeue()
 {
    if(this->isEmpty)
    {
       cout<<"\nQueue underflow!!\n";
-      return;
+      return -1;
    }
    uint32_t x = q[front];
    front = next(front);

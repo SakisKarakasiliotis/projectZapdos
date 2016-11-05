@@ -16,9 +16,8 @@ public:
    bool isFull();
    bool isEmpty();
    uint32_t next(uint32_t);
-   void enqueue(uint32_t);
-   uint32_t dequeue();
-   void disp();
+   bool enqueue(uint32_t);
+   int dequeue();
 };
 
 #endif

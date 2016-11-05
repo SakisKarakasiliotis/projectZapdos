@@ -5,30 +5,33 @@
 
 using namespace std;
 
-list_node::list_node(int listNodeSize){
-	this->neighbor = new uint32_t[listNodeSize];
-	this->edgeProperty = new uint32_t[listNodeSize];
-	this->nextListNode = INVALID;
-	this->numberOfNeighbors = 0;
-	this->listNodeSize = listNodeSize;
+list_node::list_node(int listNodeSize)
+{
+   this->neighbor = new uint32_t[listNodeSize];
+   this->edgeProperty = new uint32_t[listNodeSize];
+   this->nextListNode = INVALID;
+   this->numberOfNeighbors = 0;
+   this->listNodeSize = listNodeSize;
 }
 
 list_node::~list_node(){
-	delete[] this->neighbor;
-	delete[] this->edgeProperty;
-	this->nextListNode = INVALID;
-	this->numberOfNeighbors = 0;
-	this->listNodeSize = INVALID;
-	cout<<"List node Destructed"<<endl;
+   delete[] this->neighbor;
+   delete[] this->edgeProperty;
+   this->nextListNode = INVALID;
+   this->numberOfNeighbors = 0;
+   this->listNodeSize = INVALID;
+   cout<<"List node Destructed"<<endl;
 }
 
-OK_SUCCESS list_node::setNeighbor(uint32_t edge){
-	if(this->numberOfNeighbors != INVALID){
-		this->neighbor[this->numberOfNeighbors] = edge;
-		//TODO for testing numberOfNeighbors++;
-		return OK;
-	}
-	return FAIL;
+OK_SUCCESS list_node::setNeighbor(uint32_t edge)
+{
+   if(this->numberOfNeighbors != INVALID)
+   {
+      this->neighbor[this->numberOfNeighbors] = edge;
+      //TODO for testing numberOfNeighbors++;
+      return OK;
+   }
+   return FAIL;
 }
 
 uint32_t* list_node::getNeighbor(){
