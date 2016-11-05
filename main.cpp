@@ -5,7 +5,7 @@
 #include "buffer.h"
 
 using namespace std
-
+//kati
 
 int main(int argc, char const *argv[])
 {
