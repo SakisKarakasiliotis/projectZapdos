@@ -32,7 +32,7 @@ int index::getSizeOfIndex(){
 OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
   if(nodeName > this->sizeOfIndex) {
        if(nodeName>2*this->sizeOfIndex){
-            cout<<"should not be here"<<nodeName<<endl;
+          //  cout<<"should not be here"<<nodeName<<endl;
 
             if(this->resize(nodeName,2)== FAIL){
               cout<<"unable to realloc from add entry mode 2 on node: "<< nodeName<<endl;
@@ -40,7 +40,7 @@ OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
             }
        }
        else {
-            cout<<"should be here"<<nodeName<<endl;
+            //cout<<"should be here"<<nodeName<<endl;
             if(this->resize(nodeName,1)==FAIL){
               cout<<"unable to realloc from add entry mode 1 on node: "<< nodeName<<endl;
               return FAIL;
@@ -48,9 +48,9 @@ OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
        }
   }
   else if(nodeName < 0 ) return FAIL;
-  std::cout << "before invalid" << std::endl;
+  //std::cout << "before invalid" << std::endl;
   // if(this->offsets[nodeName]!=INVALID) return FAIL; TODO fix this check cause garbage
-  std::cout << "after invalid" << std::endl;
+  //std::cout << "after invalid" << std::endl;
 
   this->offsets[nodeName] = entryOffset;
   if(nodeName > this->numberOfEntries){
@@ -60,18 +60,18 @@ OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
 }
 int index::getEntry(int entryNumber){
   if (entryNumber > (this->numberOfEntries) || entryNumber < 0) {
-    cout<<"out of bounds"<<endl;
+    cout<<"entry number requested is out of bounds"<<endl;
     return FAIL;
   }
-  if(this->offsets[entryNumber] == INVALID){
-    std::cout << "empty" << std::endl;
-    return FAIL;
-  }
+  // if(this->offsets[entryNumber] == INVALID){
+  //   std::cout << "empty" << std::endl;
+  //   return FAIL;
+  // }
   return this->offsets[entryNumber];
 }
 OK_SUCCESS index::resize(int newsize,int mode){
   if(newsize < this->sizeOfIndex) return FAIL;
-  std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
+  //std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
   switch (mode) {
     case 1:
       this->offsets = (int*) realloc(this->offsets,2*this->sizeOfIndex*sizeof(int));
