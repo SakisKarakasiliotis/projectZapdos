@@ -27,7 +27,7 @@ bool isEmpty()
 uint32_t queue::checkFrontValue(OK_SUCCESS* error)
 {
    if (this->isEmpty)
-      *error = FAIL; 
+      *error = FAIL;
    return this->q[front];
 }
 
@@ -51,6 +51,7 @@ bool queue::enqueue(uint32_t x)
    if (next(rear) == front)
       this->full = true;
    this->empty = false;
+   this->occupiedSpaces++;
    return true;
 }
 
@@ -69,7 +70,22 @@ uint32_t queue::dequeue(OK_SUCCESS* error)
       front = next(front);
    this->full = false;
    *error = OK;
+   this->occupiedSpaces--;
    return x;
+}
+
+uint32_t* queue::toArray()
+{
+   if (this->isEmpty())
+      return NULL;
+   uint32_t* arr = malloc(occupiedSpaces*sizeof(uint32_t));
+   uint32_t tmp = this->q[front];
+   for (int i=0; i<occupiedSpaces; i++)
+   {
+      arr[i] = tmp;
+      tmp = next(tmp);
+   }
+   return arr;
 }
 
 queue::~queue()

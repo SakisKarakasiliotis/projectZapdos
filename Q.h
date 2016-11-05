@@ -7,6 +7,7 @@ private:
    bool empty, full;
    uint32_t* q;
    int front, rear;
+   int occupiedSpaces;
    int size;
 
    uint32_t next(uint32_t);
@@ -21,6 +22,7 @@ public:
    uint32_t checkFrontValue(OK_SUCCESS*);
    bool enqueue(uint32_t);
    int dequeue(OK_SUCCESS*);
+   uint32_t* toArray();
 };
 
 #endif

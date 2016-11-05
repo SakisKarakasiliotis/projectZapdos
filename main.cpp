@@ -49,6 +49,8 @@ int BFS(nodeIndex* outIndex, buffer* outgoing, uint32_t start, nodeIndex* inInde
    int numberOfNeighbors;
    list_node* node;
    OK_SUCCESS* error;
+   queue* fringe;
+   uint32_t ohterFringe;
    while (!found and !(outFringe.isEmpty() and inFringe.isEmpty()))
    {
       *error = OK;
@@ -56,11 +58,13 @@ int BFS(nodeIndex* outIndex, buffer* outgoing, uint32_t start, nodeIndex* inInde
       {
          node = incoming->getListNode(inIndex->getListHead(inFringe->dequeue(error)));
          numberOfNeighbors = node->getNumberOfNeighbors();
+         fringe = inFringe;
       }
       else if (inFringe->isEmpty())
       {
          node = outgoing->getListNode(outIndex->getListHead(outFringe->dequeue(error)));
          numberOfNeighbors = node->getNumberOfNeighbors();
+         fringe = outFringe;
       }
       else
       {
@@ -70,12 +74,15 @@ int BFS(nodeIndex* outIndex, buffer* outgoing, uint32_t start, nodeIndex* inInde
          {
             node = outgoing->getListNode(outIndex->getListHead(outFringe->dequeue(error)));
             numberOfNeighbors = outNeighbors;
+            fringe = inFringe;
          }
          else
          {
             node = outgoing->getListNode(outIndex->getListHead(outFringe->dequeue(error)));
             numberOfNeighbors = inNeighbors;
+            fringe = outFringe;
          }
       }
+      //TODO: expand node, fill fringe, check if found, increment path length
    }
 }
