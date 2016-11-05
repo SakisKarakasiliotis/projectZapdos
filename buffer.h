@@ -1,6 +1,7 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include "defines.h"
 #include "list_node.h"
 
 class buffer
@@ -16,7 +17,7 @@ public:
 
 	OK_SUCCESS setNumberOfVertices(int);
 	int getNumberOfVertices();
-	
+
 	OK_SUCCESS setBufferSize(int);
 	int getBufferSize();
 

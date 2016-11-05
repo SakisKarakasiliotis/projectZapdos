@@ -24,6 +24,13 @@ bool isEmpty()
    return this->empty;
 }
 
+uint32_t queue::checkFrontValue(OK_SUCCESS* error)
+{
+   if (this->isEmpty)
+      *error = FAIL; 
+   return this->q[front];
+}
+
 uint32_t queue::next(uint32_t position)
 {
    if (position = this->size - 1)
@@ -39,25 +46,29 @@ bool queue::enqueue(uint32_t x)
       cout<<"\nQueue overflow!!\n";
       return false;
    }
-   q[rear]=x;
    rear = next(rear);
-   if (rear == front)
+   q[rear]=x;
+   if (next(rear) == front)
       this->full = true;
    this->empty = false;
+   return true;
 }
 
-int queue::dequeue()
+uint32_t queue::dequeue(OK_SUCCESS* error)
 {
    if(this->isEmpty)
    {
       cout<<"\nQueue underflow!!\n";
-      return -1;
+      *error = FAIL;
+      return FAIL;
    }
    uint32_t x = q[front];
-   front = next(front);
    if (rear == front)
       this->empty = true;
+   else
+      front = next(front);
    this->full = false;
+   *error = OK;
    return x;
 }
 

@@ -7,7 +7,9 @@ private:
    bool empty, full;
    uint32_t* q;
    int front, rear;
-   int size; 
+   int size;
+
+   uint32_t next(uint32_t);
 
 public:
    queue(uint32_t);
@@ -15,9 +17,10 @@ public:
 
    bool isFull();
    bool isEmpty();
-   uint32_t next(uint32_t);
+
+   uint32_t checkFrontValue(OK_SUCCESS*);
    bool enqueue(uint32_t);
-   int dequeue();
+   int dequeue(OK_SUCCESS*);
 };
 
 #endif
