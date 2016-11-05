@@ -3,7 +3,7 @@
 
 index::index(int size){
   this->sizeOfIndex = size;
-  this->offsets = (int*) malloc(this->sizeOfIndex);
+  this->offsets =(int*)  malloc(this->sizeOfIndex*sizeof(int));
   this->numberOfEntries = 0;
   for (int i = 0; i < size; i++) {
     offsets[i]= INVALID;
@@ -29,23 +29,29 @@ OK_SUCCESS index::setSizeOfIndex(int sizeOfIndex){
 int index::getSizeOfIndex(){
   return this->sizeOfIndex;
 }
-OK_SUCCESS index::addEntry(int entryOffset , int nodeName){
+OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
   if(nodeName > this->sizeOfIndex) {
-    if(nodeName>2*this->sizeOfIndex){
-      if(this->resize(nodeName,2)== FAIL){
-        cout<<"unable to realloc from add entry mode 2 on node: "<< nodeName<<endl;
-        return FAIL;
-      }
-    }
-    else {
-      if(this->resize(nodeName,1)==FAIL){
-        cout<<"unable to realloc from add entry mode 1 on node: "<< nodeName<<endl;
-        return FAIL;
-      }
-    }
+       if(nodeName>2*this->sizeOfIndex){
+            cout<<"should not be here"<<nodeName<<endl;
+
+            if(this->resize(nodeName,2)== FAIL){
+              cout<<"unable to realloc from add entry mode 2 on node: "<< nodeName<<endl;
+              return FAIL;
+            }
+       }
+       else {
+            cout<<"should be here"<<nodeName<<endl;
+            if(this->resize(nodeName,1)==FAIL){
+              cout<<"unable to realloc from add entry mode 1 on node: "<< nodeName<<endl;
+              return FAIL;
+            }
+       }
   }
   else if(nodeName < 0 ) return FAIL;
-  if(this->offsets[nodeName]!=INVALID) return FAIL;
+  std::cout << "before invalid" << std::endl;
+  // if(this->offsets[nodeName]!=INVALID) return FAIL; TODO fix this check cause garbage
+  std::cout << "after invalid" << std::endl;
+
   this->offsets[nodeName] = entryOffset;
   if(nodeName > this->numberOfEntries){
     this->numberOfEntries=nodeName+1;
@@ -53,7 +59,7 @@ OK_SUCCESS index::addEntry(int entryOffset , int nodeName){
   return OK;
 }
 int index::getEntry(int entryNumber){
-  if (entryNumber > (this->numberOfEntries - 1) || entryNumber < 0) {
+  if (entryNumber > (this->numberOfEntries) || entryNumber < 0) {
     cout<<"out of bounds"<<endl;
     return FAIL;
   }
@@ -65,17 +71,18 @@ int index::getEntry(int entryNumber){
 }
 OK_SUCCESS index::resize(int newsize,int mode){
   if(newsize < this->sizeOfIndex) return FAIL;
+  std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
   switch (mode) {
     case 1:
-      this->offsets = (int*) realloc(this->offsets,2*this->sizeOfIndex);
+      this->offsets = (int*) realloc(this->offsets,2*this->sizeOfIndex*sizeof(int));
       this->sizeOfIndex = 2*this->sizeOfIndex;
       return OK;
     case 2:
-      this->offsets = (int*) realloc(this->offsets,newsize + 10);
+      this->offsets = (int*) realloc(this->offsets,(newsize + 10)*sizeof(int));
       this->sizeOfIndex = newsize;
       return OK;
     case 3:
-      this->offsets = (int*) realloc(this->offsets,newsize*this->sizeOfIndex);
+      this->offsets = (int*) realloc(this->offsets,newsize*this->sizeOfIndex*sizeof(int));
       this->sizeOfIndex = newsize*this->sizeOfIndex;
       return OK;
     default: return FAIL;

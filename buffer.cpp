@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib>  
+#include <cstdlib>
 
 #include "list_node.h"
 #include "buffer.h"
@@ -28,8 +28,8 @@ int buffer::getNumberOfVertices(){
 
 OK_SUCCESS buffer::setBufferSize(int bufferSize){
 	this->bufferSize = bufferSize;
+   return OK;
 }
 int buffer::getBufferSize(){
 	return this->bufferSize;
 }
-

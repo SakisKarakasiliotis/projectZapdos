@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 	// free(test_list_node);
 	// cout<<"hello"<<endl;
 
-	index* new_index = new index(10);
+	index::index* new_index = new index::index(10);
 	if (new_index->addEntry(46 , 2) == OK ) {
 		cout << "ALL good: within limits entry"<< endl;
 		std::cout << "sizeOfIndex : "<< new_index->getSizeOfIndex() << std::endl;
@@ -60,7 +60,7 @@ int main(int argc, char const *argv[])
 	else{
 		std::cout << "error : try 3" << std::endl;
 	}
-
+   std::cout << "entry 1 if shown 2 all good" << new_index->getEntry(2) << std::endl;
 	return 0;
 }
 
