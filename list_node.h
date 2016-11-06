@@ -15,7 +15,10 @@ public:
 	list_node(int);
 	~list_node();
 
+	//You should raise the numberOfNeighbors
 	OK_SUCCESS setNeighbor(uint32_t);
+
+	//THIS PROPABLY IS FUCKED UP
 	uint32_t* getNeighbor();
 
 	OK_SUCCESS setEdgeProperty(uint32_t);
@@ -26,6 +29,7 @@ public:
 
 	OK_SUCCESS setNumberOfNeighbors(int);
 	int getNumberOfNeighbors();
+
 
 	OK_SUCCESS setListNodeSize(int);
 	int getListNodeSize();

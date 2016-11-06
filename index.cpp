@@ -70,7 +70,7 @@ int index::getEntry(int entryNumber){
   return this->offsets[entryNumber];
 }
 OK_SUCCESS index::resize(int newsize,int mode){
-  if(newsize < this->sizeOfIndex) return FAIL;
+  if(newsize < this->sizeOfIndex  && mode==2) return FAIL;
   int oldsize = this->sizeOfIndex;
   //std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
   switch (mode) {

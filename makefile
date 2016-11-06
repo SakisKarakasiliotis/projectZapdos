@@ -28,3 +28,5 @@ run:
 	./$(OUT)
 
 #always take ex3 from syspro as reference
+#mingw32-make.exe for windows through git bash
+

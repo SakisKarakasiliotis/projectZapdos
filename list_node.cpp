@@ -11,7 +11,6 @@ list_node::list_node(int listNodeSize){
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = listNodeSize;
-	cout<<"making a list_node"<<endl;
 }
 
 list_node::~list_node(){
@@ -31,7 +30,6 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge){
 	}
 	return FAIL;
 }
-
 uint32_t* list_node::getNeighbor(){
 	if(this->numberOfNeighbors){
 		return this->neighbor;
@@ -40,7 +38,7 @@ uint32_t* list_node::getNeighbor(){
 }
 
 OK_SUCCESS list_node::setEdgeProperty(uint32_t edgeProperty){
-	if(this->numberOfNeighbors != INVALID){
+	if(this->numberOfNeighbors != FULL){
 		this->edgeProperty[this->numberOfNeighbors] = edgeProperty;
 		//TODO for testing numberOfNeighbors++;
 		return OK;
@@ -68,7 +66,11 @@ int list_node::getNextListNode(){
 }
 
 OK_SUCCESS list_node::setNumberOfNeighbors(int numberOfNeighbors){
-	this->numberOfNeighbors = numberOfNeighbors;
+	if (numberOfNeighbors == this->listNodeSize){
+		this->numberOfNeighbors = FULL;
+	}else{
+		this->numberOfNeighbors = numberOfNeighbors;
+	}
 	return OK;
 }
 

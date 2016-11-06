@@ -41,7 +41,7 @@ int buffer::getBufferSize(){
 }
 
 OK_SUCCESS buffer::resize(int newsize,int mode){
-  if(newsize < this->bufferSize) return FAIL;
+  if(newsize < this->bufferSize && mode==2) return FAIL;
   int oldsize = this->bufferSize;
   switch (mode) {
     case 1:
@@ -60,4 +60,53 @@ OK_SUCCESS buffer::resize(int newsize,int mode){
       return OK;
     default: return FAIL;
   }
+}
+
+ptr buffer::addListNode(int listNodeSize){
+	//we add only when buffer is at 80% full, so we double the buffer size
+	if (this->numberOfVertices >= (80/100)*(this->bufferSize) ){
+		if(this->resize(1, 1) == FAIL) return FAIL;
+	}
+	this->numberOfVertices++;
+	return this->numberOfVertices-1;
+}
+
+OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
+	if (neighborId < 0 || offset > numberOfVertices ){
+		
+		return FAIL;
+	} 
+	if (this->vertices[offset].getNumberOfNeighbors() == 0){ //here is a new node
+		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
+			cout << "Unable to add neighbor on insertNeighbor case 0 returned FAIL space occupied" << endl;
+			return FAIL;
+		}
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
+		return OK;
+	}
+	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize){//new neighbor
+		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
+			cout << "Unable to add neighbor on insertNeighbor case BETWEEN returned FAIL space occupied" << endl;
+			return FAIL;
+		}
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
+		return OK;
+	}
+	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
+		if(this->vertices[offset].getNextListNode()==INVALID){
+			this->vertices[offset].setNextListNode(this->addListNode(this->listNodeSize));
+			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
+				cout<<"anadromh v1 cannot insert neighbor "<<endl;
+				return FAIL;
+			}
+		}else{
+			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
+				cout<<"anadromh v2 cannot insert neighbor "<<endl;
+				return FAIL;
+			}
+		}
+		return OK;
+	}
+	return OK;
+
 }

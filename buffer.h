@@ -11,6 +11,7 @@ private:
 	int bufferSize;
 	//geniko megethos array vertices
 	int listNodeSize;
+	//poso tha einai o pinakas neighbors
 public:
 	buffer(int,int);
 	~buffer();
@@ -23,7 +24,8 @@ public:
 
 	//modes are 1:double 2:resize to newsize //
 	OK_SUCCESS resize(int newsize,int mode);
-	// int assignListNode(uint32_t)
+	ptr addListNode(int listNodeSize);
+	OK_SUCCESS insertNeighbor(int offset, int neighborId);
 };
 
 #endif
