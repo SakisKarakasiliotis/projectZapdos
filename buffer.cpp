@@ -85,7 +85,7 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
 		return OK;
 	}
-	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize){//new neighbor
+	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize && this->vertices[offset].getNumberOfNeighbors()!=FULL){//new neighbor
 		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
 			cout << "Unable to add neighbor on insertNeighbor case BETWEEN returned FAIL space occupied" << endl;
 			return FAIL;
@@ -95,6 +95,7 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 	}
 	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
 		if(this->vertices[offset].getNextListNode()==INVALID){
+			cout << "POUTSA" <<endl;
 			this->vertices[offset].setNextListNode(this->addListNode(this->listNodeSize));
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
 				cout<<"anadromh v1 cannot insert neighbor "<<endl;
@@ -110,4 +111,36 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 	}
 	return OK;
 
+}
+
+int buffer::getNeighbors(uint32_t** neighbors, uint32_t nodeOffset){
+	int arraySize=0;
+	if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
+		cout<<"No neighbors"<<endl;
+		return FAIL;
+	}
+	neighbors = (uint32_t**) malloc(this->listNodeSize * sizeof(uint32_t));
+	while(nodeOffset != INVALID) {
+	    if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
+			for (int i = 0; i < this->listNodeSize; ++i){
+				*neighbors[i] = this->vertices[nodeOffset].getNeighbor(i);
+				arraySize++;
+			}
+			if (this->vertices[nodeOffset].getNextListNode()==INVALID){
+				return arraySize;
+			}else{
+				*neighbors = (uint32_t*) realloc(*neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
+				nodeOffset = this->vertices[nodeOffset].getNextListNode();
+			}
+			
+		}else{
+			for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); ++i){
+				*neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
+				arraySize++;
+			}
+			cout << "here" << endl;
+			return arraySize;
+		}
+	}
+		
 }

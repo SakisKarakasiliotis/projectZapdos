@@ -28,6 +28,7 @@ public:
 	OK_SUCCESS resize(int newsize,int mode);
 	ptr addListNode(int listNodeSize);
 	OK_SUCCESS insertNeighbor(int offset, int neighborId);
+	int getNeighbors(uint32_t** neighbors, uint32_t nodeOffset);
 };
 
 #endif

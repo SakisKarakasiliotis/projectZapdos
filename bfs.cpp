@@ -45,6 +45,7 @@ int BFS( nodeIndex* outIndex, buffer* outgoing, uint32_t start,
       for (int j=0; j<iterations; j++)
       {
          node = fringe->dequeue(error);
+         //TODO this is wrong based on the prototype plz fix, also pass the offset not the ID
          uint32_t* neighbors = graph->getNeighbors(node, numberOfNeighbors);
          for (int i=0; i<numberOfNeighbors; i++)
          {

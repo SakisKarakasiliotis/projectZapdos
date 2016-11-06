@@ -19,7 +19,7 @@ public:
 	OK_SUCCESS setNeighbor(uint32_t);
 
 	//THIS PROPABLY IS FUCKED UP
-	uint32_t* getNeighbor();
+	uint32_t getNeighbor(int ID);
 
 	OK_SUCCESS setEdgeProperty(uint32_t);
 	uint32_t* getEdgeProperty();

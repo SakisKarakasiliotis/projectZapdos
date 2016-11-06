@@ -11,7 +11,9 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	uint32_t* test;
+	// uint32_t* test;
+	uint32_t** Nodes;
+	int size;
 	buffer* Buffer = new buffer(20,1);
 	if(Buffer->insertNeighbor(0, 0) == FAIL){
 		cout<<"FAILED to insert 1st Neighbor"<<endl;
@@ -23,6 +25,12 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 	cout<<"all gewd"<<endl;
+	size= Buffer->getNeighbors(Nodes, 0);
+	cout<< size << endl;
+	for (int i = 0; i < size; ++i)
+	{
+		cout<< *Nodes[i] << endl;
+	}
 	// cout << "Buffer size before double: " << Buffer->getBufferSize() << endl; 
 	// Buffer->resize(1, 1);
 	// cout << "Buffer size after double: " << Buffer->getBufferSize() << endl;  

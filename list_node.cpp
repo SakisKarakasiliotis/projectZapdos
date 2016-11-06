@@ -32,11 +32,11 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge)
    }
    return FAIL;
 }
-uint32_t* list_node::getNeighbor(){
+uint32_t list_node::getNeighbor(int ID){
 	if(this->numberOfNeighbors){
-		return this->neighbor;
+		return this->neighbor[ID];
+		//figure out how to return fail
 	}
-	return NULL;
 }
 
 OK_SUCCESS list_node::setEdgeProperty(uint32_t edgeProperty){
