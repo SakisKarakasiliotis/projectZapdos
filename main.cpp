@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 	// free(test_list_node);
 	// cout<<"hello"<<endl;
 
-	index::index* new_index = new index::index(10);
+	index* new_index = new index(10);
 	if (new_index->addEntry(46 , 2) == OK ) {
 		cout << "ALL good: within limits entry"<< endl;
 		std::cout << "sizeOfIndex : "<< new_index->getSizeOfIndex() << std::endl;

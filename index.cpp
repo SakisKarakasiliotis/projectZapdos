@@ -6,7 +6,7 @@ index::index(int size){
   this->offsets =(int*)  malloc(this->sizeOfIndex*sizeof(int));
   this->numberOfEntries = 0;
   for (int i = 0; i < size; i++) {
-    offsets[i]= INVALID;
+    this->offsets[i]= INVALID;
   }
 }
 index::~index(){
@@ -48,9 +48,9 @@ OK_SUCCESS index::addEntry(int entryOffset , int nodeName){//10 11
        }
   }
   else if(nodeName < 0 ) return FAIL;
-  //std::cout << "before invalid" << std::endl;
-  // if(this->offsets[nodeName]!=INVALID) return FAIL; TODO fix this check cause garbage
-  //std::cout << "after invalid" << std::endl;
+  std::cout << "before invalid" << std::endl;
+  if(this->offsets[nodeName]!=INVALID) return FAIL; //TODO fix this check cause garbage
+  std::cout << "after invalid" << std::endl;
 
   this->offsets[nodeName] = entryOffset;
   if(nodeName > this->numberOfEntries){
@@ -71,19 +71,29 @@ int index::getEntry(int entryNumber){
 }
 OK_SUCCESS index::resize(int newsize,int mode){
   if(newsize < this->sizeOfIndex) return FAIL;
+  int oldsize = this->sizeOfIndex;
   //std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
   switch (mode) {
     case 1:
       this->offsets = (int*) realloc(this->offsets,2*this->sizeOfIndex*sizeof(int));
       this->sizeOfIndex = 2*this->sizeOfIndex;
+      for(int i = oldsize - 1; i < this->sizeOfIndex; ++i) {
+            this->offsets[i]= INVALID;
+      }
       return OK;
     case 2:
       this->offsets = (int*) realloc(this->offsets,(newsize + 10)*sizeof(int));
       this->sizeOfIndex = newsize;
+      for(int i = oldsize - 1; i < this->sizeOfIndex; ++i) {
+            this->offsets[i]= INVALID;
+      }
       return OK;
     case 3:
       this->offsets = (int*) realloc(this->offsets,newsize*this->sizeOfIndex*sizeof(int));
       this->sizeOfIndex = newsize*this->sizeOfIndex;
+      for(int i = oldsize - 1; i < this->sizeOfIndex; ++i) {
+            this->offsets[i]= INVALID;
+      }
       return OK;
     default: return FAIL;
   }
