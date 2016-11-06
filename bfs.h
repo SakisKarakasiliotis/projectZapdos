@@ -3,6 +3,6 @@
 
 #include "defines.h"
 
-int BFS(nodeIndex*, buffer*, uint32_t, nodeIndex*, buffer*, uint32_t, uint32_t)
+int BFS(nodeIndex*, buffer*, uint32_t, nodeIndex*, buffer*, uint32_t, uint32_t);
 
 #endif
