@@ -3,37 +3,39 @@
 
 #include "Q.h"
 
-using namespace std
+using namespace std;
 
 queue::queue(uint32_t size)
 {
-   this->full = false;
+   this->occupiedSpaces = 0;
    this->size = size;
    this->q = malloc(size * sizeof(uint32_t));
    this->front=0;
-   this->rear=0;
+   this->rear = this->size - 1;
 }
 
-bool isFull()
+bool queue::isFull()
 {
-   return this->full;
+   if (this->occupiedSpaces == this->size)
+      return true;
+   return false;
 }
 
-bool isEmpty()
+bool queue::isEmpty()
 {
-   return this->empty;
+   if (this->occupiedSpaces == 0)
+      return true;
+   return false;
 }
 
-uint32_t queue::checkFrontValue(OK_SUCCESS* error)
+int queue::getNumberOfElements()
 {
-   if (this->isEmpty)
-      *error = FAIL;
-   return this->q[front];
+   return this->occupiedSpaces;
 }
 
 uint32_t queue::next(uint32_t position)
 {
-   if (position = this->size - 1)
+   if (position == this->size - 1)
       return 0;
    else
       return position + 1;
@@ -42,50 +44,45 @@ uint32_t queue::next(uint32_t position)
 bool queue::enqueue(uint32_t x)
 {
    if(this->isFull())
-   {
-      cout<<"\nQueue overflow!!\n";
-      return false;
-   }
+      this->resizeBuffer();
    rear = next(rear);
    q[rear]=x;
-   if (next(rear) == front)
-      this->full = true;
-   this->empty = false;
    this->occupiedSpaces++;
    return true;
 }
 
 uint32_t queue::dequeue(OK_SUCCESS* error)
 {
-   if(this->isEmpty)
+   if(this->isEmpty())
    {
       cout<<"\nQueue underflow!!\n";
       *error = FAIL;
       return FAIL;
    }
    uint32_t x = q[front];
-   if (rear == front)
-      this->empty = true;
-   else
-      front = next(front);
-   this->full = false;
+   front = next(front);
    *error = OK;
    this->occupiedSpaces--;
    return x;
 }
 
-uint32_t* queue::toArray()
+bool queue::contains(uint32_t target)
 {
    if (this->isEmpty())
-      return NULL;
-   uint32_t* arr = malloc(occupiedSpaces*sizeof(uint32_t));
-   uint32_t tmp = this->q[front];
+      return false;
+   uint32_t tmp = front;
    for (int i=0; i<occupiedSpaces; i++)
    {
-      arr[i] = tmp;
+      if (this->q[tmp] == target) return true;
       tmp = next(tmp);
    }
-   return arr;
+   return false;
+}
+
+void queue::resizeBuffer()
+{
+   this->size *= 2;
+   q = realloc(q, this->size);
 }
 
 queue::~queue()

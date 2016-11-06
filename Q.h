@@ -4,14 +4,13 @@
 class queue
 {
 private:
-   bool empty, full;
    uint32_t* q;
    int front, rear;
    int occupiedSpaces;
    int size;
 
    uint32_t next(uint32_t);
-
+   void resizeBuffer();
 public:
    queue(uint32_t);
    ~queue();
@@ -19,10 +18,11 @@ public:
    bool isFull();
    bool isEmpty();
 
-   uint32_t checkFrontValue(OK_SUCCESS*);
+   int getNumberOfElements();
+   bool contains(uint32_t);
+
    bool enqueue(uint32_t);
    int dequeue(OK_SUCCESS*);
-   uint32_t* toArray();
 };
 
 #endif
