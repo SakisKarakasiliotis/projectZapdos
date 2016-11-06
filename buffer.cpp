@@ -28,6 +28,7 @@ OK_SUCCESS buffer::setNumberOfVertices(int numberOfVertices){
 	this->numberOfVertices = numberOfVertices;
 	return OK;
 }
+
 int buffer::getNumberOfVertices(){
 	return this->numberOfVertices;
 }

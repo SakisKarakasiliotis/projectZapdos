@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "defines.h"
 #include "list_node.h"
 #include "buffer.h"
 #include "index.h"

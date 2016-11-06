@@ -22,13 +22,15 @@ list_node::~list_node(){
 	cout<<"List node Destructed"<<endl;
 }
 
-OK_SUCCESS list_node::setNeighbor(uint32_t edge){
-	if(this->numberOfNeighbors != INVALID){
-		this->neighbor[this->numberOfNeighbors] = edge;
-		//TODO for testing numberOfNeighbors++;
-		return OK;
-	}
-	return FAIL;
+OK_SUCCESS list_node::setNeighbor(uint32_t edge)
+{
+   if(this->numberOfNeighbors != INVALID)
+   {
+      this->neighbor[this->numberOfNeighbors] = edge;
+      //TODO for testing numberOfNeighbors++;
+      return OK;
+   }
+   return FAIL;
 }
 uint32_t* list_node::getNeighbor(){
 	if(this->numberOfNeighbors){
