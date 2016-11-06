@@ -6,16 +6,22 @@
 
 using namespace std;
 
-buffer::buffer(int bufferSize){
-	this->vertices = new list_node(bufferSize);
+buffer::buffer(int bufferSize,int listNodeSize){
+	this->vertices = (list_node*) malloc(bufferSize*sizeof(list_node));
 	this->numberOfVertices = 0;
 	this->bufferSize = bufferSize;
+	this->listNodeSize = listNodeSize;
+	for (int i = 0; i < bufferSize; ++i)
+	{
+		this->vertices[i] = *new list_node(listNodeSize);
+	}
 }
 
 buffer::~buffer(){
-	delete[] this->vertices;
+	for (int i = 0; i < bufferSize; ++i) delete (this->vertices+i); //o kimwnas einai guru
 	this->numberOfVertices = 0;
 	this->bufferSize = INVALID;
+	cout<<"deleting buffer"<<endl;
 }
 
 OK_SUCCESS buffer::setNumberOfVertices(int numberOfVertices){
@@ -32,4 +38,26 @@ OK_SUCCESS buffer::setBufferSize(int bufferSize){
 }
 int buffer::getBufferSize(){
 	return this->bufferSize;
+}
+
+OK_SUCCESS buffer::resize(int newsize,int mode){
+  if(newsize < this->bufferSize) return FAIL;
+  int oldsize = this->bufferSize;
+  switch (mode) {
+    case 1:
+      this->vertices = (list_node*) realloc(this->vertices,2*this->bufferSize*sizeof(list_node));
+      this->bufferSize = 2*this->bufferSize;
+      for(int i = oldsize - 1; i < this->bufferSize; ++i) {
+            this->vertices[i] = *new list_node(this->listNodeSize);
+      }
+      return OK;
+    case 2:
+      this->vertices = (list_node*) realloc(this->vertices,(newsize + 10)*sizeof(list_node));
+      this->bufferSize = newsize + 10;
+      for(int i = oldsize - 1; i < this->bufferSize; ++i) {
+            this->vertices[i] = *new list_node(this->listNodeSize);
+      }
+      return OK;
+    default: return FAIL;
+  }
 }

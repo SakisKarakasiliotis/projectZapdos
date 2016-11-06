@@ -83,7 +83,7 @@ OK_SUCCESS index::resize(int newsize,int mode){
       return OK;
     case 2:
       this->offsets = (int*) realloc(this->offsets,(newsize + 10)*sizeof(int));
-      this->sizeOfIndex = newsize;
+      this->sizeOfIndex = newsize + 10;
       for(int i = oldsize - 1; i < this->sizeOfIndex; ++i) {
             this->offsets[i]= INVALID;
       }

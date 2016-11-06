@@ -6,16 +6,17 @@
 using namespace std;
 
 list_node::list_node(int listNodeSize){
-	this->neighbor = new uint32_t[listNodeSize];
-	this->edgeProperty = new uint32_t[listNodeSize];
+	this->neighbor = (uint32_t*) malloc(listNodeSize*sizeof(uint32_t));
+	this->edgeProperty = (uint32_t*) malloc(listNodeSize*sizeof(int32_t));
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = listNodeSize;
+	cout<<"making a list_node"<<endl;
 }
 
 list_node::~list_node(){
-	delete[] this->neighbor;
-	delete[] this->edgeProperty;
+	free(this->neighbor);
+	free(this->edgeProperty);
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = INVALID;
