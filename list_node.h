@@ -1,14 +1,7 @@
 #ifndef LIST_NODE_H
 #define LIST_NODE_H
 
-#include "includes.h"
-
-#define INVALID -1
-#define FAIL 0
-#define OK 1
-
-typedef int ptr;
-typedef uint32_t OK_SUCCESS;
+#include "defines.h"
 
 class list_node
 {
@@ -22,20 +15,24 @@ public:
 	list_node(int);
 	~list_node();
 
+	//You should raise the numberOfNeighbors
 	OK_SUCCESS setNeighbor(uint32_t);
-	uint32_t* getNeighbor();
+
+	//THIS PROPABLY IS FUCKED UP
+	uint32_t getNeighbor(int ID);
 
 	OK_SUCCESS setEdgeProperty(uint32_t);
 	uint32_t* getEdgeProperty();
 
 	OK_SUCCESS setNextListNode(int);
-	int getNextListNode();	
+	int getNextListNode();
 
 	OK_SUCCESS setNumberOfNeighbors(int);
-	int getNumberOfNeighbors();	
+	int getNumberOfNeighbors();
+
 
 	OK_SUCCESS setListNodeSize(int);
-	int getListNodeSize();	
+	int getListNodeSize();
 };
 
 #endif
