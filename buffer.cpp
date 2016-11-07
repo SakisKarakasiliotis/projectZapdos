@@ -172,3 +172,5 @@ OK_SUCCESS buffer::setNextListNode(int offset,int target){
 	this->vertices[offset].setNextListNode(target);
 	return OK;
 }
+
+#include "buffer.h"
