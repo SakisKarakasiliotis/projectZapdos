@@ -96,11 +96,13 @@ int main(int argc, char const *argv[])
            strcpy(inpoutLine,inpout.c_str());
            part1=strtok(inpoutLine," ");
          }
-       }
-       else{
+       }else{
          cout<< "GRAPH CREATION"<<endl;
          Buffer = new buffer(20,4);
          Index = new n_index(10);
+         cout<<Buffer->getNumberOfVertices()<<" On creation"<<endl;
+         Buffer->setNumberOfVertices(10);
+         cout<<Buffer->getNumberOfVertices()<< " Fuck you"<<endl;
          while(strcmp(part1,"S")){
            //cout<<part1<<" ";
            strcpy(initial,part1);

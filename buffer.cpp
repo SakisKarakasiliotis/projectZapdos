@@ -43,6 +43,7 @@ int buffer::getBufferSize(){
 }
 
 OK_SUCCESS buffer::resize(int newsize,int mode){
+	cout<<"INTO RESIZE"<<endl;
   if(newsize < this->bufferSize && mode==2) return FAIL;
   int oldsize = this->bufferSize;
   switch (mode) {
@@ -60,16 +61,22 @@ OK_SUCCESS buffer::resize(int newsize,int mode){
             this->vertices[i] = *new list_node(this->listNodeSize);
       }
       return OK;
-    default: return FAIL;
+    default:
+    	cout<<"INTO RESIZE"<<endl;
+ 
+    	return FAIL;
   }
 }
 
 ptr buffer::addListNode(int listNodeSize){
 	//we add only when buffer is at 80% full, so we double the buffer size
-	if (this->numberOfVertices >= (80/100)*(this->bufferSize) ){
+	if (this->numberOfVertices >= 0.8*(this->bufferSize) ){
+		cout<<"BEFORE RESIZE NOV ARE: "<<this->numberOfVertices<<" PLHROTHTA: "<<0.8*(this->bufferSize)<<endl;
 		if(this->resize(1, 1) == FAIL) return FAIL;
 	}
-	this->numberOfVertices++;
+	// this->numberOfVertices++;
+	cout<<this->numberOfVertices<<" MOUNI"<<endl;
+	this->setNumberOfVertices(this->getNumberOfVertices() + 1);
 	return this->numberOfVertices-1;
 }
 
@@ -82,22 +89,30 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 	}
 
 	if (this->vertices[offset].getNumberOfNeighbors() == 0){ //here is a new node
+		cout<<"1 numberOfVertices == "<<this->numberOfVertices<<endl;
 		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
 			cout << "Unable to add neighbor on insertNeighbor case 0 returned FAIL space occupied" << endl;
 			return FAIL;
 		}
+		cout<<"2 numberOfVertices == "<<this->numberOfVertices<<endl;
 		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
 		return OK;
 	}
 	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize && this->vertices[offset].getNumberOfNeighbors()!=FULL){//new neighbor
+				cout<<"1 numberOfVertices == new"<<endl;
+
 		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
 			cout << "Unable to add neighbor on insertNeighbor case BETWEEN returned FAIL space occupied" << endl;
 			return FAIL;
 		}
+						cout<<"2 numberOfVertices == new"<<endl;
+
 		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
 		return OK;
 	}
 	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
+						cout<<"1 numberOfVertices == before poutsa"<<endl;
+
 		if(this->vertices[offset].getNextListNode()==INVALID){
 			cout << "POUTSA" <<endl;
 			this->vertices[offset].setNextListNode(this->addListNode(this->listNodeSize));
@@ -106,6 +121,8 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 				return FAIL;
 			}
 		}else{
+							cout<<"poutsa 2"<<endl;
+
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
 				cout<<"anadromh v2 cannot insert neighbor "<<endl;
 				return FAIL;
@@ -172,5 +189,3 @@ OK_SUCCESS buffer::setNextListNode(int offset,int target){
 	this->vertices[offset].setNextListNode(target);
 	return OK;
 }
-
-#include "buffer.h"
