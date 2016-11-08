@@ -53,15 +53,18 @@ OK_SUCCESS n_index::addEntry(int entryOffset , int nodeName){//10 11
   std::cout << "after invalid" << std::endl;
 
   this->offsets[nodeName] = entryOffset;
-  if(nodeName > this->numberOfEntries){
+  if(nodeName >= this->numberOfEntries){
+    cout<<"increasing number"<<endl;
     this->numberOfEntries=nodeName+1;
   }
   return OK;
 }
 int n_index::getEntry(int entryNumber){
-  if (entryNumber > (this->numberOfEntries) || entryNumber < 0) {
-    cout<<"entry number requested is out of bounds"<<endl;
-    return FAIL;
+  if(entryNumber<0) return FAIL;
+  if (entryNumber > (this->numberOfEntries)) {
+    cout<<this->numberOfEntries<<" c"<<endl;
+    cout<<entryNumber<<" entry number requested is out of bounds"<<endl;
+    this->resize(entryNumber,2);    
   }
   if(this->offsets[entryNumber] == INVALID){
     std::cout << "empty" << std::endl;

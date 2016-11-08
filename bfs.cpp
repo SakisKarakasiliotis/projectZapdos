@@ -13,6 +13,8 @@ int BFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, b
 
    queue* outFringe = new queue(fringeSize);
    queue* inFringe = new queue(fringeSize);
+   queue* outChecked = new queue(outIndex->getNumberOfEntries());
+   queue* inChecked = new queue(inIndex->getNumberOfEntries());
 
    int pathLength = 1;
    //--------------TEST CODE--------------
@@ -21,31 +23,37 @@ int BFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, b
 
    outFringe->enqueue(start);
    inFringe->enqueue(dest);
+   outChecked->enqueue(start);
+   inChecked->enqueue(dest);
 
    int numberOfNeighbors;
    uint32_t* neighbors;
    int iterations;
    uint32_t node;
-   OK_SUCCESS* error;
+   OK_SUCCESS error;
    n_index* workingIndex;
    queue *fringe, *otherFringe;
    buffer* graph;
+   queue* checked;
 
    while (!outFringe->isEmpty() && !inFringe->isEmpty())
    {
-      *error = OK;
+      //*error = OK;
+      error = OK;
       if (inFringe->getNumberOfElements() > outFringe->getNumberOfElements())
       {
-         workingIndex = inIndex;
+         workingIndex = outIndex;
          graph = outgoing;
          fringe = outFringe;
+         checked = outChecked;
          otherFringe = inFringe;
       }
       else
       {
-         workingIndex = outIndex;
+         workingIndex = inIndex;
          graph = incoming;
          fringe = inFringe;
+         checked = inChecked;
          otherFringe = outFringe;
       }
       iterations = fringe->getNumberOfElements();
@@ -64,16 +72,23 @@ int BFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, b
          {
             if (otherFringe->contains(neighbors[i]))
             {
+               delete inChecked;
+               delete outChecked;
                delete inFringe;
                delete outFringe;
                return pathLength;
             }
-            else if (!fringe->contains(neighbors[i]))
+            else if (!checked->contains(neighbors[i]))
+            {
                fringe->enqueue(neighbors[i]);
+               checked->enqueue(neighbors[i]);
+            }
          }
       }
       pathLength++;
    }
+   delete inChecked;
+   delete outChecked;
    delete inFringe;
    delete outFringe;
    return INVALID;

@@ -50,17 +50,17 @@ bool queue::enqueue(uint32_t x)
    return true;
 }
 
-uint32_t queue::dequeue(OK_SUCCESS* error)
+uint32_t queue::dequeue(OK_SUCCESS error)
 {
    if(this->isEmpty())
    {
       cout<<"\nQueue underflow!!\n";
-      *error = FAIL;
-      return FAIL;
+      error = FAIL;
+      return FAIL;//teleios la8os!!!
    }
    uint32_t x = q[front];
    front = next(front);
-   *error = OK;
+   error = OK;
    this->occupiedSpaces--;
    return x;
 }

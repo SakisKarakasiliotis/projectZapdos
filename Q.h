@@ -25,7 +25,7 @@ class queue
       bool contains(uint32_t);
 
       bool enqueue(uint32_t);
-      uint32_t dequeue(OK_SUCCESS*);
+      uint32_t dequeue(OK_SUCCESS);
 };
 
 #endif
