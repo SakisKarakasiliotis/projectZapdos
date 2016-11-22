@@ -11,7 +11,6 @@ list_node::list_node(int listNodeSize){
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = listNodeSize;
-    cout<<"create"<<endl;
 }
 
 list_node::~list_node(){
@@ -27,25 +26,19 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge)
 {
    if(this->numberOfNeighbors != INVALID)
    {
-   		cout<<"into set Neighbor list node edge: "<<edge<<endl;
       this->neighbor[this->numberOfNeighbors] = edge;
-      //TODO for testing numberOfNeighbors++;
       return OK;
    }
    return FAIL;
 }
 uint32_t list_node::getNeighbor(int ID){
-	//if(this->numb erOfNeighbors){
-		cout<<"inside list_node getNeighbor"<<endl;
 		return this->neighbor[ID];
-		//figure out how to return fail
-	//}
+
 }
 
 OK_SUCCESS list_node::setEdgeProperty(uint32_t edgeProperty){
 	if(this->numberOfNeighbors != FULL){
 		this->edgeProperty[this->numberOfNeighbors] = edgeProperty;
-		//TODO for testing numberOfNeighbors++;
 		return OK;
 	}
 	return FAIL;
@@ -76,7 +69,6 @@ OK_SUCCESS list_node::setNumberOfNeighbors(int numberOfNeighbors){
 	}else{
 		this->numberOfNeighbors = numberOfNeighbors;
 	}
-	cout<<numberOfNeighbors<<" NON"<<endl;
 	return OK;
 }
 

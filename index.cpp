@@ -48,13 +48,10 @@ OK_SUCCESS n_index::addEntry(int entryOffset , int nodeName){//10 11
        }
   }
   else if(nodeName < 0 ) return FAIL;
-  std::cout << "before invalid" << std::endl;
-  if(this->offsets[nodeName]!=INVALID) return FAIL; //TODO fix this check cause garbage
-  std::cout << "after invalid" << std::endl;
+  if(this->offsets[nodeName]!=INVALID) return FAIL;
 
   this->offsets[nodeName] = entryOffset;
   if(nodeName >= this->numberOfEntries){
-    cout<<"increasing number"<<endl;
     this->numberOfEntries=nodeName+1;
   }
   return OK;
@@ -62,12 +59,11 @@ OK_SUCCESS n_index::addEntry(int entryOffset , int nodeName){//10 11
 int n_index::getEntry(int entryNumber){
   if(entryNumber<0) return FAIL;
   if (entryNumber > (this->numberOfEntries)) {
-    cout<<this->numberOfEntries<<" c"<<endl;
     cout<<entryNumber<<" entry number requested is out of bounds"<<endl;
     this->resize(entryNumber,2);    
   }
   if(this->offsets[entryNumber] == INVALID){
-    std::cout << "empty" << std::endl;
+  
     return INVALID;
   }
   return this->offsets[entryNumber];
@@ -75,7 +71,6 @@ int n_index::getEntry(int entryNumber){
 OK_SUCCESS n_index::resize(int newsize,int mode){
   if(newsize < this->sizeOfIndex  && mode==2) return FAIL;
   int oldsize = this->sizeOfIndex;
-  //std::cout << "sizeOfIndex start " << this->sizeOfIndex <<std::endl;
   switch (mode) {
     case 1:
       this->offsets = (int*) realloc(this->offsets,2*this->sizeOfIndex*sizeof(int));

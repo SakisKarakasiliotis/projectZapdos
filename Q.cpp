@@ -72,9 +72,7 @@ bool queue::contains(uint32_t target)
    uint32_t tmp = front;
    for (int i=0; i<occupiedSpaces; i++)
    {
-      cout << "cointains: iteration No " << i << endl;
-      cout << "front: " << this->front << endl;
-      cout << "rear: " << this->rear << endl << endl;
+     
       if (this->q[tmp] == target) return true;
       tmp = next(tmp);
    }

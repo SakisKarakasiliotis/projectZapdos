@@ -11,6 +11,8 @@
 #include "buffer.h"
 #include "index.h"
 #include "bfs.h"
+#define VERT 30
+#define NEI 10
 
 using namespace std;
 
@@ -34,55 +36,40 @@ int main(int argc, char const *argv[])
    //START READING FILES FOR GRAPH CREATION
    cout<<"INSERT ENTRY FILE: ";
    do{  
-       // if(OPTION!=2){
-       //  cout<<"INSERT WORK FILE: ";
-       // }
+     
         if(OPTION==1){
         	strcpy(get,"tinyWorkload_FINAL.txt");
         }
         else{
         	strcpy(get,"tinyGraph.txt");
         }
-       // getline(cin,in);
-       // char get[in.size()+1];
-       // strcpy(get,in.c_str());
+     
 
        inpoutFile.open(get);
        getline(inpoutFile,inpout);
-       cout<<"lINE: "<<lineNumber<<" "<<inpout<<endl;
-       // char inpoutLine[80]={0};
        strcpy(inpoutLine,inpout.c_str());
-       cout<<part1<<" this is part1"<<endl;
        part1= strtok(inpoutLine," ");
        cout<<"FIRST LINE "<<lineNumber<<" TOKEN: "<<part1<<endl;
        if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
          cout<<"WORK FILE"<<endl;
          while(!strcmp(part1,"A")||!strcmp(part1,"Q")){
-            cout<<"inside  while loop of a,q,f"<<endl;
-            cout<<part1<<" part1 here!!"<<endl;
            if(strcmp(part1,"F")){
-             cout<<"cmp with f"<<endl;
              strcpy(initial,part1);
-             cout<<"1"<<endl;
              part1=strtok(NULL," ");
-             cout<<part1<<endl;
              strcpy(part2,part1);
-             cout<<part2<<endl;
 
              part1=strtok(NULL," ");
              strcpy(part3,part1);
-             cout<<part3<<endl;
              if(!strcmp(initial,"A")){
                cout<< "ADDING TO GRAPH" <<endl;
-               // TODO AddFunction(part2,part3);
               entry = Index->getEntry(atoi(part2));
               if(entry == FAIL){
-                 cout<<"LOL OUT OF BOUNDS BITCH"<<endl;
+                 cout<<"OUT OF BOUNDS"<<endl;
               }else if(entry == INVALID){
-                 int temp = Buffer->addListNode(10);
+                 int temp = Buffer->addListNode(NEI);
                  Index->addEntry(temp,atoi(part2));
                  Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
-                 //
+             
                  
               }else if(entry!=INVALID){
                  Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
@@ -90,9 +77,9 @@ int main(int argc, char const *argv[])
               }
               entry_inv = Index_inv->getEntry(atoi(part3));
               if(entry_inv == FAIL){
-                 cout<<"LOL OUT OF BOUNDS BITCH"<<endl;
+                 cout<<"OUT OF BOUNDS"<<endl;
               }else if(entry_inv == INVALID){
-                 int temp_inv = Buffer_inv->addListNode(10);
+                 int temp_inv = Buffer_inv->addListNode(NEI);
                  Index_inv->addEntry(temp_inv,atoi(part3));
                  Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
                  //
@@ -104,44 +91,35 @@ int main(int argc, char const *argv[])
 
              }
              else if(!strcmp(initial,"Q")){
-               cout<<"question"<<endl;
-
+               cout<<"Question"<<endl;
                cout<<j<<"-------------"<<BFS(Index, Buffer, atoi(part2), Index_inv, Buffer_inv, atoi(part3), 50)<<" this is the fucking answer"<<endl;
              	j++;
              }
           }
            getline(inpoutFile,inpout);
-           cout<<"got new line"<<endl;
-           // if(!inpoutFile){
-           //   break;
-           // }
+          
            strcpy(inpoutLine,inpout.c_str());
            part1=strtok(inpoutLine," ");
          }
        }else{
          cout<< "GRAPH CREATION"<<endl;
-         Buffer = new buffer(20,10);
-         Index = new n_index(10);
-         Buffer_inv = new buffer(20,10);
-         Index_inv = new n_index(10);
-         cout<<Buffer->getNumberOfVertices()<<" On creation"<<endl;
-         //Buffer->setNumberOfVertices(10);
-         cout<<Buffer->getNumberOfVertices()<< " Fuck you"<<endl;
+         Buffer = new buffer(VERT,NEI);
+         Index = new n_index(NEI);
+         Buffer_inv = new buffer(VERT,NEI);
+         Index_inv = new n_index(NEI);
+        
          while(strcmp(part1,"S")){
-           //cout<<part1<<" ";
            strcpy(initial,part1);
            part1=strtok(NULL," ");
            strcpy(part2,part1);
-           //cout<<part2<<endl;
-           //TODO AddFunction()
+          
            if(Index->getEntry(atoi(initial))==INVALID){
-           		int temp = Buffer->addListNode(10);
+           		int temp = Buffer->addListNode(NEI);
            		Index->addEntry(temp,atoi(initial));
            }
            Buffer->insertNeighbor(Index->getEntry(atoi(initial)),atoi(part2));
-           //inverted/////
            if(Index_inv->getEntry(atoi(part2))==INVALID){
-                      int temp_inv = Buffer_inv->addListNode(10);
+                      int temp_inv = Buffer_inv->addListNode(NEI);
                       Index_inv->addEntry(temp_inv,atoi(part2));
                 }
            Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part2)),atoi(initial));
@@ -152,9 +130,7 @@ int main(int argc, char const *argv[])
 
            strcpy(inpoutLine,inpout.c_str());
            part1= strtok(inpoutLine," ");
-           //cout<<part1<<endl;
          }
-         cout<<part1<<"just out of while"<<endl;
          inpoutFile.close();
        }
        cout<<"CHOOSE"<<endl<< "0 - QUIT"<<endl<<"OR"<<endl<< "1 - INSERT WORK FILE"<<endl;

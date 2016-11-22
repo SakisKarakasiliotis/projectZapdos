@@ -43,7 +43,6 @@ int buffer::getBufferSize(){
 }
 
 OK_SUCCESS buffer::resize(int newsize,int mode){
-	cout<<"INTO RESIZE"<<endl;
   if(newsize < this->bufferSize && mode==2) return FAIL;
   int oldsize = this->bufferSize;
   switch (mode) {
@@ -62,7 +61,6 @@ OK_SUCCESS buffer::resize(int newsize,int mode){
       }
       return OK;
     default:
-    	cout<<"INTO RESIZE"<<endl;
  
     	return FAIL;
   }
@@ -71,60 +69,49 @@ OK_SUCCESS buffer::resize(int newsize,int mode){
 ptr buffer::addListNode(int listNodeSize){
 	//we add only when buffer is at 80% full, so we double the buffer size
 	if (this->numberOfVertices >= 0.8*(this->bufferSize) ){
-		cout<<"BEFORE RESIZE NOV ARE: "<<this->numberOfVertices<<" PLHROTHTA: "<<0.8*(this->bufferSize)<<endl;
 		if(this->resize(1, 1) == FAIL) return FAIL;
 	}
-	// this->numberOfVertices++;
-	cout<<this->numberOfVertices<<" MOUNI"<<endl;
+	
 	this->setNumberOfVertices(this->getNumberOfVertices() + 1);
 	return this->numberOfVertices-1;
 }
 
 OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
-	cout<<"inside insertNeighbor"<<endl;
-	cout<<"checking at offset: "<<offset<<endl;
+
 	if (neighborId < 0 || offset > numberOfVertices ){
-		cout<<"aaaaa"<<endl;
+	
 		return FAIL;
 	}
 
 	if (this->vertices[offset].getNumberOfNeighbors() == 0){ //here is a new node
-		cout<<"1 numberOfVertices == "<<this->numberOfVertices<<endl;
+
 		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
 			cout << "Unable to add neighbor on insertNeighbor case 0 returned FAIL space occupied" << endl;
 			return FAIL;
 		}
-		cout<<"2 numberOfVertices == "<<this->numberOfVertices<<endl;
-		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);
 		return OK;
 	}
 	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize && this->vertices[offset].getNumberOfNeighbors()!=FULL){//new neighbor
-				cout<<"1 numberOfVertices == new"<<endl;
 
 		if(this->vertices[offset].setNeighbor((uint32_t) neighborId) == FAIL){
 			cout << "Unable to add neighbor on insertNeighbor case BETWEEN returned FAIL space occupied" << endl;
 			return FAIL;
 		}
-						cout<<"2 numberOfVertices == new"<<endl;
 
-		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);//lol can be replaced by proper function lol
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);
 		return OK;
 	}
 	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
-						cout<<"1 numberOfVertices == before poutsa"<<endl;
 
 		if(this->vertices[offset].getNextListNode()==INVALID){
-			cout << "POUTSA" <<endl;
 			this->vertices[offset].setNextListNode(this->addListNode(this->listNodeSize));
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
-				cout<<"anadromh v1 cannot insert neighbor "<<endl;
 				return FAIL;
 			}
 		}else{
-							cout<<"poutsa 2"<<endl;
 
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
-				cout<<"anadromh v2 cannot insert neighbor "<<endl;
 				return FAIL;
 			}
 		}
@@ -136,49 +123,35 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 
 int buffer::getNeighbors(uint32_t *&neighbors, uint32_t nodeOffset){
 	int arraySize=0;
-	cout<<"insede get neighbors"<<endl;
 	if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
 		cout<<"No neighbors"<<endl;
 		return FAIL;
 	}
-   std::cout << "listNodeSize MFAKA" << this->listNodeSize << std::endl;
 	uint32_t* neighbors_temp = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
    neighbors = neighbors_temp;
-	cout<<"just before while loop"<<endl;
 	while(nodeOffset != INVALID) {
-		cout<<"in while loop start"<<endl;
 	    if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
-				cout<<"inside first if"<<endl;
 			for (int i = 0; i < this->listNodeSize; i++){
-				cout<<"inside for loop no: "<<i<<endl;
 				neighbors[i] = this->vertices[nodeOffset].getNeighbor(i);
 				cout<<neighbors[i]<<endl;
 				arraySize++;
-				cout<<"end of for"<<endl;
 			}
 			if (this->vertices[nodeOffset].getNextListNode()==INVALID){
-				cout<<"inside second if"<<endl;
 				return arraySize;
 			}else{
-				cout<<"inside else statement from second if"<<endl;
 				neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
-				cout<<"realloc worked"<<endl;
 				nodeOffset = this->vertices[nodeOffset].getNextListNode();
 			}
 
 		}
 		else{
-			cout<<"inside else statement of first if"<<endl;
 			for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
 				neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
 				arraySize++;
 			}
-			cout << "here" << endl;
 			return arraySize;
 		}
-		cout<<"in while loop end"<<endl;
 	}
-   cout<< "LOL WHY YOU HERE????" <<endl;
    return FAIL;
 }
 
