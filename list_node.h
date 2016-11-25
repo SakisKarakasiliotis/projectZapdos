@@ -6,8 +6,8 @@
 class list_node
 {
 private:
-	uint32_t *neighbor;
-	uint32_t *edgeProperty;
+	uint32_t neighbor[LIST_NODE_SIZE];
+	uint32_t edgeProperty[LIST_NODE_SIZE];
 	ptr nextListNode;
 	int numberOfNeighbors;
 	int listNodeSize;

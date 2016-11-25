@@ -6,8 +6,6 @@
 using namespace std;
 
 list_node::list_node(int listNodeSize){
-	this->neighbor = (uint32_t*) malloc(listNodeSize*sizeof(uint32_t));
-	this->edgeProperty = (uint32_t*) malloc(listNodeSize*sizeof(int32_t));
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = listNodeSize;

@@ -26,7 +26,7 @@ public:
 
 	//modes are 1:double 2:resize to newsize //
 	OK_SUCCESS resize(int newsize,int mode);
-	ptr addListNode(int listNodeSize);
+	ptr addListNode();
 	OK_SUCCESS insertNeighbor(int offset, int neighborId);
 	int getNeighbors(uint32_t *&neighbors, uint32_t nodeOffset);
 

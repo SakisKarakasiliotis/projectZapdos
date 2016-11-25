@@ -7,6 +7,7 @@
 #define INVALID -3
 #define FAIL -2
 #define OK -1
+#define LIST_NODE_SIZE 10
 
 using namespace std;
 typedef int ptr;

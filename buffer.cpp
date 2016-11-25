@@ -66,7 +66,7 @@ OK_SUCCESS buffer::resize(int newsize,int mode){
   }
 }
 
-ptr buffer::addListNode(int listNodeSize){
+ptr buffer::addListNode(){
 	//we add only when buffer is at 80% full, so we double the buffer size
 	if (this->numberOfVertices >= 0.8*(this->bufferSize) ){
 		if(this->resize(1, 1) == FAIL) return FAIL;
@@ -105,7 +105,7 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
 
 		if(this->vertices[offset].getNextListNode()==INVALID){
-			this->vertices[offset].setNextListNode(this->addListNode(this->listNodeSize));
+			this->vertices[offset].setNextListNode(this->addListNode());
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
 				return FAIL;
 			}

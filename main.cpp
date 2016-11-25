@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
 {
 	 //FILE READING VARIABLES
    string inpout;
-   char *part1,part2[80],part3[80],initial[80],get[30];
+   char *part1,part2[80],part3[80],initial[80],get[600];
    ifstream inpoutFile;
    string in;
    char inpoutLine[80]={0};
@@ -38,14 +38,15 @@ int main(int argc, char const *argv[])
    do{  
      
         if(OPTION==1){
-        	strcpy(get,"tinyWorkload_FINAL.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
         }
         else{
-        	strcpy(get,"tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyGraph.txt");
         }
      
 
        inpoutFile.open(get);
+
        getline(inpoutFile,inpout);
        strcpy(inpoutLine,inpout.c_str());
        part1= strtok(inpoutLine," ");
@@ -66,7 +67,7 @@ int main(int argc, char const *argv[])
               if(entry == FAIL){
                  cout<<"OUT OF BOUNDS"<<endl;
               }else if(entry == INVALID){
-                 int temp = Buffer->addListNode(NEI);
+                 int temp = Buffer->addListNode();
                  Index->addEntry(temp,atoi(part2));
                  Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
              
@@ -79,7 +80,7 @@ int main(int argc, char const *argv[])
               if(entry_inv == FAIL){
                  cout<<"OUT OF BOUNDS"<<endl;
               }else if(entry_inv == INVALID){
-                 int temp_inv = Buffer_inv->addListNode(NEI);
+                 int temp_inv = Buffer_inv->addListNode();
                  Index_inv->addEntry(temp_inv,atoi(part3));
                  Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
                  //
@@ -103,10 +104,10 @@ int main(int argc, char const *argv[])
          }
        }else{
          cout<< "GRAPH CREATION"<<endl;
-         Buffer = new buffer(VERT,NEI);
-         Index = new n_index(NEI);
-         Buffer_inv = new buffer(VERT,NEI);
-         Index_inv = new n_index(NEI);
+         Buffer = new buffer(VERT,LIST_NODE_SIZE);
+         Index = new n_index(LIST_NODE_SIZE);
+         Buffer_inv = new buffer(VERT,LIST_NODE_SIZE);
+         Index_inv = new n_index(LIST_NODE_SIZE);
         
          while(strcmp(part1,"S")){
            strcpy(initial,part1);
@@ -114,12 +115,14 @@ int main(int argc, char const *argv[])
            strcpy(part2,part1);
           
            if(Index->getEntry(atoi(initial))==INVALID){
-           		int temp = Buffer->addListNode(NEI);
+           		int temp = Buffer->addListNode();
            		Index->addEntry(temp,atoi(initial));
            }
+            cout<<"initial "<<Index->getEntry(atoi(initial))<<" part2 "<<atoi(part2)<<endl;
+             //TODO: getEntry bullshit number
            Buffer->insertNeighbor(Index->getEntry(atoi(initial)),atoi(part2));
            if(Index_inv->getEntry(atoi(part2))==INVALID){
-                      int temp_inv = Buffer_inv->addListNode(NEI);
+                      int temp_inv = Buffer_inv->addListNode();
                       Index_inv->addEntry(temp_inv,atoi(part2));
                 }
            Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part2)),atoi(initial));
@@ -130,6 +133,7 @@ int main(int argc, char const *argv[])
 
            strcpy(inpoutLine,inpout.c_str());
            part1= strtok(inpoutLine," ");
+             lineNumber++;
          }
          inpoutFile.close();
        }
