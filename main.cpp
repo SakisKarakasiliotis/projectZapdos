@@ -49,17 +49,17 @@ int main(int argc, char const *argv[])
 
        getline(inpoutFile,inpout);
        strcpy(inpoutLine,inpout.c_str());
-       part1= strtok(inpoutLine," ");
+       part1= strtok(inpoutLine," \n\t");
        cout<<"FIRST LINE "<<lineNumber<<" TOKEN: "<<part1<<endl;
        if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
          cout<<"WORK FILE"<<endl;
          while(!strcmp(part1,"A")||!strcmp(part1,"Q")){
            if(strcmp(part1,"F")){
              strcpy(initial,part1);
-             part1=strtok(NULL," ");
+             part1=strtok(NULL," \n\t");
              strcpy(part2,part1);
 
-             part1=strtok(NULL," ");
+             part1=strtok(NULL," \n\t");
              strcpy(part3,part1);
              if(!strcmp(initial,"A")){
                cout<< "ADDING TO GRAPH" <<endl;
@@ -100,7 +100,7 @@ int main(int argc, char const *argv[])
            getline(inpoutFile,inpout);
           
            strcpy(inpoutLine,inpout.c_str());
-           part1=strtok(inpoutLine," ");
+           part1=strtok(inpoutLine," \n\t");
          }
        }else{
          cout<< "GRAPH CREATION"<<endl;
@@ -111,13 +111,15 @@ int main(int argc, char const *argv[])
         
          while(strcmp(part1,"S")){
            strcpy(initial,part1);
-           part1=strtok(NULL," ");
+           part1=strtok(NULL," \n\t");
            strcpy(part2,part1);
           
            if(Index->getEntry(atoi(initial))==INVALID){
            		int temp = Buffer->addListNode();
            		Index->addEntry(temp,atoi(initial));
            }
+             cout<<"Index size: "<<Index->getSizeOfIndex()<<endl;
+             cout<<"Index NOE: "<<Index->getNumberOfEntries()<<endl;
             cout<<"initial "<<Index->getEntry(atoi(initial))<<" part2 "<<atoi(part2)<<endl;
              //TODO: getEntry bullshit number
            Buffer->insertNeighbor(Index->getEntry(atoi(initial)),atoi(part2));
@@ -132,7 +134,7 @@ int main(int argc, char const *argv[])
            }
 
            strcpy(inpoutLine,inpout.c_str());
-           part1= strtok(inpoutLine," ");
+           part1= strtok(inpoutLine," \n\t");
              lineNumber++;
          }
          inpoutFile.close();

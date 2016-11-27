@@ -58,7 +58,7 @@ OK_SUCCESS n_index::addEntry(int entryOffset , int nodeName){//10 11
 }
 int n_index::getEntry(int entryNumber){
   if(entryNumber<0) return FAIL;
-  if (entryNumber > (this->numberOfEntries)) {
+  if (entryNumber >= (this->numberOfEntries)) {
     cout<<entryNumber<<" entry number requested is out of bounds"<<endl;
     this->resize(entryNumber,2);    
   }
