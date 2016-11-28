@@ -21,11 +21,12 @@ class hashClass
    private:
       bucket* table;
       short int precision;
+      int numOfBuckets;
       uint32_t hashFun(const char*);
    public:
       hashClass(int, short int);
       ~hashClass();
-      bool check_hash(const char*);
+      bool checkHash(const char*);
 };
 
 #endif

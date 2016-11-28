@@ -1,6 +1,6 @@
-OBJS = buffer.o list_node.o index.o main.o bfs.o Q.o 
-SOURCE = buffer.cpp list_node.cpp index.cpp main.cpp bfs.cpp Q.cpp 
-HEADER = buffer.h list_node.h index.h defines.h bfs.h Q.h 
+OBJS = buffer.o list_node.o index.o main.o bfs.o Q.o myHash.o
+SOURCE = buffer.cpp list_node.cpp index.cpp main.cpp bfs.cpp Q.cpp myHash.cpp
+HEADER = buffer.h list_node.h index.h defines.h bfs.h Q.h myHash.h
  OUT = zapdos
   CC = g++
 FLAGS = -c -g

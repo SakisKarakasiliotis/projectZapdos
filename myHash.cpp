@@ -1,18 +1,19 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
-#include "my_hash.h"
+#include "myHash.h"
 
 //-------------HASH CLASS-------------
 hashClass::hashClass(int initialSize, short int precision)
 {
    this->table = new bucket[initialSize];
+   this->numOfBuckets = initialSize;
    this->precision = precision;
 }
 
 hashClass::~hashClass()
 {
-   delete this->table;
+   delete[] this->table;
 }
 
 uint32_t hashClass::hashFun(const char* input)
@@ -20,9 +21,9 @@ uint32_t hashClass::hashFun(const char* input)
    return (*(uint32_t*) input)>> precision;
 }
 
-bool hashClass::check_hash(const char* input)
+bool hashClass::checkHash(const char* input)
 {
-   uint32_t bucket = hashFun(input);
+   uint32_t bucket = hashFun(input)%this->numOfBuckets;
    if (this->table[bucket].existsInBucket(input))
       return true;
    return false;
@@ -38,6 +39,8 @@ bucket::bucket()
 
 bucket::~bucket()
 {
+   for(int i=0; i<this->numOfElements; i++)
+      free(this->bucketTable[i]);
    free(this->bucketTable);
 }
 
@@ -48,7 +51,7 @@ void bucket::insert(const char* input)
       this->tableSize *= 2;
       this->bucketTable = (char**) realloc(bucketTable, this->tableSize*sizeof(char*)); 
    }
-   sprintf(this->bucketTable[numOfElements], "%s", input);
+   asprintf(&this->bucketTable[numOfElements], "%s", input);
    this->numOfElements++;
 }
 
