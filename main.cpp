@@ -38,10 +38,10 @@ int main(int argc, char const *argv[])
    do{  
      
         if(OPTION==1){
-        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
+        	strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tinyWorkload_FINAL.txt");
         }
         else{
-        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tinyGraph.txt");
         }
      
 
@@ -93,7 +93,7 @@ int main(int argc, char const *argv[])
              }
              else if(!strcmp(initial,"Q")){
                cout<<"Question"<<endl;
-               cout<<j<<"-------------"<<BFS(Index, Buffer, atoi(part2), Index_inv, Buffer_inv, atoi(part3), 50)<<" this is the fucking answer"<<endl;
+               cout<<j<<"-------------"<<BBFS(Index, Buffer, atoi(part2), Index_inv, Buffer_inv, atoi(part3), 50)<<" this is the fucking answer"<<endl;
              	j++;
              }
           }
@@ -138,6 +138,7 @@ int main(int argc, char const *argv[])
              lineNumber++;
          }
          inpoutFile.close();
+           GetConnectedComponents(Index, Buffer, Index_inv, Buffer_inv);
        }
        cout<<"CHOOSE"<<endl<< "0 - QUIT"<<endl<<"OR"<<endl<< "1 - INSERT WORK FILE"<<endl;
        cin>>OPTION;

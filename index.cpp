@@ -4,9 +4,11 @@
 n_index::n_index(int size){
   this->sizeOfIndex = size;
   this->offsets =(int*)  malloc(this->sizeOfIndex*sizeof(int));
+  this->CCnum =(int*)  malloc(this->sizeOfIndex*sizeof(int));
   this->numberOfEntries = 0;
   for (int i = 0; i < size; i++) {
     this->offsets[i]= INVALID;
+    this->CCnum[i] = INVALID;
   }
 }
 n_index::~n_index(){
@@ -95,4 +97,17 @@ OK_SUCCESS n_index::resize(int newsize,int mode){
       return OK;
     default: return FAIL;
   }
+}
+
+int n_index::getCCnum(int nodeName)
+{
+  if(nodeName < 0 || nodeName >= this->sizeOfIndex) return FAIL;
+  return this->offsets[nodeName];
+}
+
+OK_SUCCESS n_index::setCCnum(uint32_t nodeName, int CCname)
+{
+  if (CCname < 0 || CCname >= this->sizeOfIndex) return FAIL;
+  this->CCnum[nodeName] = CCname;
+  return OK;
 }

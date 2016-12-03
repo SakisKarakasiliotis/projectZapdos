@@ -56,7 +56,7 @@ uint32_t queue::dequeue(OK_SUCCESS error)
    {
       cout<<"\nQueue underflow!!\n";
       error = FAIL;
-      return FAIL;//teleios la8os!!!
+      return 0;//teleios la8os!!!
    }
    uint32_t x = q[front];
    front = next(front);

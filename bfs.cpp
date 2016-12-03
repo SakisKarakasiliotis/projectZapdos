@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cstdlib>
-
+#include <time.h>
 #include "Q.h"
 #include "bfs.h"
 
 using namespace std;
 
 
-int BFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, buffer* incoming, uint32_t dest, int fringeSize)
+int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, buffer* incoming, uint32_t dest, int fringeSize)
 {
    if (start == dest) return 0;
 
@@ -92,4 +92,60 @@ int BFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, b
    delete inFringe;
    delete outFringe;
    return INVALID;
+}
+
+OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming)
+{
+    srand (time(NULL));
+    uint32_t startNode = rand()%outIndex->getSizeOfIndex();
+    cout<<startNode<<" First node"<<endl;
+    int ccnum;
+    queue* fringe = new queue(outIndex->getSizeOfIndex());
+    fringe->enqueue(startNode);
+    uint32_t* inNeighbors;
+    uint32_t* outNeighbors;
+    int numberOfNeighbors;
+    int currentCCgroup = 0;
+    OK_SUCCESS error;
+    int iterNo = 0;
+    while (iterNo <= outIndex->getSizeOfIndex())
+    {
+        while (!fringe->isEmpty())
+        {
+            int nodeName = fringe->dequeue(error);
+            int nodeOffset = outIndex->getEntry(nodeName);
+            if((ccnum = outIndex->getCCnum(nodeName)) == FAIL ){
+                cout<<nodeName<<" Out of bounds on GetVonnectedComponents"<<endl;
+                return FAIL;
+            }else if(ccnum != INVALID){
+                continue;
+            }
+            outIndex->setCCnum(nodeName, currentCCgroup);
+            inIndex->setCCnum(nodeName, currentCCgroup);
+            numberOfNeighbors = outgoing->getNeighbors(inNeighbors, nodeOffset);
+            for (int i=0; i<numberOfNeighbors; i++)
+            {
+                fringe->enqueue(inNeighbors[i]);
+            }
+            numberOfNeighbors = incoming->getNeighbors(outNeighbors, nodeOffset);
+            for (int i=0; i<numberOfNeighbors; i++)
+            {
+                fringe->enqueue(outNeighbors[i]);
+            }
+        }
+        currentCCgroup++;
+        for(; iterNo<outIndex->getSizeOfIndex(); iterNo++)
+        {
+            int nodeOffset = outIndex->getEntry(iterNo);
+            if (outIndex->getCCnum(nodeOffset) == INVALID)
+            {
+                startNode = iterNo;
+                fringe->enqueue(startNode);
+                break;
+            }
+        }
+    }
+
+    delete fringe;
+    return OK;
 }

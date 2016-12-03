@@ -5,6 +5,7 @@
 class n_index{
   private:
     int* offsets;
+    int* CCnum;
     int numberOfEntries;
     int sizeOfIndex;
   public:
@@ -18,6 +19,9 @@ class n_index{
     int getEntry(int entryNumber);
     //modes are 1:double 2:resize to newsize 3:multiply with newsize //
     OK_SUCCESS resize(int newsize,int mode);
+    //returns CCnum of node. If invalid not yet set
+    int getCCnum(int nodeName);
+    OK_SUCCESS setCCnum(uint32_t nodeName, int CCname);
 };
 
 #endif
