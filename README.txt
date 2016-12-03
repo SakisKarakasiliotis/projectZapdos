@@ -1,5 +1,0 @@
-PROJECT
-
-Dionsis Karakasiliotis sdi1000188
-Kimwnas Skretas sdi1200165
-Markos Xatzidimitriou sdi1100129

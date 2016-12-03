@@ -1,3 +1,0 @@
-C:/Users/Windows 8/projectZapdosClion/cmake-build-debug/CMakeFiles/projectZapdosClion.dir
-C:/Users/Windows 8/projectZapdosClion/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Windows 8/projectZapdosClion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
