@@ -1,6 +1,6 @@
+#include <cstdio>
 #include <iostream>
 #include <string.h>
-#include <stdio.h>
 #include "myHash.h"
 
 //-------------HASH CLASS-------------
@@ -51,7 +51,8 @@ void bucket::insert(const char* input)
       this->tableSize *= 2;
       this->bucketTable = (char**) realloc(bucketTable, this->tableSize*sizeof(char*)); 
    }
-   asprintf(&this->bucketTable[numOfElements], "%s", input);
+    this->bucketTable[numOfElements] = (char*) malloc ((strlen(input)+1)*sizeof(char));
+   sprintf(this->bucketTable[numOfElements], "%s", input);
    this->numOfElements++;
 }
 

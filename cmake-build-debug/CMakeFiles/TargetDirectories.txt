@@ -1,0 +1,3 @@
+C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/cmake-build-debug/CMakeFiles/projectZapdos.dir
+C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/cmake-build-debug/CMakeFiles/edit_cache.dir

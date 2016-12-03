@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
 {
 	 //FILE READING VARIABLES
    string inpout;
-   char *part1,part2[80],part3[80],initial[80],get[30];
+   char *part1,part2[80],part3[80],initial[80],get[600];
    ifstream inpoutFile;
    string in;
    char inpoutLine[80]={0};
