@@ -7,5 +7,4 @@
 
 int BBFS(n_index*, buffer*, uint32_t, n_index*, buffer*, uint32_t, int);
 OK_SUCCESS GetConnectedComponents(n_index*, buffer*, n_index*, buffer*);
-int irand(int min, int max);
 #endif

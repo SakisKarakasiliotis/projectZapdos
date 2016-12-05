@@ -22,6 +22,7 @@ class n_index{
     //returns CCnum of node. If invalid not yet set
     int getCCnum(int nodeName);
     OK_SUCCESS setCCnum(uint32_t nodeName, int CCname);
+    void printCCnum();
 };
 
 #endif

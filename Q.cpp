@@ -81,8 +81,16 @@ bool queue::contains(uint32_t target)
 
 void queue::resizeBuffer()
 {
+    int tmp = this->size;
    this->size *= 2;
    q = (uint32_t*) realloc(q, this->size*sizeof(uint32_t));
+    if (this->front == 0) return;
+    for (int i=0; i<this->front; i++)
+    {
+        q[tmp] = q[i];
+        tmp++;
+    }
+    this->rear = tmp-1;
 }
 
 queue::~queue()

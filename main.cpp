@@ -11,8 +11,8 @@
 #include "buffer.h"
 #include "index.h"
 #include "bfs.h"
-#define VERT 30
-#define NEI 10
+
+
 
 using namespace std;
 
@@ -36,12 +36,15 @@ int main(int argc, char const *argv[])
    //START READING FILES FOR GRAPH CREATION
    cout<<"INSERT ENTRY FILE: ";
    do{  
-     
+        //TODO FIX THE FUCKING PATHS dUM dUM
         if(OPTION==1){
-        	strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tinyWorkload_FINAL.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
         }
         else{
-        	strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tinyGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
         }
      
 
@@ -104,10 +107,10 @@ int main(int argc, char const *argv[])
          }
        }else{
          cout<< "GRAPH CREATION"<<endl;
-         Buffer = new buffer(VERT,LIST_NODE_SIZE);
-         Index = new n_index(LIST_NODE_SIZE);
-         Buffer_inv = new buffer(VERT,LIST_NODE_SIZE);
-         Index_inv = new n_index(LIST_NODE_SIZE);
+         Buffer = new buffer(BUFFER_SIZE,LIST_NODE_SIZE);
+         Index = new n_index(INDEX_SIZE);
+         Buffer_inv = new buffer(BUFFER_SIZE,LIST_NODE_SIZE);
+         Index_inv = new n_index(INDEX_SIZE);
         
          while(strcmp(part1,"S")){
            strcpy(initial,part1);
@@ -118,9 +121,9 @@ int main(int argc, char const *argv[])
            		int temp = Buffer->addListNode();
            		Index->addEntry(temp,atoi(initial));
            }
-             cout<<"Index size: "<<Index->getSizeOfIndex()<<endl;
-             cout<<"Index NOE: "<<Index->getNumberOfEntries()<<endl;
-            cout<<"initial "<<Index->getEntry(atoi(initial))<<" part2 "<<atoi(part2)<<endl;
+//             cout<<"Index size: "<<Index->getSizeOfIndex()<<endl;
+//             cout<<"Index NOE: "<<Index->getNumberOfEntries()<<endl;
+//            cout<<"initial "<<Index->getEntry(atoi(initial))<<" part2 "<<atoi(part2)<<endl;
              //TODO: getEntry bullshit number
            Buffer->insertNeighbor(Index->getEntry(atoi(initial)),atoi(part2));
            if(Index_inv->getEntry(atoi(part2))==INVALID){
@@ -138,7 +141,16 @@ int main(int argc, char const *argv[])
              lineNumber++;
          }
          inpoutFile.close();
+           cout<<"Before Main call"<<endl;
            GetConnectedComponents(Index, Buffer, Index_inv, Buffer_inv);
+           cout<<"After Main call"<<endl;
+           Index_inv->printCCnum();
+//          uint32_t* neighbors;
+//           int k;
+//          neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
+//           for (int i = 0; i < (k); i++) {
+//               cout<<"neighbors of 0 "<<neighbors[i]<<endl;
+//           }
        }
        cout<<"CHOOSE"<<endl<< "0 - QUIT"<<endl<<"OR"<<endl<< "1 - INSERT WORK FILE"<<endl;
        cin>>OPTION;

@@ -42,21 +42,22 @@ int buffer::getBufferSize(){
 	return this->bufferSize;
 }
 
-OK_SUCCESS buffer::resize(int newsize,int mode){
+OK_SUCCESS buffer::resize(int newsize,int mode){//todo hello
   if(newsize < this->bufferSize && mode==2) return FAIL;
+    cout<<"Bufefr resize"<<endl;
   int oldsize = this->bufferSize;
   switch (mode) {
     case 1:
       this->vertices = (list_node*) realloc(this->vertices,2*this->bufferSize*sizeof(list_node));
       this->bufferSize = 2*this->bufferSize;
-      for(int i = oldsize - 1; i < this->bufferSize; i++) {
+      for(int i = oldsize; i < this->bufferSize; i++) {
             this->vertices[i] = *new list_node(this->listNodeSize);
       }
       return OK;
     case 2:
       this->vertices = (list_node*) realloc(this->vertices,(newsize + 10)*sizeof(list_node));
       this->bufferSize = newsize + 10;
-      for(int i = oldsize - 1; i < this->bufferSize; i++) {
+      for(int i = oldsize; i < this->bufferSize; i++) {
             this->vertices[i] = *new list_node(this->listNodeSize);
       }
       return OK;
@@ -121,38 +122,83 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 
 }
 
-int buffer::getNeighbors(uint32_t *&neighbors, uint32_t nodeOffset){
+//int buffer::getNeighbors(uint32_t *&neighbors, uint32_t nodeOffset){
+//	int arraySize=0;
+//	if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
+//		cout<<"No neighbors"<<endl;
+//		return FAIL;
+//	}
+//	uint32_t* neighbors_temp = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+//   neighbors = neighbors_temp;
+//	while(nodeOffset != INVALID) {
+//	    if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
+//			for (int i = 0; i < this->listNodeSize; i++){
+//				neighbors[i] = this->vertices[nodeOffset].getNeighbor(i);
+//				cout<<neighbors[i]<<endl;
+//				arraySize++;
+//			}
+//			if (this->vertices[nodeOffset].getNextListNode()==INVALID){
+//				return arraySize;
+//			}else{
+//				neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
+//				nodeOffset = this->vertices[nodeOffset].getNextListNode();
+//			}
+//
+//		}
+//		else{
+//			for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
+//				neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
+//                cout<<"on else "<<neighbors[arraySize+i]<<endl;
+//				arraySize++;
+//			}
+//			return arraySize;
+//		}
+//	}
+//   return FAIL;
+//}
+uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset){
 	int arraySize=0;
 	if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
 		cout<<"No neighbors"<<endl;
-		return FAIL;
+		return NULL;
 	}
-	uint32_t* neighbors_temp = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
-   neighbors = neighbors_temp;
+//	static uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+	uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+
 	while(nodeOffset != INVALID) {
 	    if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
 			for (int i = 0; i < this->listNodeSize; i++){
 				neighbors[i] = this->vertices[nodeOffset].getNeighbor(i);
-				cout<<neighbors[i]<<endl;
+			//cout<<neighbors[i]<<endl;
 				arraySize++;
 			}
 			if (this->vertices[nodeOffset].getNextListNode()==INVALID){
-				return arraySize;
+                siiize = arraySize;
+				return neighbors;
 			}else{
-				neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
+//				neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
+				neighbors = (uint32_t*) realloc(neighbors, 2*arraySize*sizeof(uint32_t));
 				nodeOffset = this->vertices[nodeOffset].getNextListNode();
 			}
 
 		}
 		else{
+            int asd;
 			for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
 				neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
-				arraySize++;
+                cout<<arraySize+i<<" on else "<<neighbors[arraySize+i]<<endl;
+                asd=i;
 			}
-			return arraySize;
+            arraySize=arraySize+asd+1;
+            siiize = arraySize;
+            for (int k = 0; k < siiize; k++) {
+                cout<<k<<" on else after "<<neighbors[k]<<endl;
+            }
+			cout<<"It may break here"<<endl;
+			return neighbors;
 		}
 	}
-   return FAIL;
+   return NULL;
 }
 
 int buffer::getNextListNode(int offset){
