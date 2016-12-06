@@ -44,7 +44,7 @@ int buffer::getBufferSize(){
 
 OK_SUCCESS buffer::resize(int newsize,int mode){//todo hello
   if(newsize < this->bufferSize && mode==2) return FAIL;
-    cout<<"Bufefr resize"<<endl;
+//    cout<<"Bufefr resize"<<endl;
   int oldsize = this->bufferSize;
   switch (mode) {
     case 1:
@@ -156,19 +156,35 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 //	}
 //   return FAIL;
 //}
+//uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset){
+//    uint32_t* array;
+//    siiize = 10000;
+//    array = (uint32_t*) malloc(siiize*sizeof(uint32_t));
+//    for (int i = 0; i < siiize; i++) {
+//        array[i] = i;
+//
+//    }
+//    array = (uint32_t*) realloc(array, 2*siiize*sizeof(uint32_t));
+//    for (int i = siiize; i < 2*siiize; i++) {
+//        array[i] = i;
+//
+//    }
+//    siiize = siiize * 2;
+//    return array;
+//}
 uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset){
 	int arraySize=0;
 	if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
 		cout<<"No neighbors"<<endl;
 		return NULL;
 	}
-//	static uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
-	uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+	static uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+//	uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
 
-	while(nodeOffset != INVALID) {
+	while(nodeOffset != INVALID && nodeOffset>=0) {
 	    if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
 			for (int i = 0; i < this->listNodeSize; i++){
-				neighbors[i] = this->vertices[nodeOffset].getNeighbor(i);
+				neighbors[arraySize] = this->vertices[nodeOffset].getNeighbor(i);
 			//cout<<neighbors[i]<<endl;
 				arraySize++;
 			}
@@ -182,21 +198,26 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset){
 			}
 
 		}
-		else{
-            int asd;
+		else if(this->vertices[nodeOffset].getNumberOfNeighbors()>0){
+            int asd=0;
 			for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
 				neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
-                cout<<arraySize+i<<" on else "<<neighbors[arraySize+i]<<endl;
-                asd=i;
+//                cout<< arraySize+i <<" on else1 "<<this->vertices[nodeOffset].getNeighbor(i)<<endl;
+//                cout<< arraySize+i <<" on else2 "<<neighbors[arraySize+i]<<endl;
+                asd = i;
 			}
             arraySize=arraySize+asd+1;
             siiize = arraySize;
             for (int k = 0; k < siiize; k++) {
-                cout<<k<<" on else after "<<neighbors[k]<<endl;
+               // cout<<k<<" on else after "<<neighbors[k]<<endl;
             }
-			cout<<"It may break here"<<endl;
+//			cout<<"It may break here"<<endl;
 			return neighbors;
-		}
+		}else if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
+            cout<<"********************************-------------------lol wtf-----------------------********************"<<endl;
+            int dummy;
+            cin>>dummy;
+        }
 	}
    return NULL;
 }

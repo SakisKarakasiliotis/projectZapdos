@@ -24,12 +24,30 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge)
 {
    if(this->numberOfNeighbors != INVALID)
    {
-      this->neighbor[this->numberOfNeighbors] = edge;
-      return OK;
+       try{
+           this->neighbor[this->numberOfNeighbors] = edge;
+           //cout<<"Adding edge: "<<edge<<endl;
+           if((int) this->neighbor[this->numberOfNeighbors] < 0) {
+               throw edge;
+           }
+
+       }catch (uint32_t e){
+           cout<<"Unable to add neighbor on list node "<<e<<endl;
+       }
+       return OK;
+
    }
    return FAIL;
 }
 uint32_t list_node::getNeighbor(int ID){
+	try{
+        if((int) this->neighbor[ID] < 0 || (int) this->neighbor[ID] == -1163005939){
+            throw 1;
+        }
+    }catch(int e){
+        cout<<"Found in list node get neighbor "<<endl;
+        cin>>e;
+    }
 		return this->neighbor[ID];
 
 }

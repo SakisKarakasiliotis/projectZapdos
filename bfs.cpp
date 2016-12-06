@@ -94,73 +94,80 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
    delete outFringe;
    return INVALID;
 }
-
+//24921 important for small
 OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming)
 {
+    cout<<"INIT GCC"<<endl;
     srand (time(NULL));
-    uint32_t startNode = rand()%outIndex->getSizeOfIndex();
-    cout<<startNode<<" First node"<<endl;
-    int ccnum;
+    bool key = true;
+    uint32_t startNode;
+    do{
+        startNode = rand() % outIndex->getSizeOfIndex();
+        if(outIndex->getEntry(startNode) != INVALID || inIndex->getEntry(startNode) != INVALID ) key = false;
+    }while( key );
+
+    cout<<"First node: "<<startNode<<endl;
+    int ccnum = 0;
     queue* fringe = new queue(outIndex->getSizeOfIndex());
     fringe->enqueue(startNode);
     uint32_t* inNeighbors;
     uint32_t* outNeighbors;
-    int numberOfNeighbors;
-    int currentCCgroup = 0;
+    int numberOfNeighbors = 0;
+    int CCgroup = 0;
     OK_SUCCESS error;
     int iterNo = 0;
-    cout<<"Before external While"<<endl;
+    cout<<"First GO at GCC"<<endl;
     while (iterNo < outIndex->getSizeOfIndex())
     {
        // cout<<"Before inner While: "<<iterNo<<endl;
-
         while (!fringe->isEmpty())
         {
             int nodeName = fringe->dequeue(error);
            // cout<<"nodename: "<<nodeName<<endl;
-
-
-
             if((ccnum = outIndex->getCCnum(nodeName)) == FAIL ){
                 cout<<nodeName<<" Out of bounds on GetVonnectedComponents"<<endl;
                 return FAIL;
             }else if(ccnum != INVALID){
-                cout<<"got not invalid ccnum"<<endl;
+                //cout<<"got not invalid ccnum"<<endl;
                 continue;
             }
-            else{
-                outIndex->setCCnum(nodeName, currentCCgroup);
-                inIndex->setCCnum(nodeName, currentCCgroup);
+            else if(ccnum == INVALID){
+                outIndex->setCCnum(nodeName, CCgroup);
+                inIndex->setCCnum(nodeName, CCgroup);
                 int outNodeOffset = outIndex->getEntry(nodeName);
                 if(outNodeOffset != INVALID){
                     outNeighbors = outgoing->getNeighbors(numberOfNeighbors, outNodeOffset);
                     //cout<<"This should print NON "<<numberOfNeighbors<<endl;
+                    if(outNeighbors == NULL){
+                        cout<<"OK"<<endl;
+                        continue;
+                    }
                     for (int i=0; i<numberOfNeighbors; i++)
                     {
-                        cout<<"adding in queue from outN"<<numberOfNeighbors<<endl;
-                        cout<<"adding in queue from outN "<<(int) outNeighbors[i]<<endl;
+                       // cout<<"adding in queue from outN"<<numberOfNeighbors<<endl;
+//                        cout<<"adding in queue from outN "<<(int) outNeighbors[i]<<endl;
                         fringe->enqueue(outNeighbors[i]);
                     }
                     numberOfNeighbors=0;
                 }
-                //int inNodeOffset = inIndex->getEntry(nodeName);
-//                if(inNodeOffset!=INVALID) {
-//                    inNeighbors = incoming->getNeighbors(numberOfNeighbors, inNodeOffset);
-//                    for (int i = 0; i < numberOfNeighbors; i++) {
-//                         cout<<"adding in queue from inN"<<numberOfNeighbors<<endl;
-//                         cout<<"adding in queue from inN"<<" "<<inNeighbors[i]<<endl;
-//
-//                        fringe->enqueue(inNeighbors[i]);
-//                    }
-//                    numberOfNeighbors = 0;
-//                }
+                int inNodeOffset = inIndex->getEntry(nodeName);
+                if(inNodeOffset!=INVALID) {
+                    inNeighbors = incoming->getNeighbors(numberOfNeighbors, inNodeOffset);
+                    for (int i = 0; i < numberOfNeighbors; i++) {
+                      //   cout<<"adding in queue from inN"<<numberOfNeighbors<<endl;
+                       //  cout<<"adding in queue from inN"<<" "<<inNeighbors[i]<<endl;
+
+                        fringe->enqueue(inNeighbors[i]);
+                    }
+                    numberOfNeighbors = 0;
+                }
             }
         }
-       // cout<<currentCCgroup <<"this is the CCno"<<endl;
-        currentCCgroup++;
-        //cout<<currentCCgroup<<"this should be +1"<<endl;
+//        cout<<CCgroup <<"this is the CCno"<<endl;
+        CCgroup++;
+//        cout<<CCgroup<<"this should be +1"<<endl;
         while(iterNo<outIndex->getSizeOfIndex()){
-            cout<<"inside for stat"<<iterNo<<endl;
+            //cout<<"inside for stat"<<iterNo<<endl;
             int nodeOffset = outIndex->getEntry(iterNo);
             if (outIndex->getCCnum(nodeOffset) == INVALID)
             {
@@ -172,21 +179,10 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
             }
             iterNo++;
         }
-//        for(; iterNo<outIndex->getSizeOfIndex(); iterNo++)
-//        {
-//            cout<<"inside for stat"<<iterNo<<endl;
-//            int nodeOffset = outIndex->getEntry(iterNo);
-//            if (outIndex->getCCnum(nodeOffset) == INVALID)
-//            {
-//                startNode = iterNo;
-//                fringe->enqueue(startNode);
-//                cout<<iterNo<<"if inside for"<<endl;
-//                break;
-//            }
-//        }
+
 
     }
-    cout<<"curent CC grp:"<<currentCCgroup<<endl;
+    cout<<"curent CC grp:"<<CCgroup<<endl;
     delete fringe;
     return OK;
 }

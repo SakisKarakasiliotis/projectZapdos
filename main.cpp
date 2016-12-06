@@ -43,8 +43,9 @@ int main(int argc, char const *argv[])
         else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyGraph.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
         }
      
 
@@ -144,7 +145,8 @@ int main(int argc, char const *argv[])
            cout<<"Before Main call"<<endl;
            GetConnectedComponents(Index, Buffer, Index_inv, Buffer_inv);
            cout<<"After Main call"<<endl;
-           Index_inv->printCCnum();
+//           Index_inv->printCCnum();
+//           Index->printCCnum();
 //          uint32_t* neighbors;
 //           int k;
 //          neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
