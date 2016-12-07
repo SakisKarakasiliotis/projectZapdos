@@ -98,24 +98,29 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
 OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming)
 {
     cout<<"INIT GCC"<<endl;
-    srand (time(NULL));
     bool key = true;
+    bool updateCCNum = false;
     uint32_t startNode;
-    do{
-        startNode = rand() % outIndex->getSizeOfIndex();
-        if(outIndex->getEntry(startNode) != INVALID || inIndex->getEntry(startNode) != INVALID ) key = false;
-    }while( key );
-
-    cout<<"First node: "<<startNode<<endl;
     int ccnum = 0;
     queue* fringe = new queue(outIndex->getSizeOfIndex());
-    fringe->enqueue(startNode);
     uint32_t* inNeighbors;
     uint32_t* outNeighbors;
     int numberOfNeighbors = 0;
     int CCgroup = 0;
     OK_SUCCESS error;
     int iterNo = 0;
+
+    srand (time(NULL));
+    do{
+        startNode = rand() % outIndex->getSizeOfIndex();
+        if(outIndex->getEntry(startNode) != INVALID || inIndex->getEntry(startNode) != INVALID ) key = false;
+    }while( key );
+    cout<<"First node: "<<startNode<<endl;
+    fringe->enqueue(startNode);
+
+
+
+
     cout<<"First GO at GCC"<<endl;
     while (iterNo < outIndex->getSizeOfIndex())
     {
@@ -136,40 +141,50 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
                 inIndex->setCCnum(nodeName, CCgroup);
                 int outNodeOffset = outIndex->getEntry(nodeName);
                 if(outNodeOffset != INVALID){
-                    outNeighbors = outgoing->getNeighbors(numberOfNeighbors, outNodeOffset);
+                    outNeighbors = outgoing->getNeighbors(numberOfNeighbors, outNodeOffset);//TODO:: reinitialize outNeighhor!!!!!!!!!!!
                     //cout<<"This should print NON "<<numberOfNeighbors<<endl;
                     if(outNeighbors == NULL){
                         cout<<"OK"<<endl;
-                        continue;
-                    }
-                    for (int i=0; i<numberOfNeighbors; i++)
-                    {
-                       // cout<<"adding in queue from outN"<<numberOfNeighbors<<endl;
+                        //continue;
+                    }else{
+                        updateCCNum = true;
+                        for (int i=0; i<numberOfNeighbors; i++)
+                        {
+                            // cout<<"adding in queue from outN"<<numberOfNeighbors<<endl;
 //                        cout<<"adding in queue from outN "<<(int) outNeighbors[i]<<endl;
-                        fringe->enqueue(outNeighbors[i]);
+                            fringe->enqueue(outNeighbors[i]);
+                        }
+                        numberOfNeighbors=0;
                     }
-                    numberOfNeighbors=0;
                 }
                 int inNodeOffset = inIndex->getEntry(nodeName);
                 if(inNodeOffset!=INVALID) {
                     inNeighbors = incoming->getNeighbors(numberOfNeighbors, inNodeOffset);
-                    for (int i = 0; i < numberOfNeighbors; i++) {
-                      //   cout<<"adding in queue from inN"<<numberOfNeighbors<<endl;
-                       //  cout<<"adding in queue from inN"<<" "<<inNeighbors[i]<<endl;
+                   if(inNeighbors == NULL){
+                        cout<<"not OK"<<endl;
+                    }else{
+                        updateCCNum = true;
+                        for (int i = 0; i < numberOfNeighbors; i++) {
+                            //   cout<<"adding in queue from inN"<<numberOfNeighbors<<endl;
+                            //  cout<<"adding in queue from inN"<<" "<<inNeighbors[i]<<endl;
 
-                        fringe->enqueue(inNeighbors[i]);
+                            fringe->enqueue(inNeighbors[i]);
+                        }
+                        numberOfNeighbors = 0;
                     }
-                    numberOfNeighbors = 0;
                 }
             }
         }
-//        cout<<CCgroup <<"this is the CCno"<<endl;
-        CCgroup++;
-//        cout<<CCgroup<<"this should be +1"<<endl;
+
+        if(updateCCNum){
+            CCgroup++;
+            updateCCNum = false;
+        }
+
         while(iterNo<outIndex->getSizeOfIndex()){
             //cout<<"inside for stat"<<iterNo<<endl;
-            int nodeOffset = outIndex->getEntry(iterNo);
-            if (outIndex->getCCnum(nodeOffset) == INVALID)
+            //int nodeOffset = outIndex->getEntry(iterNo);
+            if (outIndex->getCCnum(iterNo) == INVALID)
             {
                 startNode = iterNo;
                 fringe->enqueue(startNode);

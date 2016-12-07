@@ -146,7 +146,7 @@ int main(int argc, char const *argv[])
            GetConnectedComponents(Index, Buffer, Index_inv, Buffer_inv);
            cout<<"After Main call"<<endl;
 //           Index_inv->printCCnum();
-//           Index->printCCnum();
+           Index->printCCnum();
 //          uint32_t* neighbors;
 //           int k;
 //          neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
