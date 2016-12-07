@@ -10,7 +10,7 @@
 #define LIST_NODE_SIZE 5
 #define BUFFER_SIZE 10
 #define INDEX_SIZE 6
-
+#define UPDATE_INDEX_SIZE 200
 
 using namespace std;
 typedef int ptr;

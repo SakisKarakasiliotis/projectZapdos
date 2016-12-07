@@ -11,13 +11,15 @@
 #include "buffer.h"
 #include "index.h"
 #include "bfs.h"
-
+#include "updateIndex.h"
 
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
+
+
 	 //FILE READING VARIABLES
    string inpout;
    char *part1,part2[80],part3[80],initial[80],get[600];
@@ -31,11 +33,11 @@ int main(int argc, char const *argv[])
    n_index* Index_inv ;
    //HELPERS
    int entry, lineNumber=0, OPTION=2,entry_inv, j=0;
-   
+
 
    //START READING FILES FOR GRAPH CREATION
    cout<<"INSERT ENTRY FILE: ";
-   do{  
+   do{
         //TODO FIX THE FUCKING PATHS dUM dUM
         if(OPTION==1){
         	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
@@ -47,7 +49,7 @@ int main(int argc, char const *argv[])
 //        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
         	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
         }
-     
+
 
        inpoutFile.open(get);
 
@@ -74,11 +76,11 @@ int main(int argc, char const *argv[])
                  int temp = Buffer->addListNode();
                  Index->addEntry(temp,atoi(part2));
                  Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
-             
-                 
+
+
               }else if(entry!=INVALID){
                  Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
-                 
+
               }
               entry_inv = Index_inv->getEntry(atoi(part3));
               if(entry_inv == FAIL){
@@ -88,8 +90,8 @@ int main(int argc, char const *argv[])
                  Index_inv->addEntry(temp_inv,atoi(part3));
                  Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
                  //
-                 
-              }else if(entry_inv!=INVALID){                 
+
+              }else if(entry_inv!=INVALID){
                  Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
               }
 
@@ -102,7 +104,7 @@ int main(int argc, char const *argv[])
              }
           }
            getline(inpoutFile,inpout);
-          
+
            strcpy(inpoutLine,inpout.c_str());
            part1=strtok(inpoutLine," \n\t");
          }
@@ -112,12 +114,12 @@ int main(int argc, char const *argv[])
          Index = new n_index(INDEX_SIZE);
          Buffer_inv = new buffer(BUFFER_SIZE,LIST_NODE_SIZE);
          Index_inv = new n_index(INDEX_SIZE);
-        
+
          while(strcmp(part1,"S")){
            strcpy(initial,part1);
            part1=strtok(NULL," \n\t");
            strcpy(part2,part1);
-          
+
            if(Index->getEntry(atoi(initial))==INVALID){
            		int temp = Buffer->addListNode();
            		Index->addEntry(temp,atoi(initial));
@@ -163,7 +165,7 @@ int main(int argc, char const *argv[])
        }
   }while( OPTION == 1 ); //KEEP READING UNTIL 0
    //end from reading
-  
+
 	cout<<"GG WP"<<endl;
 	return 0;
 }
