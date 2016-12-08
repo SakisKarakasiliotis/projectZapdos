@@ -8,7 +8,13 @@ class n_index{
     int* CCnum;
     int numberOfEntries;
     int sizeOfIndex;
-  public:
+    int totalConnectedComponents; // contains the id of the Connected component to be allocated next !! remember to increase by 1 on each use !!!!!!
+public:
+    int getTotalConnectedComponents() const;
+
+    void setTotalConnectedComponents(int totalConnectedComponents);
+
+public:
     n_index(int size);
     ~n_index();
     OK_SUCCESS setNumberOfEntries(int numberOfEntries);

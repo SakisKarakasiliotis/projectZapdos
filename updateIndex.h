@@ -1,6 +1,3 @@
-//
-// Created by Windows 8 on 07-Dec-16.
-//
 
 #ifndef PROJECTZAPDOSCLION_UPDATEINDEX_H
 #define PROJECTZAPDOSCLION_UPDATEINDEX_H
@@ -21,9 +18,20 @@ public:
 
     void setTable(int **table);
 
+    int caclulateMetricValue(int);
+
+    OK_SUCCESS addNewConnection(int, int);
+
+    OK_SUCCESS findConnection(int, int);
+
 private:
         int **table;
         int metricValue;
+        int latestEntry;
+public:
+    int getLatestEntry() const;
+
+    void setLatestEntry(int latestEntry);
 };
 
 

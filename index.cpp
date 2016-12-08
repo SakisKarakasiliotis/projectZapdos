@@ -10,6 +10,7 @@ n_index::n_index(int size){
     this->offsets[i]= INVALID;
     this->CCnum[i] = INVALID;
   }
+    this->totalConnectedComponents = 0;
 }
 n_index::~n_index(){
   free(this->offsets);
@@ -122,6 +123,14 @@ OK_SUCCESS n_index::setCCnum(uint32_t nodeName, int CCname)
 void n_index::printCCnum(){
     cout<<"Printing CCnums"<<endl;
     for (int i=0; i<this->sizeOfIndex; i++){
-        cout<<i<<"entry - offset "<<this->offsets[i]<<"----mplampal---l"<<this->CCnum[i]<<endl;
+        cout<<"--Entry: "<<i<< "--Offset: "<<this->offsets[i]<<"--CCnum: "<<this->CCnum[i]<<endl;
     }
+}
+
+int n_index::getTotalConnectedComponents() const {
+    return totalConnectedComponents;
+}
+
+void n_index::setTotalConnectedComponents(int totalConnectedComponents) {
+    n_index::totalConnectedComponents = totalConnectedComponents;
 }

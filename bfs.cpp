@@ -197,7 +197,8 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
 
 
     }
-    cout<<"curent CC grp:"<<CCgroup<<endl;
+    outIndex->setTotalConnectedComponents(CCgroup);
+    inIndex->setTotalConnectedComponents(CCgroup);
     delete fringe;
     return OK;
 }
