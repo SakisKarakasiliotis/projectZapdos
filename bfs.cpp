@@ -122,7 +122,7 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
 
 
     cout<<"First GO at GCC"<<endl;
-    while (iterNo < outIndex->getSizeOfIndex())
+    while (iterNo < outIndex->getNumberOfEntries())
     {
        // cout<<"Before inner While: "<<iterNo<<endl;
         while (!fringe->isEmpty())
@@ -181,7 +181,7 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
             updateCCNum = false;
         }
 
-        while(iterNo<outIndex->getSizeOfIndex()){
+        while(iterNo<outIndex->getNumberOfEntries()){
             //cout<<"inside for stat"<<iterNo<<endl;
             //int nodeOffset = outIndex->getEntry(iterNo);
             if (outIndex->getCCnum(iterNo) == INVALID)

@@ -42,8 +42,8 @@ int main(int argc, char const *argv[])
         else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
         }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ int main(int argc, char const *argv[])
            cout<<"After Main call"<<endl;
 
 //         Index_inv->printCCnum(); // print outgoing Index: nodename -- offset -- CCnumber !!!
-           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
+//           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
 //         uint32_t* neighbors;
 //         int k;
 //         neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
