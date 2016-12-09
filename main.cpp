@@ -37,13 +37,14 @@ int main(int argc, char const *argv[])
    do{
         //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
         if(OPTION==1){
-        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
+        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
         }
         else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
+        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
         }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -69,56 +70,58 @@ int main(int argc, char const *argv[])
 // Case A adding entry to Graph-----------------------------------------------------------------------------------------
              if(!strcmp(initial,"A")){
                  cout<< "ADDING TO GRAPH" <<endl;
+                 int startNode = atoi(part2);
+                 int goalNode = atoi(part3);
 // Updating outgoing Index ---------------------------------------------------------------------------------------------
-                 entry = Index->getEntry(atoi(part2));
+                 entry = Index->getEntry(startNode);
                   if(entry == FAIL){
-                     cout<<"OUT OF BOUNDS on Index entry "<<atoi(part2)<<" and "<<atoi(part3)<<endl;
+                     cout<<"OUT OF BOUNDS on Index entry "<<startNode<<" and "<<goalNode<<endl;
                       return FAIL;
                   }
                   else if(entry == INVALID){
                      int temp = Buffer->addListNode();
-                     Index->addEntry(temp,atoi(part2));
-                     Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
-                      int possibleCCnum = Index->getCCnum( atoi(part3) );
+                     Index->addEntry(temp,startNode);
+                     Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
+                      int possibleCCnum = Index->getCCnum(goalNode);
                       if(possibleCCnum == FAIL) {
-                          cout<<"Requested Node "<<atoi(part3)<<" is out of bounds on getccnum"<<endl;
+                          cout<<"Requested Node "<<goalNode<<" is out of bounds on getccnum"<<endl;
                           return FAIL;
                       }
                       if( possibleCCnum != INVALID )
                       {
-                          Index->setCCnum(atoi(part2), possibleCCnum);
+                          Index->setCCnum(startNode, possibleCCnum);
                       }
                       else
                       {
                           possibleCCnum = Index->getTotalConnectedComponents();
                           Index->setTotalConnectedComponents(Index->getTotalConnectedComponents()+1);
-                          Index->setCCnum(atoi(part3), possibleCCnum);
-                          Index->setCCnum(atoi(part2), possibleCCnum);
+                          Index->setCCnum(goalNode, possibleCCnum);
+                          Index->setCCnum(startNode, possibleCCnum);
                       }
                   }
                   else if(entry!=INVALID){
-                     Buffer->insertNeighbor(Index->getEntry(atoi(part2)),atoi(part3));
-                      int possibleCCnum = Index->getCCnum(atoi(part2));
+                     Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
+                      int possibleCCnum = Index->getCCnum(startNode);
                       if(possibleCCnum == FAIL){
-                          cout<<"Requested Node "<<atoi(part2)<<" is out of bounds on getccnum"<<endl;
+                          cout<<"Requested Node "<<startNode<<" is out of bounds on getccnum"<<endl;
                           return FAIL;
                       }
                       if(possibleCCnum == INVALID){
-                          possibleCCnum = Index->getCCnum( atoi(part3) );
+                          possibleCCnum = Index->getCCnum(goalNode);
                           if( possibleCCnum != INVALID){
-                              Index->setCCnum(atoi(part2), possibleCCnum);
+                              Index->setCCnum(startNode, possibleCCnum);
                           }
                           else{
                               possibleCCnum = Index->getTotalConnectedComponents();
                               Index->setTotalConnectedComponents(Index->getTotalConnectedComponents()+1);
-                              Index->setCCnum(atoi(part3), possibleCCnum);
-                              Index->setCCnum(atoi(part2), possibleCCnum);
+                              Index->setCCnum(goalNode, possibleCCnum);
+                              Index->setCCnum(startNode, possibleCCnum);
                           }
                       }
                       else{
-                          int goalNodeCCnum = Index->getCCnum(atoi(part3));
+                          int goalNodeCCnum = Index->getCCnum(goalNode);
                           if(goalNodeCCnum == INVALID){
-                              Index->setCCnum(atoi(part3),possibleCCnum);
+                              Index->setCCnum(goalNode,possibleCCnum);
                           }
                           else{
                               if(possibleCCnum != goalNodeCCnum){
@@ -139,18 +142,18 @@ int main(int argc, char const *argv[])
                   }
 
 // Updating incoming Index ---------------------------------------------------------------------------------------------
-                  entry_inv = Index_inv->getEntry(atoi(part3));
+                  entry_inv = Index_inv->getEntry(goalNode);
                   if(entry_inv == FAIL){
-                      cout<<"OUT OF BOUNDS on Inverted Index entry "<<atoi(part2)<<" and "<<atoi(part3)<<endl;
+                      cout<<"OUT OF BOUNDS on Inverted Index entry "<<startNode<<" and "<<goalNode<<endl;
                       return FAIL;
                   }
                   else if(entry_inv == INVALID){
                      int temp_inv = Buffer_inv->addListNode();
-                     Index_inv->addEntry(temp_inv,atoi(part3));
-                     Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
+                     Index_inv->addEntry(temp_inv,goalNode);
+                     Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
                   }
                   else if(entry_inv!=INVALID){
-                     Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part3)),atoi(part2));
+                     Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
                   }
 // End of case A -------------------------------------------------------------------------------------------------------
              }
@@ -209,20 +212,22 @@ int main(int argc, char const *argv[])
            strcpy(initial,part1);
            part1=strtok(NULL," \n\t");
            strcpy(part2,part1);
+           int startNode = atoi(initial);
+           int goalNode = atoi(part2);
 
-           if(Index->getEntry(atoi(initial))==INVALID){
+           if(Index->getEntry(startNode)==INVALID){
            		int temp = Buffer->addListNode();
-           		Index->addEntry(temp,atoi(initial));
+           		Index->addEntry(temp,startNode);
            }
 
-           Buffer->insertNeighbor(Index->getEntry(atoi(initial)),atoi(part2));
+           Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
 
-           if(Index_inv->getEntry(atoi(part2))==INVALID){
+           if(Index_inv->getEntry(goalNode)==INVALID){
                       int temp_inv = Buffer_inv->addListNode();
-                      Index_inv->addEntry(temp_inv,atoi(part2));
+                      Index_inv->addEntry(temp_inv,goalNode);
            }
 
-           Buffer_inv->insertNeighbor(Index_inv->getEntry(atoi(part2)),atoi(initial));
+           Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
            getline(inpoutFile,inpout);
 
            if(!inpoutFile){
@@ -243,7 +248,7 @@ int main(int argc, char const *argv[])
            cout<<"After Main call"<<endl;
 
 //         Index_inv->printCCnum(); // print outgoing Index: nodename -- offset -- CCnumber !!!
-//           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
+           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
 //         uint32_t* neighbors;
 //         int k;
 //         neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
