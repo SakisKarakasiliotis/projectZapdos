@@ -4,6 +4,7 @@
 // #include <memory.h>
 #include <stdlib.h>
 
+
 #define NOT_IN_UPDATE_INDEX -6
 #define ALREADY_IN_UPDATE_INDEX -5
 #define FULL -4
@@ -17,6 +18,7 @@
 #define BUFFER_SIZE 10
 #define INDEX_SIZE 6
 #define UPDATE_INDEX_SIZE 200
+#define RECALCULATE_CONECTED_COMPONENTS 0.6
 
 using namespace std;
 typedef int ptr;

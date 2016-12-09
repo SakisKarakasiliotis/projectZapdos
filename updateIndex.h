@@ -18,7 +18,7 @@ public:
 
     void setTable(int **table);
 
-    int caclulateMetricValue(int);
+    float calculateMetricValue(int);
 
     OK_SUCCESS addNewConnection(int, int);
 

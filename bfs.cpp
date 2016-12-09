@@ -70,7 +70,7 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
          //--------------TEST CODE--------------
          for (int i=0; i<numberOfNeighbors; i++)
          {
-             cout<<"in dbfs "<<neighbors[i]<<endl;
+             //Scout<<"in dbfs "<<neighbors[i]<<endl;
             if (otherFringe->contains(neighbors[i]))
             {
                delete inChecked;

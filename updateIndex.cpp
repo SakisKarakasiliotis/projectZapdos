@@ -1,9 +1,9 @@
 //
 // Created by Windows 8 on 07-Dec-16.
 //
+#include <iostream>
 
 #include "updateIndex.h"
-
 updateIndex::updateIndex() {
    table =(int**) malloc(UPDATE_INDEX_SIZE*sizeof(int*));
     for (int i = 0; i <UPDATE_INDEX_SIZE ; ++i) {
@@ -16,7 +16,11 @@ updateIndex::updateIndex() {
 }
 
 updateIndex::~updateIndex() {
-
+    for (int i = 0; i < UPDATE_INDEX_SIZE; i++){
+        delete table[i];
+    }
+    free(table);
+    std::cout<<"Update Index deleted"<<std::endl;
 }
 
 int updateIndex::getMetricValue() const {
@@ -35,8 +39,8 @@ void updateIndex::setTable(int **table) {
     updateIndex::table = table;
 }
 
-int updateIndex::caclulateMetricValue(int totalQueries) {
-    if(totalQueries > 0) return this->metricValue / totalQueries;
+float updateIndex::calculateMetricValue(int totalQueries) {
+    if(totalQueries > 0) return (float)metricValue / (float)totalQueries;
     return FAIL;
 }
 

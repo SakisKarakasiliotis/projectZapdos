@@ -37,14 +37,15 @@ int main(int argc, char const *argv[])
    do{
         //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
         if(OPTION==1){
-        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
+//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
         }
         else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
-        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
+//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
         }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -59,7 +60,7 @@ int main(int argc, char const *argv[])
        if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
 // -------------!! Workload execution started !!!----------------------------------------------------------------------
          cout<<"WORK FILE"<<endl;
-         while(!strcmp(part1,"A")||!strcmp(part1,"Q")){
+         while(!strcmp(part1,"A")||!strcmp(part1,"Q")||!strcmp(part1, "F")){
            if(strcmp(part1,"F")){
 
              strcpy(initial,part1);
@@ -178,7 +179,7 @@ int main(int argc, char const *argv[])
                        cout<<"Error in updateIndex->findConnection with startNode "<<startNode<<" goalNode "<<goalNode<<endl;
                        return FAIL;
                    }
-
+                    update_index->setMetricValue(update_index->getMetricValue()+1);
                }
                else{
                    BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, 50);
@@ -189,11 +190,32 @@ int main(int argc, char const *argv[])
              }
 // End of case Q -------------------------------------------------------------------------------------------------------
           }
+           else if(!strcmp(part1,"F"))
+// Case F start --------------------------------------------------------------------------------------------------------
+           {
+               if(update_index->calculateMetricValue(numberOfQuestions) >= RECALCULATE_CONECTED_COMPONENTS){
+                    for( int i=0; i<Index->getSizeOfIndex(); i++){
+                        Index->setCCnum(i, INVALID);
+                        Index_inv->setCCnum(i, INVALID);
+                    }
+                   delete update_index;
+                   GetConnectedComponents(Index, Buffer, Index_inv, Buffer_inv);
+                   update_index = new updateIndex();
+
+               }
+               numberOfQuestions = 0;
+// End of case F -------------------------------------------------------------------------------------------------------
+           }
 
 // Getting new line from Workload FILE ---------------------------------------------------------------------------------
            getline(inpoutFile,inpout);
-           strcpy(inpoutLine,inpout.c_str());
-           part1=strtok(inpoutLine," \n\t");
+          if(!inpoutFile.eof()){
+              strcpy(inpoutLine,inpout.c_str());
+              part1=strtok(inpoutLine," \n\t");
+          }
+           else{
+              strcpy(part1,"done");
+          }
 // End of while statement starting next run-----------------------------------------------------------------------------
          }
 // ----!!! Workload Finish !!!------------------------------------------------------------------------------------------
@@ -248,7 +270,7 @@ int main(int argc, char const *argv[])
            cout<<"After Main call"<<endl;
 
 //         Index_inv->printCCnum(); // print outgoing Index: nodename -- offset -- CCnumber !!!
-           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
+//           Index->printCCnum();     // print incoming Index: nodename -- offset -- CCnumber !!!
 //         uint32_t* neighbors;
 //         int k;
 //         neighbors = Buffer->getNeighbors(k, Index->getEntry(1));
