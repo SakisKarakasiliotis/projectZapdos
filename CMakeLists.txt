@@ -16,6 +16,8 @@ set(SOURCE_FILES
     myHash.cpp
     myHash.h
     Q.cpp
-    Q.h)
+    Q.h
+    updateIndex.cpp
+    updateIndex.h grail.cpp grail.h)
 
 add_executable(projectZapdos ${SOURCE_FILES})

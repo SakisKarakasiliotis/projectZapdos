@@ -29,7 +29,7 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
    int numberOfNeighbors;
    uint32_t* neighbors;
    int iterations;
-   uint32_t node;
+   int node;
    OK_SUCCESS error;
    n_index* workingIndex;
    queue *fringe, *otherFringe;
@@ -60,6 +60,7 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
       for (int j=0; j<iterations; j++)
       {
          node = workingIndex->getEntry(fringe->dequeue(error));
+          if (node == INVALID) continue;
           neighbors = graph->getNeighbors(numberOfNeighbors, node);
          //--------------TEST CODE--------------
          // node = 8;

@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E remove -f
+RM = "C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos"
+CMAKE_SOURCE_DIR = "C:\Users\Windows 8\projectZapdosClion"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\proj
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,7 +69,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -79,9 +79,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles" "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,33 @@ buffer.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/buffer.cpp.s
 .PHONY : buffer.cpp.s
 
+grail.obj: grail.cpp.obj
+
+.PHONY : grail.obj
+
+# target to build an object file
+grail.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/grail.cpp.obj
+.PHONY : grail.cpp.obj
+
+grail.i: grail.cpp.i
+
+.PHONY : grail.i
+
+# target to preprocess a source file
+grail.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/grail.cpp.i
+.PHONY : grail.cpp.i
+
+grail.s: grail.cpp.s
+
+.PHONY : grail.s
+
+# target to generate assembly for a file
+grail.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/grail.cpp.s
+.PHONY : grail.cpp.s
+
 index.obj: index.cpp.obj
 
 .PHONY : index.obj
@@ -311,6 +338,33 @@ myHash.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/myHash.cpp.s
 .PHONY : myHash.cpp.s
 
+updateIndex.obj: updateIndex.cpp.obj
+
+.PHONY : updateIndex.obj
+
+# target to build an object file
+updateIndex.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj
+.PHONY : updateIndex.cpp.obj
+
+updateIndex.i: updateIndex.cpp.i
+
+.PHONY : updateIndex.i
+
+# target to preprocess a source file
+updateIndex.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/updateIndex.cpp.i
+.PHONY : updateIndex.cpp.i
+
+updateIndex.s: updateIndex.cpp.s
+
+.PHONY : updateIndex.s
+
+# target to generate assembly for a file
+updateIndex.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/updateIndex.cpp.s
+.PHONY : updateIndex.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -329,6 +383,9 @@ help:
 	@echo ... buffer.obj
 	@echo ... buffer.i
 	@echo ... buffer.s
+	@echo ... grail.obj
+	@echo ... grail.i
+	@echo ... grail.s
 	@echo ... index.obj
 	@echo ... index.i
 	@echo ... index.s
@@ -341,6 +398,9 @@ help:
 	@echo ... myHash.obj
 	@echo ... myHash.i
 	@echo ... myHash.s
+	@echo ... updateIndex.obj
+	@echo ... updateIndex.i
+	@echo ... updateIndex.s
 .PHONY : help
 
 

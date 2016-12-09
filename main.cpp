@@ -38,13 +38,14 @@ int main(int argc, char const *argv[])
         //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
         if(OPTION==1){
 //        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
+            strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallWorkload_FINAL.txt");
         }
         else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
+//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
 //        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
         }
 
@@ -169,6 +170,7 @@ int main(int argc, char const *argv[])
                    if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
                    {
                        cout<<"No path between "<<startNode<<" and "<<goalNode<<endl;
+                       BFSresult = INVALID;
                    }
                    else if(hasUpdateConnection == ALREADY_IN_UPDATE_INDEX)
                    {

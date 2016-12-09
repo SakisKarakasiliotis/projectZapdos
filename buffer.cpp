@@ -10,10 +10,10 @@ buffer::buffer(int bufferSize,int listNodeSize){
 	this->vertices = (list_node*) malloc(bufferSize*sizeof(list_node));
 	this->numberOfVertices = 0;
 	this->bufferSize = bufferSize;
-	this->listNodeSize = listNodeSize;
+	this->listNodeSize = LIST_NODE_SIZE;
 	for (int i = 0; i < bufferSize; ++i)
 	{
-		this->vertices[i] = *new list_node(listNodeSize);
+		this->vertices[i] = *new list_node(LIST_NODE_SIZE);
 	}
 }
 

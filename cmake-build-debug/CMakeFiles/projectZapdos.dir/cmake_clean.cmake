@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/projectZapdos.dir/main.cpp.obj"
   "CMakeFiles/projectZapdos.dir/myHash.cpp.obj"
   "CMakeFiles/projectZapdos.dir/Q.cpp.obj"
+  "CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj"
+  "CMakeFiles/projectZapdos.dir/grail.cpp.obj"
   "projectZapdos.pdb"
   "projectZapdos.exe"
   "projectZapdos.exe.manifest"

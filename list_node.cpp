@@ -8,7 +8,7 @@ using namespace std;
 list_node::list_node(int listNodeSize){
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
-	this->listNodeSize = listNodeSize;
+	this->listNodeSize = LIST_NODE_SIZE;
 }
 
 list_node::~list_node(){

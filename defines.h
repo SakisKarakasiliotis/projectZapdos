@@ -12,7 +12,9 @@
 #define FAIL -2
 #define OK -1
 #define FROM 0
+#define MIN_RANK 0
 #define TO 1
+#define RANK 1
 
 #define LIST_NODE_SIZE 5
 #define BUFFER_SIZE 10
