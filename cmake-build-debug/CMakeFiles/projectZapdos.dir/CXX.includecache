@@ -69,8 +69,12 @@ stdlib.h
 -
 
 C:/Users/Windows 8/projectZapdosClion/grail.cpp
+time.h
+-
 grail.h
 C:/Users/Windows 8/projectZapdosClion/grail.h
+stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
 
 C:/Users/Windows 8/projectZapdosClion/grail.h
 iostream
@@ -125,6 +129,8 @@ bfs.h
 C:/Users/Windows 8/projectZapdosClion/bfs.h
 updateIndex.h
 C:/Users/Windows 8/projectZapdosClion/updateIndex.h
+grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 
 C:/Users/Windows 8/projectZapdosClion/myHash.cpp
 cstdio
@@ -139,6 +145,18 @@ C:/Users/Windows 8/projectZapdosClion/myHash.h
 C:/Users/Windows 8/projectZapdosClion/myHash.h
 defines.h
 C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/stack.cpp
+stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
+cstdlib
+-
+iostream
+-
+defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/stack.h
 
 C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp
 iostream

@@ -365,6 +365,33 @@ myHash.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/myHash.cpp.s
 .PHONY : myHash.cpp.s
 
+stack.obj: stack.cpp.obj
+
+.PHONY : stack.obj
+
+# target to build an object file
+stack.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stack.cpp.obj
+.PHONY : stack.cpp.obj
+
+stack.i: stack.cpp.i
+
+.PHONY : stack.i
+
+# target to preprocess a source file
+stack.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stack.cpp.i
+.PHONY : stack.cpp.i
+
+stack.s: stack.cpp.s
+
+.PHONY : stack.s
+
+# target to generate assembly for a file
+stack.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stack.cpp.s
+.PHONY : stack.cpp.s
+
 stronglyConnectedComponents.obj: stronglyConnectedComponents.cpp.obj
 
 .PHONY : stronglyConnectedComponents.obj
@@ -455,6 +482,9 @@ help:
 	@echo ... myHash.obj
 	@echo ... myHash.i
 	@echo ... myHash.s
+	@echo ... stack.obj
+	@echo ... stack.i
+	@echo ... stack.s
 	@echo ... stronglyConnectedComponents.obj
 	@echo ... stronglyConnectedComponents.i
 	@echo ... stronglyConnectedComponents.s

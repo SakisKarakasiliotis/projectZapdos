@@ -51,6 +51,10 @@ public:
     OK_SUCCESS initializeGrail();
 
     OK_SUCCESS generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuffer);
+
+    OK_SUCCESS calculateRanks();
+
+    OK_SUCCESS askGrail(int from , int to);
 };
 
 

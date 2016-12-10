@@ -9,6 +9,7 @@
 #include "index.h"
 #include "bfs.h"
 #include "updateIndex.h"
+#include "grail.h"
 
 
 using namespace std;
@@ -292,6 +293,7 @@ int main(int argc, char const *argv[])
          cout << "EXITING" <<endl;
        }
   }while( OPTION == 1 ); // KEEP READING WORKLOAD FILE UNTIL TERMINATED BY 0 INPUT ------------------------------------
+
 
 	cout<<"----- END OF MAIN()! -----"<<endl;
 	return 0;

@@ -4,6 +4,9 @@
 // #include <memory.h>
 #include <stdlib.h>
 
+#define YES -9
+#define MAYBE -8
+#define NO -7
 
 #define NOT_IN_UPDATE_INDEX -6
 #define ALREADY_IN_UPDATE_INDEX -5
@@ -24,6 +27,8 @@
 #define BUFFER_SIZE 10
 #define INDEX_SIZE 6
 #define UPDATE_INDEX_SIZE 200
+
+
 
 using namespace std;
 typedef int ptr;
