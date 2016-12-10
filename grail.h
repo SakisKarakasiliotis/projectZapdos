@@ -12,11 +12,12 @@
 #include "index.h"
 #include "buffer.h"
 #include "stronglyConnectedComponents.h"
+#include "rank.h"
 
 class grail {
 private:
     n_index* index;
-    int **ranks;
+    rank *ranks;
     int sizeOfGrail; // number of SCC
     buffer* g_buffer;
     stronglyConnectedComponents* SCC;
@@ -38,9 +39,6 @@ public:
 
     void setIndex(n_index *index);
 
-    int **getRanks() const;
-
-    void setRanks(int **ranks);
 
     int getSizeOfGrail() const;
 

@@ -18,6 +18,6 @@ set(SOURCE_FILES
     Q.cpp
     Q.h
     updateIndex.cpp
-    updateIndex.h grail.cpp grail.h component.cpp component.h stronglyConnectedComponents.cpp stronglyConnectedComponents.h stack.cpp stack.h)
+    updateIndex.h grail.cpp grail.h component.cpp component.h stronglyConnectedComponents.cpp stronglyConnectedComponents.h stack.cpp stack.h rank.cpp rank.h)
 
 add_executable(projectZapdos ${SOURCE_FILES})

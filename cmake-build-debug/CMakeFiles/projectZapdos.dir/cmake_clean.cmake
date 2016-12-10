@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/projectZapdos.dir/component.cpp.obj"
   "CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj"
   "CMakeFiles/projectZapdos.dir/stack.cpp.obj"
+  "CMakeFiles/projectZapdos.dir/rank.cpp.obj"
   "projectZapdos.pdb"
   "projectZapdos.exe"
   "projectZapdos.exe.manifest"

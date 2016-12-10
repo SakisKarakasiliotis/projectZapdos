@@ -365,6 +365,33 @@ myHash.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/myHash.cpp.s
 .PHONY : myHash.cpp.s
 
+rank.obj: rank.cpp.obj
+
+.PHONY : rank.obj
+
+# target to build an object file
+rank.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/rank.cpp.obj
+.PHONY : rank.cpp.obj
+
+rank.i: rank.cpp.i
+
+.PHONY : rank.i
+
+# target to preprocess a source file
+rank.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/rank.cpp.i
+.PHONY : rank.cpp.i
+
+rank.s: rank.cpp.s
+
+.PHONY : rank.s
+
+# target to generate assembly for a file
+rank.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/rank.cpp.s
+.PHONY : rank.cpp.s
+
 stack.obj: stack.cpp.obj
 
 .PHONY : stack.obj
@@ -482,6 +509,9 @@ help:
 	@echo ... myHash.obj
 	@echo ... myHash.i
 	@echo ... myHash.s
+	@echo ... rank.obj
+	@echo ... rank.i
+	@echo ... rank.s
 	@echo ... stack.obj
 	@echo ... stack.i
 	@echo ... stack.s

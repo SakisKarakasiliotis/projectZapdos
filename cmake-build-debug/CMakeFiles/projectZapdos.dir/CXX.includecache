@@ -85,6 +85,8 @@ buffer.h
 C:/Users/Windows 8/projectZapdosClion/buffer.h
 stronglyConnectedComponents.h
 C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+rank.h
+C:/Users/Windows 8/projectZapdosClion/rank.h
 
 C:/Users/Windows 8/projectZapdosClion/index.cpp
 iostream
@@ -145,6 +147,16 @@ C:/Users/Windows 8/projectZapdosClion/myHash.h
 C:/Users/Windows 8/projectZapdosClion/myHash.h
 defines.h
 C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/rank.cpp
+stdlib.h
+-
+rank.h
+C:/Users/Windows 8/projectZapdosClion/rank.h
+defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/rank.h
 
 C:/Users/Windows 8/projectZapdosClion/stack.cpp
 stack.h

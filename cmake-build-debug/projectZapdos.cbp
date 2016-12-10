@@ -136,6 +136,12 @@
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/myHash.h">
 			<Option target="projectZapdos"/>
 		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/rank.cpp">
+			<Option target="projectZapdos"/>
+		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/rank.h">
+			<Option target="projectZapdos"/>
+		</Unit>
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/stack.cpp">
 			<Option target="projectZapdos"/>
 		</Unit>
