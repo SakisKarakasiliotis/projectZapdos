@@ -203,6 +203,33 @@ buffer.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/buffer.cpp.s
 .PHONY : buffer.cpp.s
 
+component.obj: component.cpp.obj
+
+.PHONY : component.obj
+
+# target to build an object file
+component.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/component.cpp.obj
+.PHONY : component.cpp.obj
+
+component.i: component.cpp.i
+
+.PHONY : component.i
+
+# target to preprocess a source file
+component.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/component.cpp.i
+.PHONY : component.cpp.i
+
+component.s: component.cpp.s
+
+.PHONY : component.s
+
+# target to generate assembly for a file
+component.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/component.cpp.s
+.PHONY : component.cpp.s
+
 grail.obj: grail.cpp.obj
 
 .PHONY : grail.obj
@@ -338,6 +365,33 @@ myHash.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/myHash.cpp.s
 .PHONY : myHash.cpp.s
 
+stronglyConnectedComponents.obj: stronglyConnectedComponents.cpp.obj
+
+.PHONY : stronglyConnectedComponents.obj
+
+# target to build an object file
+stronglyConnectedComponents.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj
+.PHONY : stronglyConnectedComponents.cpp.obj
+
+stronglyConnectedComponents.i: stronglyConnectedComponents.cpp.i
+
+.PHONY : stronglyConnectedComponents.i
+
+# target to preprocess a source file
+stronglyConnectedComponents.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.i
+.PHONY : stronglyConnectedComponents.cpp.i
+
+stronglyConnectedComponents.s: stronglyConnectedComponents.cpp.s
+
+.PHONY : stronglyConnectedComponents.s
+
+# target to generate assembly for a file
+stronglyConnectedComponents.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.s
+.PHONY : stronglyConnectedComponents.cpp.s
+
 updateIndex.obj: updateIndex.cpp.obj
 
 .PHONY : updateIndex.obj
@@ -383,6 +437,9 @@ help:
 	@echo ... buffer.obj
 	@echo ... buffer.i
 	@echo ... buffer.s
+	@echo ... component.obj
+	@echo ... component.i
+	@echo ... component.s
 	@echo ... grail.obj
 	@echo ... grail.i
 	@echo ... grail.s
@@ -398,6 +455,9 @@ help:
 	@echo ... myHash.obj
 	@echo ... myHash.i
 	@echo ... myHash.s
+	@echo ... stronglyConnectedComponents.obj
+	@echo ... stronglyConnectedComponents.i
+	@echo ... stronglyConnectedComponents.s
 	@echo ... updateIndex.obj
 	@echo ... updateIndex.i
 	@echo ... updateIndex.s

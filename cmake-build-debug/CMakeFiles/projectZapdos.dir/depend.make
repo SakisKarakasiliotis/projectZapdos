@@ -18,12 +18,18 @@ CMakeFiles/projectZapdos.dir/buffer.cpp.obj: ../buffer.h
 CMakeFiles/projectZapdos.dir/buffer.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/buffer.cpp.obj: ../list_node.h
 
+CMakeFiles/projectZapdos.dir/component.cpp.obj: ../component.cpp
+CMakeFiles/projectZapdos.dir/component.cpp.obj: ../component.h
+CMakeFiles/projectZapdos.dir/component.cpp.obj: ../defines.h
+
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../buffer.h
+CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../component.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../grail.cpp
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../grail.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../index.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../stronglyConnectedComponents.h
 
 CMakeFiles/projectZapdos.dir/index.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/index.cpp.obj: ../index.cpp
@@ -44,6 +50,11 @@ CMakeFiles/projectZapdos.dir/main.cpp.obj: ../updateIndex.h
 CMakeFiles/projectZapdos.dir/myHash.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/myHash.cpp.obj: ../myHash.cpp
 CMakeFiles/projectZapdos.dir/myHash.cpp.obj: ../myHash.h
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../component.h
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../defines.h
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../stronglyConnectedComponents.cpp
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../stronglyConnectedComponents.h
 
 CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj: ../updateIndex.cpp

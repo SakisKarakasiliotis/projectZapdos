@@ -18,13 +18,19 @@ CMakeFiles/projectZapdos.dir/buffer.cpp.obj
  C:/Users/Windows 8/projectZapdosClion/buffer.h
  C:/Users/Windows 8/projectZapdosClion/defines.h
  C:/Users/Windows 8/projectZapdosClion/list_node.h
+CMakeFiles/projectZapdos.dir/component.cpp.obj
+ C:/Users/Windows 8/projectZapdosClion/component.cpp
+ C:/Users/Windows 8/projectZapdosClion/component.h
+ C:/Users/Windows 8/projectZapdosClion/defines.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj
  C:/Users/Windows 8/projectZapdosClion/buffer.h
+ C:/Users/Windows 8/projectZapdosClion/component.h
  C:/Users/Windows 8/projectZapdosClion/defines.h
  C:/Users/Windows 8/projectZapdosClion/grail.cpp
  C:/Users/Windows 8/projectZapdosClion/grail.h
  C:/Users/Windows 8/projectZapdosClion/index.h
  C:/Users/Windows 8/projectZapdosClion/list_node.h
+ C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 CMakeFiles/projectZapdos.dir/index.cpp.obj
  C:/Users/Windows 8/projectZapdosClion/defines.h
  C:/Users/Windows 8/projectZapdosClion/index.cpp
@@ -45,6 +51,11 @@ CMakeFiles/projectZapdos.dir/myHash.cpp.obj
  C:/Users/Windows 8/projectZapdosClion/defines.h
  C:/Users/Windows 8/projectZapdosClion/myHash.cpp
  C:/Users/Windows 8/projectZapdosClion/myHash.h
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj
+ C:/Users/Windows 8/projectZapdosClion/component.h
+ C:/Users/Windows 8/projectZapdosClion/defines.h
+ C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp
+ C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj
  C:/Users/Windows 8/projectZapdosClion/defines.h
  C:/Users/Windows 8/projectZapdosClion/updateIndex.cpp

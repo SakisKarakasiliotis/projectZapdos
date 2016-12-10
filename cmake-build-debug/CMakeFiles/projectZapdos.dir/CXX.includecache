@@ -52,6 +52,16 @@ C:/Users/Windows 8/projectZapdosClion/defines.h
 list_node.h
 C:/Users/Windows 8/projectZapdosClion/list_node.h
 
+C:/Users/Windows 8/projectZapdosClion/component.cpp
+iostream
+-
+component.h
+C:/Users/Windows 8/projectZapdosClion/component.h
+defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/component.h
+
 C:/Users/Windows 8/projectZapdosClion/defines.h
 stdint.h
 -
@@ -69,6 +79,8 @@ index.h
 C:/Users/Windows 8/projectZapdosClion/index.h
 buffer.h
 C:/Users/Windows 8/projectZapdosClion/buffer.h
+stronglyConnectedComponents.h
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 
 C:/Users/Windows 8/projectZapdosClion/index.cpp
 iostream
@@ -127,6 +139,18 @@ C:/Users/Windows 8/projectZapdosClion/myHash.h
 C:/Users/Windows 8/projectZapdosClion/myHash.h
 defines.h
 C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp
+iostream
+-
+stronglyConnectedComponents.h
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
+
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+component.h
+C:/Users/Windows 8/projectZapdosClion/component.h
 
 C:/Users/Windows 8/projectZapdosClion/updateIndex.cpp
 iostream

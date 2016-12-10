@@ -11,6 +11,7 @@
 
 #include "index.h"
 #include "buffer.h"
+#include "stronglyConnectedComponents.h"
 
 class grail {
 private:
@@ -18,11 +19,14 @@ private:
     int **ranks;
     int sizeOfGrail; // number of SCC
     buffer* g_buffer;
+    stronglyConnectedComponents* SCC;
 
 public:
     grail();
 
-    grail(int sizeOfGrail);
+    stronglyConnectedComponents *getSCC() const;
+
+    void setSCC(stronglyConnectedComponents *SCC);
 
     buffer *getG_buffer() const;
 
@@ -42,6 +46,11 @@ public:
 
     void setSizeOfGrail(int sizeOfGrail);
 
+    OK_SUCCESS calculateSCC(n_index* subGraphIndex, buffer* subGraphBuffer);
+
+    OK_SUCCESS initializeGrail();
+
+    OK_SUCCESS generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuffer);
 };
 
 

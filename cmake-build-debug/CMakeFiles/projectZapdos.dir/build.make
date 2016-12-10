@@ -272,6 +272,54 @@ CMakeFiles/projectZapdos.dir/grail.cpp.obj.provides: CMakeFiles/projectZapdos.di
 CMakeFiles/projectZapdos.dir/grail.cpp.obj.provides.build: CMakeFiles/projectZapdos.dir/grail.cpp.obj
 
 
+CMakeFiles/projectZapdos.dir/component.cpp.obj: CMakeFiles/projectZapdos.dir/flags.make
+CMakeFiles/projectZapdos.dir/component.cpp.obj: ../component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/projectZapdos.dir/component.cpp.obj"
+	C:\MinGW\bin\g++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectZapdos.dir\component.cpp.obj -c "C:\Users\Windows 8\projectZapdosClion\component.cpp"
+
+CMakeFiles/projectZapdos.dir/component.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectZapdos.dir/component.cpp.i"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Windows 8\projectZapdosClion\component.cpp" > CMakeFiles\projectZapdos.dir\component.cpp.i
+
+CMakeFiles/projectZapdos.dir/component.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectZapdos.dir/component.cpp.s"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Windows 8\projectZapdosClion\component.cpp" -o CMakeFiles\projectZapdos.dir\component.cpp.s
+
+CMakeFiles/projectZapdos.dir/component.cpp.obj.requires:
+
+.PHONY : CMakeFiles/projectZapdos.dir/component.cpp.obj.requires
+
+CMakeFiles/projectZapdos.dir/component.cpp.obj.provides: CMakeFiles/projectZapdos.dir/component.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/component.cpp.obj.provides.build
+.PHONY : CMakeFiles/projectZapdos.dir/component.cpp.obj.provides
+
+CMakeFiles/projectZapdos.dir/component.cpp.obj.provides.build: CMakeFiles/projectZapdos.dir/component.cpp.obj
+
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: CMakeFiles/projectZapdos.dir/flags.make
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../stronglyConnectedComponents.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj"
+	C:\MinGW\bin\g++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectZapdos.dir\stronglyConnectedComponents.cpp.obj -c "C:\Users\Windows 8\projectZapdosClion\stronglyConnectedComponents.cpp"
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.i"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Windows 8\projectZapdosClion\stronglyConnectedComponents.cpp" > CMakeFiles\projectZapdos.dir\stronglyConnectedComponents.cpp.i
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.s"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Windows 8\projectZapdosClion\stronglyConnectedComponents.cpp" -o CMakeFiles\projectZapdos.dir\stronglyConnectedComponents.cpp.s
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.requires:
+
+.PHONY : CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.requires
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.provides: CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.provides.build
+.PHONY : CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.provides
+
+CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.provides.build: CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj
+
+
 # Object files for target projectZapdos
 projectZapdos_OBJECTS = \
 "CMakeFiles/projectZapdos.dir/bfs.cpp.obj" \
@@ -282,7 +330,9 @@ projectZapdos_OBJECTS = \
 "CMakeFiles/projectZapdos.dir/myHash.cpp.obj" \
 "CMakeFiles/projectZapdos.dir/Q.cpp.obj" \
 "CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj" \
-"CMakeFiles/projectZapdos.dir/grail.cpp.obj"
+"CMakeFiles/projectZapdos.dir/grail.cpp.obj" \
+"CMakeFiles/projectZapdos.dir/component.cpp.obj" \
+"CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj"
 
 # External object files for target projectZapdos
 projectZapdos_EXTERNAL_OBJECTS =
@@ -296,11 +346,13 @@ projectZapdos.exe: CMakeFiles/projectZapdos.dir/myHash.cpp.obj
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/Q.cpp.obj
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/grail.cpp.obj
+projectZapdos.exe: CMakeFiles/projectZapdos.dir/component.cpp.obj
+projectZapdos.exe: CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/build.make
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/linklibs.rsp
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/objects1.rsp
 projectZapdos.exe: CMakeFiles/projectZapdos.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable projectZapdos.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable projectZapdos.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\projectZapdos.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -317,6 +369,8 @@ CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/myHash.cpp.o
 CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/Q.cpp.obj.requires
 CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj.requires
 CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/grail.cpp.obj.requires
+CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/component.cpp.obj.requires
+CMakeFiles/projectZapdos.dir/requires: CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj.requires
 
 .PHONY : CMakeFiles/projectZapdos.dir/requires
 

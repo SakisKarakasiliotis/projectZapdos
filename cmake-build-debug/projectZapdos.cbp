@@ -100,6 +100,12 @@
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/buffer.h">
 			<Option target="projectZapdos"/>
 		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/component.cpp">
+			<Option target="projectZapdos"/>
+		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/component.h">
+			<Option target="projectZapdos"/>
+		</Unit>
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/defines.h">
 			<Option target="projectZapdos"/>
 		</Unit>
@@ -128,6 +134,12 @@
 			<Option target="projectZapdos"/>
 		</Unit>
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/myHash.h">
+			<Option target="projectZapdos"/>
+		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp">
+			<Option target="projectZapdos"/>
+		</Unit>
+		<Unit filename="C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h">
 			<Option target="projectZapdos"/>
 		</Unit>
 		<Unit filename="C:/Users/Windows 8/projectZapdosClion/updateIndex.cpp">
