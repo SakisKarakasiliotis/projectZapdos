@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe"
+CMAKE_COMMAND = "M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E remove -f
+RM = "M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Windows 8\projectZapdosClion"
+CMAKE_SOURCE_DIR = "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug"
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,7 +69,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -79,9 +79,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles" "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Windows 8\projectZapdosClion\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -148,6 +148,33 @@ Q.s: Q.cpp.s
 Q.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/Q.cpp.s
 .PHONY : Q.cpp.s
+
+StaticBFS.obj: StaticBFS.cpp.obj
+
+.PHONY : StaticBFS.obj
+
+# target to build an object file
+StaticBFS.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj
+.PHONY : StaticBFS.cpp.obj
+
+StaticBFS.i: StaticBFS.cpp.i
+
+.PHONY : StaticBFS.i
+
+# target to preprocess a source file
+StaticBFS.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/StaticBFS.cpp.i
+.PHONY : StaticBFS.cpp.i
+
+StaticBFS.s: StaticBFS.cpp.s
+
+.PHONY : StaticBFS.s
+
+# target to generate assembly for a file
+StaticBFS.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/StaticBFS.cpp.s
+.PHONY : StaticBFS.cpp.s
 
 bfs.obj: bfs.cpp.obj
 
@@ -229,6 +256,33 @@ component.s: component.cpp.s
 component.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/component.cpp.s
 .PHONY : component.cpp.s
+
+dynamicGraph.obj: dynamicGraph.cpp.obj
+
+.PHONY : dynamicGraph.obj
+
+# target to build an object file
+dynamicGraph.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj
+.PHONY : dynamicGraph.cpp.obj
+
+dynamicGraph.i: dynamicGraph.cpp.i
+
+.PHONY : dynamicGraph.i
+
+# target to preprocess a source file
+dynamicGraph.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.i
+.PHONY : dynamicGraph.cpp.i
+
+dynamicGraph.s: dynamicGraph.cpp.s
+
+.PHONY : dynamicGraph.s
+
+# target to generate assembly for a file
+dynamicGraph.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.s
+.PHONY : dynamicGraph.cpp.s
 
 grail.obj: grail.cpp.obj
 
@@ -419,6 +473,33 @@ stack.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stack.cpp.s
 .PHONY : stack.cpp.s
 
+staticGraph.obj: staticGraph.cpp.obj
+
+.PHONY : staticGraph.obj
+
+# target to build an object file
+staticGraph.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj
+.PHONY : staticGraph.cpp.obj
+
+staticGraph.i: staticGraph.cpp.i
+
+.PHONY : staticGraph.i
+
+# target to preprocess a source file
+staticGraph.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/staticGraph.cpp.i
+.PHONY : staticGraph.cpp.i
+
+staticGraph.s: staticGraph.cpp.s
+
+.PHONY : staticGraph.s
+
+# target to generate assembly for a file
+staticGraph.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/staticGraph.cpp.s
+.PHONY : staticGraph.cpp.s
+
 stronglyConnectedComponents.obj: stronglyConnectedComponents.cpp.obj
 
 .PHONY : stronglyConnectedComponents.obj
@@ -445,6 +526,33 @@ stronglyConnectedComponents.s: stronglyConnectedComponents.cpp.s
 stronglyConnectedComponents.cpp.s:
 	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.s
 .PHONY : stronglyConnectedComponents.cpp.s
+
+tarjan.obj: tarjan.cpp.obj
+
+.PHONY : tarjan.obj
+
+# target to build an object file
+tarjan.cpp.obj:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/tarjan.cpp.obj
+.PHONY : tarjan.cpp.obj
+
+tarjan.i: tarjan.cpp.i
+
+.PHONY : tarjan.i
+
+# target to preprocess a source file
+tarjan.cpp.i:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/tarjan.cpp.i
+.PHONY : tarjan.cpp.i
+
+tarjan.s: tarjan.cpp.s
+
+.PHONY : tarjan.s
+
+# target to generate assembly for a file
+tarjan.cpp.s:
+	$(MAKE) -f CMakeFiles\projectZapdos.dir\build.make CMakeFiles/projectZapdos.dir/tarjan.cpp.s
+.PHONY : tarjan.cpp.s
 
 updateIndex.obj: updateIndex.cpp.obj
 
@@ -485,6 +593,9 @@ help:
 	@echo ... Q.obj
 	@echo ... Q.i
 	@echo ... Q.s
+	@echo ... StaticBFS.obj
+	@echo ... StaticBFS.i
+	@echo ... StaticBFS.s
 	@echo ... bfs.obj
 	@echo ... bfs.i
 	@echo ... bfs.s
@@ -494,6 +605,9 @@ help:
 	@echo ... component.obj
 	@echo ... component.i
 	@echo ... component.s
+	@echo ... dynamicGraph.obj
+	@echo ... dynamicGraph.i
+	@echo ... dynamicGraph.s
 	@echo ... grail.obj
 	@echo ... grail.i
 	@echo ... grail.s
@@ -515,9 +629,15 @@ help:
 	@echo ... stack.obj
 	@echo ... stack.i
 	@echo ... stack.s
+	@echo ... staticGraph.obj
+	@echo ... staticGraph.i
+	@echo ... staticGraph.s
 	@echo ... stronglyConnectedComponents.obj
 	@echo ... stronglyConnectedComponents.i
 	@echo ... stronglyConnectedComponents.s
+	@echo ... tarjan.obj
+	@echo ... tarjan.i
+	@echo ... tarjan.s
 	@echo ... updateIndex.obj
 	@echo ... updateIndex.i
 	@echo ... updateIndex.s

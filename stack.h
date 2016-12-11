@@ -23,6 +23,7 @@ public:
     bool isFull();
     bool resize();
     bool contains(int nodeName);
+   int getNumberOfElements();
 };
 
 

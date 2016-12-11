@@ -27,9 +27,12 @@
 #define BUFFER_SIZE 10
 #define INDEX_SIZE 6
 #define UPDATE_INDEX_SIZE 200
-#define RANK_SIZE 6
-
-
+#define STACK_SIZE 15
+#define RANK_SIZE 1
+#define COMPONENTS_ESTIMATE 15
+#define BFS_FRINGE_SIZE 50
+#define HASH_SIZE 1000
+#define HASH_PERCISION 2
 
 using namespace std;
 typedef int ptr;

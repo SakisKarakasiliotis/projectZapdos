@@ -72,3 +72,7 @@ bool stack::contains(int nodeName) {
     }
     return false;
 }
+
+int stack::getNumberOfElements(){
+    return this->position;
+}

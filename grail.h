@@ -53,6 +53,16 @@ public:
     OK_SUCCESS calculateRanks();
 
     OK_SUCCESS askGrail(int from , int to);
+   
+   int getSCCId(int nodeName);
+};
+
+struct tarjanNode{
+   int nodeName;
+   int tIndex;
+   int lowlink;
+   bool DFSInitialized;
+   bool onTarjanStack;
 };
 
 

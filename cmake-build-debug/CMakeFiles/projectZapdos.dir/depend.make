@@ -5,6 +5,18 @@ CMakeFiles/projectZapdos.dir/Q.cpp.obj: ../Q.cpp
 CMakeFiles/projectZapdos.dir/Q.cpp.obj: ../Q.h
 CMakeFiles/projectZapdos.dir/Q.cpp.obj: ../defines.h
 
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../Q.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../StaticBFS.cpp
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../StaticBFS.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../buffer.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../component.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../defines.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../grail.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../index.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../rank.h
+CMakeFiles/projectZapdos.dir/StaticBFS.cpp.obj: ../stronglyConnectedComponents.h
+
 CMakeFiles/projectZapdos.dir/bfs.cpp.obj: ../Q.h
 CMakeFiles/projectZapdos.dir/bfs.cpp.obj: ../bfs.cpp
 CMakeFiles/projectZapdos.dir/bfs.cpp.obj: ../bfs.h
@@ -21,6 +33,16 @@ CMakeFiles/projectZapdos.dir/buffer.cpp.obj: ../list_node.h
 CMakeFiles/projectZapdos.dir/component.cpp.obj: ../component.cpp
 CMakeFiles/projectZapdos.dir/component.cpp.obj: ../component.h
 CMakeFiles/projectZapdos.dir/component.cpp.obj: ../defines.h
+
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../bfs.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../buffer.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../defines.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../dynamicGraph.cpp
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../dynamicGraph.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../index.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../myHash.h
+CMakeFiles/projectZapdos.dir/dynamicGraph.cpp.obj: ../updateIndex.h
 
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../buffer.h
 CMakeFiles/projectZapdos.dir/grail.cpp.obj: ../component.h
@@ -41,17 +63,9 @@ CMakeFiles/projectZapdos.dir/list_node.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/list_node.cpp.obj: ../list_node.cpp
 CMakeFiles/projectZapdos.dir/list_node.cpp.obj: ../list_node.h
 
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../bfs.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../buffer.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../component.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../defines.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../grail.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../index.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/main.cpp.obj: ../dynamicGraph.h
 CMakeFiles/projectZapdos.dir/main.cpp.obj: ../main.cpp
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../rank.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../stronglyConnectedComponents.h
-CMakeFiles/projectZapdos.dir/main.cpp.obj: ../updateIndex.h
+CMakeFiles/projectZapdos.dir/main.cpp.obj: ../staticGraph.h
 
 CMakeFiles/projectZapdos.dir/myHash.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/myHash.cpp.obj: ../myHash.cpp
@@ -65,10 +79,35 @@ CMakeFiles/projectZapdos.dir/stack.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/stack.cpp.obj: ../stack.cpp
 CMakeFiles/projectZapdos.dir/stack.cpp.obj: ../stack.h
 
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../bfs.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../buffer.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../component.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../defines.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../grail.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../index.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../rank.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../staticBfs.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../staticGraph.cpp
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../staticGraph.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../stronglyConnectedComponents.h
+CMakeFiles/projectZapdos.dir/staticGraph.cpp.obj: ../updateIndex.h
+
 CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../component.h
 CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../stronglyConnectedComponents.cpp
 CMakeFiles/projectZapdos.dir/stronglyConnectedComponents.cpp.obj: ../stronglyConnectedComponents.h
+
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../buffer.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../component.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../defines.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../grail.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../index.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../list_node.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../rank.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../stack.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../stronglyConnectedComponents.h
+CMakeFiles/projectZapdos.dir/tarjan.cpp.obj: ../tarjan.cpp
 
 CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj: ../defines.h
 CMakeFiles/projectZapdos.dir/updateIndex.cpp.obj: ../updateIndex.cpp
