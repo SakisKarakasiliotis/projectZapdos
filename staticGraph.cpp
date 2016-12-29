@@ -42,16 +42,16 @@ int staticGraph() {
       if(OPTION==1){
 //        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyWorkload_FINAL.txt");
-         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyWorkload_FINAL.txt");
+          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\tinyWorkload_FINAL.txt");
+//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyWorkload_FINAL.txt");
       }
       else{
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
 //        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
+          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\tinyGraph.txt");
 //        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
-         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
+//         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
       }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ int staticGraph() {
       cout<<"FIRST LINE "<<lineNumber<<" TOKEN: "<<part1<<endl;
 
 // Token selected check for case Addition/Question or Creation----------------------------------------------------------
-      
+
 
 // -------!!! Graph Creation starts here !!!!!--------------------------------------------------------------------------
       if (OPTION != 1) {
@@ -80,26 +80,26 @@ int staticGraph() {
             strcpy(part2,part1);
             int startNode = atoi(initial);
             int goalNode = atoi(part2);
-            
+
             if(Index->getEntry(startNode)==INVALID){
                int temp = Buffer->addListNode();
                Index->addEntry(temp,startNode);
             }
-            
+
             Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
-            
+
             if(Index_inv->getEntry(goalNode)==INVALID){
                int temp_inv = Buffer_inv->addListNode();
                Index_inv->addEntry(temp_inv,goalNode);
             }
-            
+
             Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
             getline(inpoutFile,inpout);
-            
+
             if(!inpoutFile){
                break;
             }
-            
+
             strcpy(inpoutLine,inpout.c_str());
             part1= strtok(inpoutLine," \n\t");
             lineNumber++;
@@ -138,14 +138,14 @@ int staticGraph() {
             cout<<"WORK FILE"<<endl;
             while(!strcmp(part1,"A")||!strcmp(part1,"Q")||!strcmp(part1, "F")){
                if(strcmp(part1,"F")){
-               
+
                   strcpy(initial,part1);
                   part1=strtok(NULL," \n\t");
                   strcpy(part2,part1);
                   part1=strtok(NULL," \n\t");
                   strcpy(part3,part1);
 // Case A adding entry to Graph-----------------------------------------------------------------------------------------
-                  
+
 // End of case A -------------------------------------------------------------------------------------------------------
 
 // Case Q for question on the graph ------------------------------------------------------------------------------------
@@ -224,8 +224,8 @@ int staticGraph() {
          cout << "EXITING" <<endl;
       }
    }while( OPTION == 1 ); // KEEP READING WORKLOAD FILE UNTIL TERMINATED BY 0 INPUT ------------------------------------
-   
-   
+
+
    cout<<"----- END OF MAIN()! -----"<<endl;
    return 0;
 }

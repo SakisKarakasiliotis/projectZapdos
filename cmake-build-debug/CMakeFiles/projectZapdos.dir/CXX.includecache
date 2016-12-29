@@ -6,37 +6,37 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/Q.cpp
+C:/Users/Windows 8/projectZapdosClion/Q.cpp
 iostream
 -
 Q.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/Q.h
+C:/Users/Windows 8/projectZapdosClion/Q.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/Q.h
+C:/Users/Windows 8/projectZapdosClion/Q.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/StaticBFS.cpp
+C:/Users/Windows 8/projectZapdosClion/StaticBFS.cpp
 iostream
 -
 cstdlib
 -
 StaticBFS.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/StaticBFS.h
+C:/Users/Windows 8/projectZapdosClion/StaticBFS.h
 Q.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/Q.h
+C:/Users/Windows 8/projectZapdosClion/Q.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/StaticBFS.h
+C:/Users/Windows 8/projectZapdosClion/StaticBFS.h
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 grail.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/bfs.cpp
+C:/Users/Windows 8/projectZapdosClion/bfs.cpp
 iostream
 -
 cstdlib
@@ -44,51 +44,51 @@ cstdlib
 time.h
 -
 Q.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/Q.h
+C:/Users/Windows 8/projectZapdosClion/Q.h
 bfs.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/bfs.h
+C:/Users/Windows 8/projectZapdosClion/bfs.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/bfs.h
+C:/Users/Windows 8/projectZapdosClion/bfs.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.cpp
+C:/Users/Windows 8/projectZapdosClion/buffer.cpp
 iostream
 -
 cstdlib
 -
 list_node.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 list_node.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/component.cpp
+C:/Users/Windows 8/projectZapdosClion/component.cpp
 iostream
 -
 component.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/component.h
+C:/Users/Windows 8/projectZapdosClion/component.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/component.h
+C:/Users/Windows 8/projectZapdosClion/component.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 stdint.h
 -
 stdlib.h
 -
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/dynamicGraph.cpp
+C:/Users/Windows 8/projectZapdosClion/dynamicGraph.cpp
 iostream
 -
 cstdlib
@@ -98,75 +98,75 @@ fstream
 cstring
 -
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 list_node.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 myHash.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/myHash.h
+C:/Users/Windows 8/projectZapdosClion/myHash.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 bfs.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/bfs.h
+C:/Users/Windows 8/projectZapdosClion/bfs.h
 updateIndex.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/updateIndex.h
+C:/Users/Windows 8/projectZapdosClion/updateIndex.h
 dynamicGraph.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/dynamicGraph.h
+C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/dynamicGraph.h
+C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.cpp
+C:/Users/Windows 8/projectZapdosClion/grail.cpp
 time.h
 -
 grail.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 stack.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 iostream
 -
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 stronglyConnectedComponents.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stronglyConnectedComponents.h
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 rank.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/rank.h
+C:/Users/Windows 8/projectZapdosClion/rank.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.cpp
+C:/Users/Windows 8/projectZapdosClion/index.cpp
 iostream
 -
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.cpp
+C:/Users/Windows 8/projectZapdosClion/list_node.cpp
 iostream
 -
 cstdlib
 -
 list_node.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/main.cpp
+C:/Users/Windows 8/projectZapdosClion/main.cpp
 iostream
 -
 dynamicGraph.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/dynamicGraph.h
+C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
 staticGraph.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticGraph.h
+C:/Users/Windows 8/projectZapdosClion/staticGraph.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/myHash.cpp
+C:/Users/Windows 8/projectZapdosClion/myHash.cpp
 cstdio
 -
 iostream
@@ -174,47 +174,47 @@ iostream
 string.h
 -
 myHash.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/myHash.h
+C:/Users/Windows 8/projectZapdosClion/myHash.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/myHash.h
+C:/Users/Windows 8/projectZapdosClion/myHash.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/rank.cpp
+C:/Users/Windows 8/projectZapdosClion/rank.cpp
 stdlib.h
 -
 rank.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/rank.h
+C:/Users/Windows 8/projectZapdosClion/rank.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/rank.h
+C:/Users/Windows 8/projectZapdosClion/rank.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stack.cpp
+C:/Users/Windows 8/projectZapdosClion/stack.cpp
 stack.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
 cstdlib
 -
 iostream
 -
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticBfs.h
+C:/Users/Windows 8/projectZapdosClion/staticBfs.h
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 grail.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticGraph.cpp
+C:/Users/Windows 8/projectZapdosClion/staticGraph.cpp
 iostream
 -
 cstdlib
@@ -226,57 +226,57 @@ cstring
 getopt.h
 -
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 list_node.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/list_node.h
+C:/Users/Windows 8/projectZapdosClion/list_node.h
 buffer.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/buffer.h
+C:/Users/Windows 8/projectZapdosClion/buffer.h
 index.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/index.h
+C:/Users/Windows 8/projectZapdosClion/index.h
 staticBfs.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticBfs.h
+C:/Users/Windows 8/projectZapdosClion/staticBfs.h
 grail.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 staticGraph.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticGraph.h
+C:/Users/Windows 8/projectZapdosClion/staticGraph.h
 bfs.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/bfs.h
+C:/Users/Windows 8/projectZapdosClion/bfs.h
 updateIndex.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/updateIndex.h
+C:/Users/Windows 8/projectZapdosClion/updateIndex.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/staticGraph.h
+C:/Users/Windows 8/projectZapdosClion/staticGraph.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stronglyConnectedComponents.cpp
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp
 iostream
 -
 stronglyConnectedComponents.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stronglyConnectedComponents.h
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stronglyConnectedComponents.h
+C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
 component.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/component.h
+C:/Users/Windows 8/projectZapdosClion/component.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/tarjan.cpp
+C:/Users/Windows 8/projectZapdosClion/tarjan.cpp
 iostream
 -
 cstdlib
 -
 grail.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/grail.h
+C:/Users/Windows 8/projectZapdosClion/grail.h
 stack.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/stack.h
+C:/Users/Windows 8/projectZapdosClion/stack.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/updateIndex.cpp
+C:/Users/Windows 8/projectZapdosClion/updateIndex.cpp
 iostream
 -
 updateIndex.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/updateIndex.h
+C:/Users/Windows 8/projectZapdosClion/updateIndex.h
 
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/updateIndex.h
+C:/Users/Windows 8/projectZapdosClion/updateIndex.h
 defines.h
-C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/defines.h
+C:/Users/Windows 8/projectZapdosClion/defines.h
 

@@ -124,13 +124,17 @@ OK_SUCCESS grail::calculateRanks() {
       bool key = true;
       srand(time(NULL));
       int restart = 0;
-   
-      do {
-         startNode = rand() % index->getSizeOfIndex();
-         if (index->getEntry(startNode) != INVALID) key = false;
-      } while (key);
+       if(index->getSizeOfIndex() > 1){
+           do {
+               startNode = rand() % index->getSizeOfIndex();
+               if (index->getEntry(startNode) != INVALID) key = false;
+           } while (key);
+       }else{
+           startNode = 0;
+       }
+
       Stack->push(startNode);
-   
+
       do {
          int nodeOffset = index->getEntry(startNode);
          int numberOfNeighbors;
@@ -140,7 +144,7 @@ OK_SUCCESS grail::calculateRanks() {
          } else {
             neighbors = g_buffer->getNeighbors(numberOfNeighbors, nodeOffset);
          }
-      
+
          if (neighbors != NULL) {
             int minrank = rank;
             int i;
@@ -178,13 +182,14 @@ OK_SUCCESS grail::calculateRanks() {
                restart++;
             }
          }
+          cout<<"Trying 2 bro"<<endl;
       } while (!Stack->isEmpty());
    }
     return OK;
 }
 
 OK_SUCCESS grail::askGrail(int from, int to) {
-    if(from<0 || to<0 || from>this->sizeOfGrail || to>this->sizeOfGrail){
+    if(from<0 || to<0 ){
         cout<<"Out of bounds on askGrail with from "<<from<<" to "<<to<<endl;
         return FAIL;
     }
