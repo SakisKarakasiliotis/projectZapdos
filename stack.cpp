@@ -60,8 +60,9 @@ bool stack::isFull() {
 }
 
 bool stack::resize() {
-    this->size *= 2;
-    this->stck = (int*) realloc(this->stck, this->size*sizeof(int));
+    size *= 2;
+    stck = (int*) realloc(stck, size*sizeof(int));
+    return true;
 }
 
 bool stack::contains(int nodeName) {

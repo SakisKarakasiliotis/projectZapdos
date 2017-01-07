@@ -44,7 +44,7 @@ public:
 
     void setSizeOfGrail(int sizeOfGrail);
 
-    OK_SUCCESS calculateSCC(n_index* subGraphIndex, buffer* subGraphBuffer);
+    OK_SUCCESS calculateSCC(n_index* subGraphIndex, n_index* subGraphIndexInv, buffer* subGraphBuffer);
 
     OK_SUCCESS initializeGrail();
 
@@ -53,7 +53,7 @@ public:
     OK_SUCCESS calculateRanks();
 
     OK_SUCCESS askGrail(int from , int to);
-   
+
    int getSCCId(int nodeName);
 };
 
@@ -61,8 +61,9 @@ struct tarjanNode{
    int nodeName;
    int tIndex;
    int lowlink;
+    int neighborsChecked;
    bool DFSInitialized;
-   bool onTarjanStack;
+   //bool onTarjanStack;
 };
 
 

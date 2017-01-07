@@ -39,19 +39,13 @@ int staticGraph() {
    cout<<"INSERT ENTRY FILE: "<<endl;
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
-      if(OPTION==1){
-//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
+      if(OPTION==1){//WORKLOAD
           strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\tinyWorkload_FINAL.txt");
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyWorkload_FINAL.txt");
+//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallWorkload_FINAL.txt");
       }
-      else{
-//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\tinyGraph.txt");
-//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
-//         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
+      else{//GRAPH
+          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\wikigraph.txt");
+//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallGraph.txt");
       }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -110,7 +104,7 @@ int staticGraph() {
 
 // Grail call and test prints --------------------------------------------------------------------------------------------
          cout << "Calculating SCC" << endl;
-         if (goblet->calculateSCC(Index, Buffer) != OK) {
+         if (goblet->calculateSCC(Index, Index_inv, Buffer) != OK) {
             cout << "calculateSCC failed!" << endl;
             return FAIL;
          }
