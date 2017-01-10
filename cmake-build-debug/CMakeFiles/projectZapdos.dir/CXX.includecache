@@ -6,37 +6,37 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Windows 8/projectZapdosClion/Q.cpp
+C:/Users/user/Desktop/projectZapdos/Q.cpp
 iostream
 -
 Q.h
-C:/Users/Windows 8/projectZapdosClion/Q.h
+C:/Users/user/Desktop/projectZapdos/Q.h
 
-C:/Users/Windows 8/projectZapdosClion/Q.h
+C:/Users/user/Desktop/projectZapdos/Q.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/StaticBFS.cpp
+C:/Users/user/Desktop/projectZapdos/StaticBFS.cpp
 iostream
 -
 cstdlib
 -
 StaticBFS.h
-C:/Users/Windows 8/projectZapdosClion/StaticBFS.h
+C:/Users/user/Desktop/projectZapdos/StaticBFS.h
 Q.h
-C:/Users/Windows 8/projectZapdosClion/Q.h
+C:/Users/user/Desktop/projectZapdos/Q.h
 
-C:/Users/Windows 8/projectZapdosClion/StaticBFS.h
+C:/Users/user/Desktop/projectZapdos/StaticBFS.h
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 grail.h
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/bfs.cpp
+C:/Users/user/Desktop/projectZapdos/bfs.cpp
 iostream
 -
 cstdlib
@@ -44,51 +44,51 @@ cstdlib
 time.h
 -
 Q.h
-C:/Users/Windows 8/projectZapdosClion/Q.h
+C:/Users/user/Desktop/projectZapdos/Q.h
 bfs.h
-C:/Users/Windows 8/projectZapdosClion/bfs.h
+C:/Users/user/Desktop/projectZapdos/bfs.h
 
-C:/Users/Windows 8/projectZapdosClion/bfs.h
+C:/Users/user/Desktop/projectZapdos/bfs.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 
-C:/Users/Windows 8/projectZapdosClion/buffer.cpp
+C:/Users/user/Desktop/projectZapdos/buffer.cpp
 iostream
 -
 cstdlib
 -
 list_node.h
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 list_node.h
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 
-C:/Users/Windows 8/projectZapdosClion/component.cpp
+C:/Users/user/Desktop/projectZapdos/component.cpp
 iostream
 -
 component.h
-C:/Users/Windows 8/projectZapdosClion/component.h
+C:/Users/user/Desktop/projectZapdos/component.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/component.h
+C:/Users/user/Desktop/projectZapdos/component.h
 
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 stdint.h
 -
 stdlib.h
 -
 
-C:/Users/Windows 8/projectZapdosClion/dynamicGraph.cpp
+C:/Users/user/Desktop/projectZapdos/dynamicGraph.cpp
 iostream
 -
 cstdlib
@@ -98,75 +98,75 @@ fstream
 cstring
 -
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 list_node.h
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 myHash.h
-C:/Users/Windows 8/projectZapdosClion/myHash.h
+C:/Users/user/Desktop/projectZapdos/myHash.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 bfs.h
-C:/Users/Windows 8/projectZapdosClion/bfs.h
+C:/Users/user/Desktop/projectZapdos/bfs.h
 updateIndex.h
-C:/Users/Windows 8/projectZapdosClion/updateIndex.h
+C:/Users/user/Desktop/projectZapdos/updateIndex.h
 dynamicGraph.h
-C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
+C:/Users/user/Desktop/projectZapdos/dynamicGraph.h
 
-C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
+C:/Users/user/Desktop/projectZapdos/dynamicGraph.h
 
-C:/Users/Windows 8/projectZapdosClion/grail.cpp
+C:/Users/user/Desktop/projectZapdos/grail.cpp
 time.h
 -
 grail.h
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 stack.h
-C:/Users/Windows 8/projectZapdosClion/stack.h
+C:/Users/user/Desktop/projectZapdos/stack.h
 
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 iostream
 -
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 stronglyConnectedComponents.h
-C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+C:/Users/user/Desktop/projectZapdos/stronglyConnectedComponents.h
 rank.h
-C:/Users/Windows 8/projectZapdosClion/rank.h
+C:/Users/user/Desktop/projectZapdos/rank.h
 
-C:/Users/Windows 8/projectZapdosClion/index.cpp
+C:/Users/user/Desktop/projectZapdos/index.cpp
 iostream
 -
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/list_node.cpp
+C:/Users/user/Desktop/projectZapdos/list_node.cpp
 iostream
 -
 cstdlib
 -
 list_node.h
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/main.cpp
+C:/Users/user/Desktop/projectZapdos/main.cpp
 iostream
 -
 dynamicGraph.h
-C:/Users/Windows 8/projectZapdosClion/dynamicGraph.h
+C:/Users/user/Desktop/projectZapdos/dynamicGraph.h
 staticGraph.h
-C:/Users/Windows 8/projectZapdosClion/staticGraph.h
+C:/Users/user/Desktop/projectZapdos/staticGraph.h
 
-C:/Users/Windows 8/projectZapdosClion/myHash.cpp
+C:/Users/user/Desktop/projectZapdos/myHash.cpp
 cstdio
 -
 iostream
@@ -174,47 +174,47 @@ iostream
 string.h
 -
 myHash.h
-C:/Users/Windows 8/projectZapdosClion/myHash.h
+C:/Users/user/Desktop/projectZapdos/myHash.h
 
-C:/Users/Windows 8/projectZapdosClion/myHash.h
+C:/Users/user/Desktop/projectZapdos/myHash.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/rank.cpp
+C:/Users/user/Desktop/projectZapdos/rank.cpp
 stdlib.h
 -
 rank.h
-C:/Users/Windows 8/projectZapdosClion/rank.h
+C:/Users/user/Desktop/projectZapdos/rank.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/rank.h
+C:/Users/user/Desktop/projectZapdos/rank.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/stack.cpp
+C:/Users/user/Desktop/projectZapdos/stack.cpp
 stack.h
-C:/Users/Windows 8/projectZapdosClion/stack.h
+C:/Users/user/Desktop/projectZapdos/stack.h
 cstdlib
 -
 iostream
 -
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/stack.h
+C:/Users/user/Desktop/projectZapdos/stack.h
 
-C:/Users/Windows 8/projectZapdosClion/staticBfs.h
+C:/Users/user/Desktop/projectZapdos/staticBfs.h
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 grail.h
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/staticGraph.cpp
+C:/Users/user/Desktop/projectZapdos/staticGraph.cpp
 iostream
 -
 cstdlib
@@ -226,57 +226,57 @@ cstring
 getopt.h
 -
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 list_node.h
-C:/Users/Windows 8/projectZapdosClion/list_node.h
+C:/Users/user/Desktop/projectZapdos/list_node.h
 buffer.h
-C:/Users/Windows 8/projectZapdosClion/buffer.h
+C:/Users/user/Desktop/projectZapdos/buffer.h
 index.h
-C:/Users/Windows 8/projectZapdosClion/index.h
+C:/Users/user/Desktop/projectZapdos/index.h
 staticBfs.h
-C:/Users/Windows 8/projectZapdosClion/staticBfs.h
+C:/Users/user/Desktop/projectZapdos/staticBfs.h
 grail.h
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 staticGraph.h
-C:/Users/Windows 8/projectZapdosClion/staticGraph.h
+C:/Users/user/Desktop/projectZapdos/staticGraph.h
 bfs.h
-C:/Users/Windows 8/projectZapdosClion/bfs.h
+C:/Users/user/Desktop/projectZapdos/bfs.h
 updateIndex.h
-C:/Users/Windows 8/projectZapdosClion/updateIndex.h
+C:/Users/user/Desktop/projectZapdos/updateIndex.h
 
-C:/Users/Windows 8/projectZapdosClion/staticGraph.h
+C:/Users/user/Desktop/projectZapdos/staticGraph.h
 
-C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.cpp
+C:/Users/user/Desktop/projectZapdos/stronglyConnectedComponents.cpp
 iostream
 -
 stronglyConnectedComponents.h
-C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+C:/Users/user/Desktop/projectZapdos/stronglyConnectedComponents.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/stronglyConnectedComponents.h
+C:/Users/user/Desktop/projectZapdos/stronglyConnectedComponents.h
 component.h
-C:/Users/Windows 8/projectZapdosClion/component.h
+C:/Users/user/Desktop/projectZapdos/component.h
 
-C:/Users/Windows 8/projectZapdosClion/tarjan.cpp
+C:/Users/user/Desktop/projectZapdos/tarjan.cpp
 iostream
 -
 cstdlib
 -
 grail.h
-C:/Users/Windows 8/projectZapdosClion/grail.h
+C:/Users/user/Desktop/projectZapdos/grail.h
 stack.h
-C:/Users/Windows 8/projectZapdosClion/stack.h
+C:/Users/user/Desktop/projectZapdos/stack.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 
-C:/Users/Windows 8/projectZapdosClion/updateIndex.cpp
+C:/Users/user/Desktop/projectZapdos/updateIndex.cpp
 iostream
 -
 updateIndex.h
-C:/Users/Windows 8/projectZapdosClion/updateIndex.h
+C:/Users/user/Desktop/projectZapdos/updateIndex.h
 
-C:/Users/Windows 8/projectZapdosClion/updateIndex.h
+C:/Users/user/Desktop/projectZapdos/updateIndex.h
 defines.h
-C:/Users/Windows 8/projectZapdosClion/defines.h
+C:/Users/user/Desktop/projectZapdos/defines.h
 

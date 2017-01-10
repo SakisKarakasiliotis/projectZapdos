@@ -40,12 +40,15 @@ int staticGraph() {
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){//WORKLOAD
-          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\tinyWorkload_FINAL.txt");
+          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\small\\smallWorkload_FINAL.txt");
+//          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallWorkload_FINAL.txt");
       }
       else{//GRAPH
-          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\wikigraph.txt");
+//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\wikigraph.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallGraph.txt");
+          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\small\\smallGraph.txt");
+//          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
       }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------

@@ -50,27 +50,35 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
        std::cout << "Checking node " << i << std::endl;
        uint32_t* baseNeighbors = NULL;
        int baseNumberOfNeighbors;
-      while (idBelongsToComponent[i] == INVALID) {
-         int numberOfNeighbors;
-         uint32_t* neighbors;
-         tarjanNode* v = nodes+i;
-         //DFSStack->push(v.nodeName);
-         //v.DFSInitialized = true;
-          int whileCount = 1;
-         do{
-             whileCount++;
-            // Set the depth index for v to the smallest unused index
-            if (v->tIndex == INVALID) {
-               v->tIndex = lowestIndex;
-               v->lowlink = lowestIndex;
-               lowestIndex++;
-               TarjanStack->push(v->nodeName);
-               //v->onTarjanStack = true;
-            }
+       tarjanNode *v = nodes + i;
+       while (idBelongsToComponent[i] == INVALID) {
+          int numberOfNeighbors;
+          uint32_t *neighbors;
+//        tarjanNode *v = nodes + i; !!!!!!!!!!!!!!!!den allazei mesa sthn while exei logo na einai mesa?
+          //DFSStack->push(v.nodeName);
+          //v.DFSInitialized = true;
 
-            // Consider successors of v
-            int offset = subGraphIndex->getEntry(v->nodeName);
-            if (offset != INVALID) {
+          int whileCount = 1;
+          do {
+              whileCount++;
+              if(v> nodes + x || v < nodes){
+                  cout<<"failure is imminent"<<endl;
+              }
+              if(v->nodeName == INVALID || v->nodeName == FAIL){
+                  cout << "the end is coming 3" << endl;
+              }
+              // Set the depth index for v to the smallest unused index
+              if (v->tIndex == INVALID) {
+                  v->tIndex = lowestIndex;
+                  v->lowlink = lowestIndex;
+                  lowestIndex++;
+                  TarjanStack->push(v->nodeName);
+                  //v->onTarjanStack = true;
+              }
+
+              // Consider successors of v
+              int offset = subGraphIndex->getEntry(v->nodeName);
+              if (offset != INVALID) {
 //                if (v->nodeName = i){
 //                    if (baseNeighbors == NULL) {
 //                        baseNeighbors = subGraphBuffer->getNeighbors(numberOfNeighbors, offset);
@@ -82,60 +90,73 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
 //                else {
 //                    neighbors = subGraphBuffer->getNeighbors(numberOfNeighbors, offset);
 //                }
-                neighbors = subGraphBuffer->getNeighbors(numberOfNeighbors, offset);
-               int j;
-               for (j = 0; j<numberOfNeighbors; j++) {
-                   //v->neighborsChecked++;
-                  if (!nodes[neighbors[j]].DFSInitialized) {
-                     DFSStack->push(v->nodeName);
-                     v->DFSInitialized = true;
-                     v = &nodes[neighbors[j]];
-                     break;
+                  neighbors = subGraphBuffer->getNeighbors(numberOfNeighbors, offset);
+                  int j;
+                  for (j = 0; j < numberOfNeighbors; j++) {
+                      //v->neighborsChecked++;
+                      if (!nodes[neighbors[j]].DFSInitialized) {
+                          DFSStack->push(v->nodeName);
+                          v->DFSInitialized = true;
+                          v = &nodes[neighbors[j]];
+                          if(v->nodeName == INVALID || v->nodeName == FAIL){
+                              cout << "the end is coming 2" << endl;
+                          }
+                          break;
+                      } else {
+                          if (idBelongsToComponent[neighbors[j]] == INVALID &&
+                              nodes[neighbors[j]].lowlink < v->lowlink) {
+                              v->lowlink = nodes[neighbors[j]].lowlink;
+                          }
+                          continue;
+                      }
                   }
-                  else {
-                     if (idBelongsToComponent[neighbors[j]] == INVALID && nodes[neighbors[j]].lowlink < v->lowlink) {
-                        v->lowlink = nodes[neighbors[j]].lowlink;
-                     }
-                     continue;
+                  if (j == numberOfNeighbors) {
+                      v->DFSInitialized = true;
+                      int tmp = DFSStack->pop();
+                      if (tmp != INVALID){
+                          v = &nodes[tmp];
+                      }
+                      if(v> nodes + x || v < nodes ){
+                          cout<<"failure is imminent 2"<<endl;
+                      }
+                      if(v->nodeName == INVALID || v->nodeName == FAIL){
+                          cout << "the end is coming" << endl;
+                      }
                   }
-               }
-               if (j == numberOfNeighbors) {
+              } else {
                   v->DFSInitialized = true;
-                  int tmp = DFSStack->pop();
-                  if (tmp != INVALID) v = &nodes[tmp];
-               }
-            }
-            else {
-                v->DFSInitialized=true;
-                break;
-            }
-         }while (!DFSStack->isEmpty());
+                  break;
+              }
+          } while (!DFSStack->isEmpty());
           std::cout << "Exited while after loop No " << whileCount << std::endl;
-         //v = &nodes[i];
+          //v = &nodes[i];
 
-         // If v is a root node, pop the stack and generate an SCC
-         component* a = new component();
-         a->setCompId(numberOfComponents);
-         int* commponentNodes = new int[TarjanStack->getNumberOfElements()];
-         int c = 0;
-         tarjanNode* w;
-          int nodeNo;
-         do {
-            nodeNo  = TarjanStack->pop();
-            w = nodes+nodeNo;//TODO CHECK THIS THING
-            //w->onTarjanStack = false;
-            commponentNodes[c] = w->nodeName;
-             c++;
-            idBelongsToComponent[w->nodeName] = numberOfComponents;
-             std::cout << nodeNo << " was assigned to SCC " << numberOfComponents << std::endl;
-         } while (w->tIndex != w->lowlink);
-         a->setNodesContained(commponentNodes);
-         a->setNumberOfNodes(c);
-         assignComponent(components, compArraySize, numberOfComponents, a);
-         //insert a into current SCC
-         numberOfComponents++;
+          // If v is a root node, pop the stack and generate an SCC
+          do {
+              component *a = new component();
+              a->setCompId(numberOfComponents);
+              int *commponentNodes = new int[TarjanStack->getNumberOfElements()];
+              int c = 0;
+              tarjanNode *w;
+              int nodeNo;
+              do {
+                  nodeNo = TarjanStack->pop();
+                  w = nodes + nodeNo;//TODO CHECK THIS THING
+                  //w->onTarjanStack = false;
+                  commponentNodes[c] = w->nodeName;
+                  c++;
+                  idBelongsToComponent[w->nodeName] = numberOfComponents;
+                  std::cout << nodeNo << " was assigned to SCC " << numberOfComponents << std::endl;
+              } while (w->tIndex != w->lowlink);
+              a->setNodesContained(commponentNodes);
+              a->setNumberOfNodes(c);
+              assignComponent(components, compArraySize, numberOfComponents, a);
+              //insert a into current SCC
+              numberOfComponents++;
+          }while (!TarjanStack->isEmpty()); // a wild do while appeared!!!!
       }
    }
+
    this->SCC = new stronglyConnectedComponents(components, numberOfComponents, idBelongsToComponent);
    return OK;
 }
