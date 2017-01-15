@@ -21,8 +21,11 @@ stack::~stack() {
 
 bool stack::push(int elem) {
     if (this->isFull()) {
-        std::cout << "Stack overflow!" << endl;
+        std::cout << "Stack overflow!" << std::endl;
         this->resize();
+    }
+    if (position == 7954) {
+        std::cout << "What's inside, yo?" << std::endl;
     }
     this->stck[position] = elem;
     position++;
@@ -35,6 +38,9 @@ int stack::pop() {
         return INVALID;
     }
     position--;
+    if (stck[position] == 216756096) {
+        std::cout << "The cursed one is upon us!" << std::endl;
+    }
     return this->stck[position];
 }
 int stack::softPop() {
