@@ -35,11 +35,12 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
    lowestIndex = 0;
    nodes = (tarjanNode*) malloc(numberOfGraphNodes * sizeof(tarjanNode));
    for (int i=0; i<numberOfGraphNodes; i++) {
-      nodes[i].nodeName = i;
-      nodes[i].tIndex = INVALID;
-      nodes[i].lowlink = INVALID;
-       nodes[i].neighborsChecked = 0;
-      nodes[i].DFSInitialized = false;
+      nodes[i] = *new tarjanNode(i);
+//      nodes[i]->setNodeName(i);
+//      nodes[i].tIndex = INVALID;
+//      nodes[i].lowlink = INVALID;
+//      nodes[i].neighborsChecked = 0;
+//      nodes[i].DFSInitialized = false;
       //nodes[i].onTarjanStack = false;
    }
    stack* DFSStack = new stack(STACK_SIZE);
@@ -47,7 +48,7 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
 
 
    for (int i=0; i<numberOfGraphNodes; i++) {
-       std::cout << "Checking node " << i << std::endl;
+//       std::cout << "Checking node " << i << std::endl;
        uint32_t* baseNeighbors = NULL;
        int baseNumberOfNeighbors;
        tarjanNode *currentNode = nodes + i;
@@ -66,19 +67,19 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
            if(currentNode> nodes + x || currentNode < nodes){
                cout<<"failure is imminent"<<endl;
            }
-           if(currentNode->nodeName == INVALID || currentNode->nodeName == FAIL){
+           if(currentNode->getNodeName() == INVALID || currentNode->getNodeName() == FAIL){
                cout << "the end is coming 3" << endl;
            }
            // Set the depth index for currentNode to the smallest unused index
-           if (currentNode->tIndex == INVALID) {
-               currentNode->tIndex = lowestIndex;
-               currentNode->lowlink = lowestIndex;
+           if (currentNode->getTIndex() == INVALID) {
+               currentNode->setTIndex(lowestIndex);
+               currentNode->setLowlink(lowestIndex);
                lowestIndex++;
-               TarjanStack->push(currentNode->nodeName);
+               TarjanStack->push(currentNode->getNodeName());
                //currentNode->onTarjanStack = true;
            }
             // Consider successors of currentNode
-           int offset = subGraphIndex->getEntry(currentNode->nodeName);
+           int offset = subGraphIndex->getEntry(currentNode->getNodeName());
            if (offset != INVALID) {
 //               if (currentNode->nodeName = i){
 //                 if (baseNeighbors == NULL) {
@@ -95,24 +96,24 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
                int j;
                for (j = 0; j < numberOfNeighbors; j++) {
                    //currentNode->neighborsChecked++;
-                   if (!nodes[neighbors[j]].DFSInitialized) {
-                       DFSStack->push(currentNode->nodeName);
-                       currentNode->DFSInitialized = true;
+                   if (!nodes[neighbors[j]].isDFSInitialized()) {
+                       DFSStack->push(currentNode->getNodeName());
+                       currentNode->setDFSInitialized(true);
                        currentNode = &nodes[neighbors[j]];
-                       if(currentNode->nodeName == INVALID || currentNode->nodeName == FAIL){
+                       if(currentNode->getNodeName() == INVALID || currentNode->getNodeName() == FAIL){
                            cout << "the end is coming 2" << endl;
                        }
                        break;
                    } else {
                        if (idBelongsToComponent[neighbors[j]] == INVALID &&
-                           nodes[neighbors[j]].lowlink < currentNode->lowlink) {
-                           currentNode->lowlink = nodes[neighbors[j]].lowlink;
+                           nodes[neighbors[j]].getLowlink() < currentNode->getLowlink()) {
+                           currentNode->setLowlink(nodes[neighbors[j]].getLowlink());
                        }
                        continue;
                    }
                }
                if (j == numberOfNeighbors) {
-                   currentNode->DFSInitialized = true;
+                   currentNode->setDFSInitialized(true);
                    int tmp = DFSStack->pop();
                    if (tmp != INVALID){
                        currentNode = &nodes[tmp];
@@ -120,16 +121,16 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
                    if(currentNode> nodes + x || currentNode < nodes ){
                        cout<<"failure is imminent 2"<<endl;
                    }
-                   if(currentNode->nodeName == INVALID || currentNode->nodeName == FAIL){
+                   if(currentNode->getNodeName() == INVALID || currentNode->getNodeName() == FAIL){
                        cout << "the end is coming" << endl;
                    }
                }
            } else {
-               currentNode->DFSInitialized = true;
+               currentNode->setDFSInitialized(true);
                break;
            }
        } while (!DFSStack->isEmpty());
-       std::cout << "Exited while after loop No " << whileCount << std::endl;
+//       std::cout << "Exited while after loop No " << whileCount << std::endl;
        //currentNode = &nodes[i];
 
        // If currentNode is a root node, pop the stack and generate an SCC
@@ -144,11 +145,11 @@ OK_SUCCESS grail::calculateSCC(n_index *subGraphIndex, n_index *subGraphIndexInv
                nodeNo = TarjanStack->pop();
                poppedNode = nodes + nodeNo;//TODO CHECK THIS THING
                //poppedNode->onTarjanStack = false;
-               commponentNodes[c] = poppedNode->nodeName;
+               commponentNodes[c] = poppedNode->getNodeName();
                c++;
-               idBelongsToComponent[poppedNode->nodeName] = numberOfComponents;
-               std::cout << nodeNo << " was assigned to SCC " << numberOfComponents << std::endl;
-           } while (poppedNode->tIndex != poppedNode->lowlink);
+               idBelongsToComponent[poppedNode->getNodeName()] = numberOfComponents;
+//               std::cout << nodeNo << " was assigned to SCC " << numberOfComponents << std::endl;
+           } while (poppedNode->getTIndex() != poppedNode->getLowlink());
            newComponent->setNodesContained(commponentNodes);
            newComponent->setNumberOfNodes(c);
            assignComponent(components, compArraySize, numberOfComponents, newComponent);

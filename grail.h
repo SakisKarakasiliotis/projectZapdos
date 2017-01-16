@@ -57,13 +57,35 @@ public:
    int getSCCId(int nodeName);
 };
 
-struct tarjanNode{
+class tarjanNode{
+public:
+   tarjanNode(int nodeName);
+   ~tarjanNode();
+   
+   int getNodeName() const;
+   
+   void setNodeName(int nodeName);
+   
+   int getTIndex() const;
+   
+   void setTIndex(int tIndex);
+   
+   int getLowlink() const;
+   
+   void setLowlink(int lowlink);
+   
+   bool isDFSInitialized() const;
+   
+   void setDFSInitialized(bool DFSInitialized);
+
+private:
    int nodeName;
    int tIndex;
    int lowlink;
-    int neighborsChecked;
+//   int neighborsChecked;
    bool DFSInitialized;
    //bool onTarjanStack;
+   
 };
 
 

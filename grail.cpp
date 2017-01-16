@@ -208,3 +208,43 @@ int grail::getSCCId(int nodeName) {
    if (nodeName < 0) return FAIL;
    return this->SCC->checkBelongsToComponent(nodeName);
 }
+
+tarjanNode::tarjanNode(int nodeName) {
+   this->nodeName = nodeName;
+   this->tIndex = INVALID;
+   this->lowlink = INVALID;
+   this->DFSInitialized = false;
+}
+int tarjanNode::getNodeName() const {
+   return nodeName;
+}
+
+void tarjanNode::setNodeName(int nodeName) {
+   tarjanNode::nodeName = nodeName;
+}
+
+int tarjanNode::getTIndex() const {
+   return tIndex;
+}
+
+void tarjanNode::setTIndex(int tIndex) {
+   tarjanNode::tIndex = tIndex;
+}
+
+int tarjanNode::getLowlink() const {
+   return lowlink;
+}
+
+void tarjanNode::setLowlink(int lowlink) {
+   tarjanNode::lowlink = lowlink;
+}
+
+bool tarjanNode::isDFSInitialized() const {
+   return DFSInitialized;
+}
+
+void tarjanNode::setDFSInitialized(bool DFSInitialized) {
+   tarjanNode::DFSInitialized = DFSInitialized;
+}
+
+tarjanNode::~tarjanNode() {}
