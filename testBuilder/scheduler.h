@@ -3,19 +3,22 @@
 
 #include <pthread.h>
 #include "defines.h"
-// #include "jobQueue.h"
+//#include "Q.h"
+#include "jobQueue.h"
 
-// typedef struct {
-//    nodeIndex* in;
-//    index*out;
-// }threadParams;
+typedef struct {
+   // nodeIndex* in;
+   // index*out;
+   int threadno;
+   jobQueue* array_of_jobs;
+}threadParams;
 
 class JobScheduler {
 private:
    int numberOfThreads;
    pthread_t* workers;
    pthread_t worker;
-   // jobQueue* jobs;
+   jobQueue* jobs;
 
 public:
    JobScheduler( int execution_threads);
@@ -26,6 +29,7 @@ public:
    void execute_all_jobs();
    void wait_all_tasks_finish(); //waits all submitted tasks to finish
    OK_SUCCESS destroy_scheduler();
+static  void *threadFun(void *);
 };
 
 #endif

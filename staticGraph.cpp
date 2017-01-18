@@ -46,9 +46,9 @@ int staticGraph() {
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallWorkload_FINAL.txt");
       }
       else{//GRAPH
-         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallGraph.txt");
+//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallGraph.txt");
 //         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tiny\\wikigraph.txt");
+          strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\a.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallGraph.txt");
 //          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");

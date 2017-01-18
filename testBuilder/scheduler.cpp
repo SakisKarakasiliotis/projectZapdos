@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <cstdio>
 #include <iostream>
 #include <sys/types.h>
 #include <sys/syscall.h>
@@ -8,34 +9,39 @@
 unsigned int microseconds=200000;
 
 
-// #include "job.h"
+#include "job.h"
 
 // void threadFun();
-void *threadFun(void *);
+
 
    static pthread_mutex_t queueLock;
+   static pthread_mutex_t actualQueueLock;
    pthread_cond_t cond;
    
-   int* jobs;
+   
 
 JobScheduler::JobScheduler( int execution_threads) {
    std::cout<<"POYTSES"<<std::endl;
    pthread_mutex_init ( &queueLock, NULL);
+   pthread_mutex_init ( &actualQueueLock, NULL);   
    this->numberOfThreads = execution_threads;
    this->workers = (pthread_t*) malloc(execution_threads * sizeof(pthread_t));
    pthread_cond_init(&cond, NULL);
-   // this->jobs = new jobQueue(50);
-   jobs = new int[50]; 
+   this->jobs = new jobQueue(10000);
+  
    std::cout<<"POYTSES 22"<<std::endl;
-   for (int i = 0; i < 50; ++i)
+   for (int i = 0; i < 10000; ++i)
    {
-      jobs[i] = i;
+      staticJob* j = new staticJob(i, 0, 0);
+      this->jobs->enqueue(j);
    }
    for (int i=0; i<execution_threads; i++) {
-            std::cout<<"POYTSES 33"<<std::endl;
-
-      pthread_create(&*(workers+i), NULL, &threadFun,  &i);
-            std::cout<<"POYTSES 4"<<std::endl;
+      std::cout<<"POYTSES 33"<<std::endl;
+      threadParams* params= new threadParams;
+      params->threadno = i;
+      params->array_of_jobs = this->jobs;
+      pthread_create(&*(workers+i), NULL, &threadFun, (void*) params);
+      std::cout<<"POYTSES 4"<<std::endl;
 
    }
 }
@@ -46,21 +52,31 @@ JobScheduler::~JobScheduler(){
 
 int i=0;
 
-void* threadFun(void* params) {
-   int k = *((int*) params);
-   // pthread_mutex_lock(&queueLock);
+void* JobScheduler::threadFun(void* params) {
+   threadParams* k = (threadParams*) params;
+   // OK_SUCCESS err;
    bool flag = true;
+   pthread_mutex_lock(&queueLock);
    // pid_t x = syscall(__NR_gettid);
    while (flag){
+      // std::cout << 
        pthread_cond_wait(&cond, &queueLock);
-       while(i<50){
-         std::cout<<jobs[i]<<" " << pthread_self() << " " << k <<std::endl;
-         usleep(microseconds);
-         i++;
+       while(!k->array_of_jobs->isEmpty()){
+         pthread_mutex_lock(&actualQueueLock);
+         job* j = k->array_of_jobs->dequeue();
+         pthread_mutex_unlock(&actualQueueLock);
+         if (j != NULL) {
+            printf(" %d\n", k->threadno);
+            j->executeQuery();
+         }
+         // usleep(microseconds);
+         pthread_mutex_unlock(&queueLock);
        }
        flag = false;      
    }
-   pthread_mutex_unlock(&queueLock);
+   // pthread_mutex_unlock(&queueLock);
+   printf("%d exiting.\n",k->threadno);
+   pthread_exit(NULL);
    return NULL;
 }
 
@@ -80,9 +96,10 @@ pthread_t JobScheduler::getWorkers(int i){
 int main(int argc, char const *argv[])
 {
    int x;
-   int numOfWorkers = 2;
+   int numOfWorkers = 4;
    JobScheduler* s = new JobScheduler(numOfWorkers);
-   std::cin>>x;
+   // std::cin>>x;
+   usleep(microseconds);
    pthread_cond_broadcast( &cond );
    for (int j=0; j<numOfWorkers; j++) {
       pthread_join(s->getWorkers(j), NULL);
