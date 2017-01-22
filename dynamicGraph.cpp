@@ -14,6 +14,8 @@
 #include "bfs.h"
 #include "updateIndex.h"
 #include "dynamicGraph.h"
+#include "scheduler.h"
+#include "job.h"
 
 int dynamicGraph() {
    //FILE READING VARIABLES -----------------------------------------------------------------------------------------------

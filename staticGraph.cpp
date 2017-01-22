@@ -14,13 +14,15 @@
 #include "staticBfs.h"
 #include "grail.h"
 #include "staticGraph.h"
+#include "job.h"
+#include "scheduler.h"
 
 //DLETE THOSE
 #include "bfs.h"
 #include "updateIndex.h"
 
 int staticGraph() {
-   //FILE READING VARIABLES -----------------------------------------------------------------------------------------------
+   //FILE READING VARIABLES --------------------------------------------------------------------------------------------
    string inpout;
    char *part1,part2[80],part3[80],initial[80],get[600];
    ifstream inpoutFile;
@@ -33,22 +35,29 @@ int staticGraph() {
    buffer* Buffer_inv ;
    n_index* Index_inv ;
 //HELPERS --------------------------------------------------------------------------------------------------------------
-   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult;
+   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult, currentJobID = 0;
+//JOB AND SCHEDLER VARIABLES -------------------------------------------------------------------------------------------
+   JobScheduler* manager;
+   
 
 //START READING FILES FOR GRAPH CREATION--------------------------------------------------------------------------------
    cout<<"INSERT ENTRY FILE: "<<endl;
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){//WORKLOAD
-         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallWorkload_FINAL.txt");
+          strcpy(get, "/media/sf_linux_projects/projectZapdos/small/smallWorkload_FINAL.txt");
+         //strcpy(get, "/media/sf_linux_projects/projectZapdos/b.txt");
+         // strcpy(get, "/media/sf_linux_projects/projectZapdos/tiny/tinyWorkload_FINAL.txt");
 //          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\small\\smallWorkload_FINAL.txt");
 //          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallWorkload_FINAL.txt");
       }
       else{//GRAPH
 //         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallGraph.txt");
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
-          strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\a.txt");
+         strcpy(get,"/media/sf_linux_projects/projectZapdos/small/smallGraph.txt");
+//         strcpy(get,"/media/sf_linux_projects/projectZapdos/tiny/tinyGraph.txt");
+          // strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\a.txt");
+//         strcpy(get,"/media/sf_linux_projects/projectZapdos/a.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallGraph.txt");
 //          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
 //          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
@@ -75,8 +84,9 @@ int staticGraph() {
          Index_inv = new n_index(INDEX_SIZE);
          goblet = new grail();
 // Reading input from FILE - Insert data in Graph-----------------------------------------------------------------------
-         while(strcmp(part1,"S")){
-            strcpy(initial,part1);
+
+         while(strcmp(part1,"S")){            
+            strcpy(initial,part1);            
             part1=strtok(NULL," \n\t");
             strcpy(part2,part1);
             int startNode = atoi(initial);
@@ -102,11 +112,13 @@ int staticGraph() {
             }
 
             strcpy(inpoutLine,inpout.c_str());
-            part1= strtok(inpoutLine," \n\t");
+            part1= strtok(inpoutLine," \n\t");            
             lineNumber++;
 // End of while statement -- read new line for Graph insertion ---------------------------------------------------------
          }
          inpoutFile.close();
+                     cout<<"i m there"<<endl;
+
 // End of Graph Insert -- Input FILE is closed--------------------------------------------------------------------------
 
 // Grail call and test prints --------------------------------------------------------------------------------------------
@@ -134,6 +146,7 @@ int staticGraph() {
       }
 //---!!! Graph creation finished !!!!-----------------------------------------------------------------------------------
       else{
+         manager = new JobScheduler(2);
          if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
 // -------------!! Workload execution started !!!----------------------------------------------------------------------
             cout<<"WORK FILE"<<endl;
@@ -154,6 +167,16 @@ int staticGraph() {
                      cout<<"Question "<<numberOfQuestions<<":"<<endl;
                      int startNode = atoi(part2);
                      int goalNode = atoi(part3);
+                     staticJob* newJob = new staticJob(currentJobID, startNode, goalNode, goblet, Index, Buffer, Index_inv, Buffer_inv);
+                     currentJobID++;
+                     cout<<"About to enqueue a new job"<<endl;
+                     string res; 
+                     if(manager->submit_job(newJob)){
+                        res = "true";
+                     } else {
+                        res = "false";
+                     }
+                     cout<<res<<endl;
 //                     if( Index->getCCnum(startNode) != Index->getCCnum(goalNode) ){
 //                        if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
 //                        {
@@ -173,22 +196,21 @@ int staticGraph() {
 //                     else{
 //                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, 50);
 //                     }
-                     int grailResponse = goblet->askGrail(startNode, goalNode);
-                     if (grailResponse == YES || grailResponse == MAYBE) {
-                        BFSresult = SBBFS(goblet, Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
-                     }
-                     else {
-                        BFSresult = INVALID;
-                     }
-                     cout<<"Path length is: "<<BFSresult<<endl;
-                     BFSresult = 0;
-                     numberOfQuestions++;
+                     
+                    numberOfQuestions++;
                   }
 // End of case Q -------------------------------------------------------------------------------------------------------
                }
                else if(!strcmp(part1,"F"))
 // Case F start --------------------------------------------------------------------------------------------------------
                {
+                 cout << "About to execute all jobs" << endl;
+                 manager->printQueue();
+                 manager->execute_all_jobs();
+                 manager->wait_all_tasks_finish();
+                 int x;
+                 cout << "Press any key to run next batch" << endl;
+                 cin >> x;
 //                  if(update_index->calculateMetricValue(numberOfQuestions) >= RECALCULATE_CONECTED_COMPONENTS){
 //                     for( int i=0; i<Index->getSizeOfIndex(); i++){
 //                        Index->setCCnum(i, INVALID);

@@ -117,6 +117,7 @@ OK_SUCCESS grail::generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuf
 }
 
 OK_SUCCESS grail::calculateRanks() {
+
    for(int rankiter = 0 ; rankiter <RANK_SIZE ; rankiter++){
       stack *Stack = new stack(this->sizeOfGrail);
       int startNode;
@@ -155,7 +156,8 @@ OK_SUCCESS grail::calculateRanks() {
                if (this->ranks[rankiter].getMinRank(neighbors[i]) != INVALID && this->ranks[rankiter].getRank(neighbors[i]) != INVALID) {
                   continue;
                } else {
-                  Stack->push(neighbors[i]);
+                  // Stack->push(neighbors[i]); ------check this --
+                  Stack->push(startNode);
                   startNode = neighbors[i];
                   break;
                }

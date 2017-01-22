@@ -1,6 +1,7 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 #include <stdint.h>
+// #include <memory.h>
 #include <stdlib.h>
 
 #define YES -9
@@ -28,10 +29,12 @@
 #define UPDATE_INDEX_SIZE 200
 #define STACK_SIZE 20000
 #define RANK_SIZE 1
-#define COMPONENTS_ESTIMATE 20000
+#define COMPONENTS_ESTIMATE 600000
 #define BFS_FRINGE_SIZE 50
 #define HASH_SIZE 1000
 #define HASH_PERCISION 2
+#define THREAD_NUMBER 4 //Most PCs have 4-core processors
+#define JOB_Q_SIZE 100
 
 using namespace std;
 typedef int ptr;
