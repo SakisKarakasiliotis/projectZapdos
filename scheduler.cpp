@@ -37,7 +37,7 @@ JobScheduler::JobScheduler( int execution_threads) {
    pthread_cond_init(&cond, NULL);
    pthread_cond_init(&tasksFinished, NULL);
    this->jobs = new jobQueue(JOB_Q_SIZE);
-   
+
    std::cout<<"POYTSES 22"<<std::endl;
    for (int i=0; i<execution_threads; i++) {
       std::cout<<"POYTSES 33"<<std::endl;
@@ -47,7 +47,7 @@ JobScheduler::JobScheduler( int execution_threads) {
       params->array_of_jobs = this->jobs;
       pthread_create(&*(workers+i), NULL, &threadFun, (void*) params);
       std::cout<<"POYTSES 4"<<std::endl;
-      
+
    }
 }
 
@@ -112,7 +112,7 @@ bool JobScheduler::submit_job(job* j){
 void JobScheduler::execute_all_jobs(){
    pthread_mutex_lock(&allThreadsReady);
    cout << "Before broadcast"<<endl;
-   usleep(microseconds);
+  // usleep(microseconds);
    pthread_cond_broadcast( &cond );
    cout << "After broadcast"<<endl;
    pthread_mutex_unlock(&allThreadsReady);
@@ -123,7 +123,7 @@ pthread_t JobScheduler::getWorkers(int i){
 } //waits all submitted tasks to finish
 
 void JobScheduler::wait_all_tasks_finish()
-{   
+{
    pthread_mutex_lock(&tasksLock);
    pthread_cond_wait(&tasksFinished, &tasksLock);
    pthread_mutex_unlock(&tasksLock);

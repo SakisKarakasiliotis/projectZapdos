@@ -118,6 +118,8 @@ OK_SUCCESS grail::generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuf
 
 OK_SUCCESS grail::calculateRanks() {
 
+
+
    for(int rankiter = 0 ; rankiter <RANK_SIZE ; rankiter++){
       stack *Stack = new stack(this->sizeOfGrail);
       int startNode;
@@ -125,7 +127,7 @@ OK_SUCCESS grail::calculateRanks() {
       bool key = true;
       srand(time(NULL));
       int restart = 0;
-       if(index->getSizeOfIndex() > 1){
+       if(index->getSizeOfIndex() > 1 ){
            do {
                startNode = rand() % index->getSizeOfIndex();
                if (index->getEntry(startNode) != INVALID) key = false;
@@ -133,10 +135,11 @@ OK_SUCCESS grail::calculateRanks() {
        }else{
            startNode = 0;
        }
+        Stack->push(startNode);
 
-      Stack->push(startNode);
 
       do {
+          cout<<startNode<<endl;
          int nodeOffset = index->getEntry(startNode);
          int numberOfNeighbors;
          uint32_t *neighbors;
@@ -147,32 +150,55 @@ OK_SUCCESS grail::calculateRanks() {
          }
 
          if (neighbors != NULL) {
-            int minrank = rank;
+
+             int minrank = rank;
             int i;
             for (i = 0; i < numberOfNeighbors; i++) {
                if (this->ranks[rankiter].getMinRank(neighbors[i]) < minrank && this->ranks[rankiter].getMinRank(neighbors[i]) > 0) {
                   minrank = this->ranks[rankiter].getMinRank(neighbors[i]);
+
                }
                if (this->ranks[rankiter].getMinRank(neighbors[i]) != INVALID && this->ranks[rankiter].getRank(neighbors[i]) != INVALID) {
-                  continue;
+
+                   continue;
                } else {
-                  // Stack->push(neighbors[i]); ------check this --
-                  Stack->push(startNode);
+                   Stack->push(neighbors[i]); //------check this --
+
+                  //Stack->push(startNode);
                   startNode = neighbors[i];
-                  break;
+
+                   break;
                }
             }
             if (i == numberOfNeighbors) {
-               this->ranks[rankiter].setRank(neighbors[i],rank);
-               this->ranks[rankiter].setMinRank(neighbors[i],minrank);
+                int tempNode;
+              // this->ranks[rankiter].setRank(neighbors[i],rank);
+               this->ranks[rankiter].setRank(startNode,rank);
+               //this->ranks[rankiter].setMinRank(neighbors[i],minrank);
+               this->ranks[rankiter].setMinRank(startNode,minrank);
                rank++;
-               startNode = Stack->pop();
+               tempNode = Stack->pop();
+                if(tempNode == startNode){
+                    startNode = INVALID;
+                }
+                else{
+                    startNode = tempNode;
+                }
+
             }
          } else {
+             int tempNode;
             this->ranks[rankiter].setRank(startNode,rank);
             this->ranks[rankiter].setMinRank(startNode,rank);
-            startNode = Stack->pop();
-            rank++;
+            tempNode = Stack->pop();
+             if(tempNode == startNode){
+                 startNode = INVALID;
+             }
+             else{
+                 startNode = tempNode;
+             }
+
+             rank++;
          }
          if (startNode == INVALID) {
             while (restart < this->sizeOfGrail) {
@@ -184,7 +210,6 @@ OK_SUCCESS grail::calculateRanks() {
                restart++;
             }
          }
-          cout<<"Trying 2 bro"<<endl;
       } while (!Stack->isEmpty());
    }
     return OK;
@@ -195,11 +220,13 @@ OK_SUCCESS grail::askGrail(int from, int to) {
         cout<<"Out of bounds on askGrail with from "<<from<<" to "<<to<<endl;
         return FAIL;
     }
-    if(this->SCC->checkBelongsToComponent(from) == this->SCC->checkBelongsToComponent(to)){
+    int startComp = this->SCC->checkBelongsToComponent(from);
+    int goalComp = this->SCC->checkBelongsToComponent(to);
+    if(startComp == goalComp){
         return YES;
     }
    for(int i=0; i<RANK_SIZE;i++){
-      if(this->ranks[i].askRank(from,to)== NO){
+      if(this->ranks[i].askRank(startComp,goalComp)== NO){
          return NO;
       }
    }

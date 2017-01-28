@@ -24,9 +24,9 @@ bool stack::push(int elem) {
         std::cout << "Stack overflow!" << std::endl;
         this->resize();
     }
-    if (position == 7954) {
-        std::cout << "What's inside, yo?" << std::endl;
-    }
+//    if (position == 7954) {
+//        std::cout << "What's inside, yo?" << std::endl;
+//    }
     this->stck[position] = elem;
     position++;
     return true;

@@ -38,29 +38,23 @@ int staticGraph() {
    int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult, currentJobID = 0;
 //JOB AND SCHEDLER VARIABLES -------------------------------------------------------------------------------------------
    JobScheduler* manager;
-   
+
 
 //START READING FILES FOR GRAPH CREATION--------------------------------------------------------------------------------
    cout<<"INSERT ENTRY FILE: "<<endl;
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){//WORKLOAD
-          strcpy(get, "/media/sf_linux_projects/projectZapdos/small/smallWorkload_FINAL.txt");
-         //strcpy(get, "/media/sf_linux_projects/projectZapdos/b.txt");
-         // strcpy(get, "/media/sf_linux_projects/projectZapdos/tiny/tinyWorkload_FINAL.txt");
-//          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\small\\smallWorkload_FINAL.txt");
-//          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallWorkload_FINAL.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/small/smallWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/tiny/tinyWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/b.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
       }
       else{//GRAPH
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallGraph.txt");
-         strcpy(get,"/media/sf_linux_projects/projectZapdos/small/smallGraph.txt");
-//         strcpy(get,"/media/sf_linux_projects/projectZapdos/tiny/tinyGraph.txt");
-          // strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\a.txt");
-//         strcpy(get,"/media/sf_linux_projects/projectZapdos/a.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\small\\smallGraph.txt");
-//          strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
-//          strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/small/smallGraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/tiny/tinyGraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/a.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
 
       }
 
@@ -85,8 +79,8 @@ int staticGraph() {
          goblet = new grail();
 // Reading input from FILE - Insert data in Graph-----------------------------------------------------------------------
 
-         while(strcmp(part1,"S")){            
-            strcpy(initial,part1);            
+         while(strcmp(part1,"S")){
+            strcpy(initial,part1);
             part1=strtok(NULL," \n\t");
             strcpy(part2,part1);
             int startNode = atoi(initial);
@@ -112,7 +106,7 @@ int staticGraph() {
             }
 
             strcpy(inpoutLine,inpout.c_str());
-            part1= strtok(inpoutLine," \n\t");            
+            part1= strtok(inpoutLine," \n\t");
             lineNumber++;
 // End of while statement -- read new line for Graph insertion ---------------------------------------------------------
          }
@@ -127,6 +121,8 @@ int staticGraph() {
             cout << "calculateSCC failed!" << endl;
             return FAIL;
          }
+          Index->printGraph(Buffer);
+
          cout << "Initializing grail" << endl;
          if (goblet->initializeGrail() != OK) {
             cout << "initializeGrail failed!" << endl;
@@ -170,7 +166,7 @@ int staticGraph() {
                      staticJob* newJob = new staticJob(currentJobID, startNode, goalNode, goblet, Index, Buffer, Index_inv, Buffer_inv);
                      currentJobID++;
                      cout<<"About to enqueue a new job"<<endl;
-                     string res; 
+                     string res;
                      if(manager->submit_job(newJob)){
                         res = "true";
                      } else {
@@ -196,7 +192,7 @@ int staticGraph() {
 //                     else{
 //                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, 50);
 //                     }
-                     
+
                     numberOfQuestions++;
                   }
 // End of case Q -------------------------------------------------------------------------------------------------------

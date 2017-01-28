@@ -64,10 +64,10 @@ int n_index::getEntry(int entryNumber){
 //  if (entryNumber >= (this->numberOfEntries)) {
   if (entryNumber >= (this->sizeOfIndex)) {
 //    cout<<entryNumber<<" entry number requested is out of bounds"<<endl;
-    this->resize(entryNumber,2);    
+    this->resize(entryNumber,2);
   }
   if(this->offsets[entryNumber] == INVALID){
-  
+
     return INVALID;
   }
   return this->offsets[entryNumber];
@@ -133,4 +133,20 @@ int n_index::getTotalConnectedComponents() const {
 
 void n_index::setTotalConnectedComponents(int totalConnectedComponents) {
     n_index::totalConnectedComponents = totalConnectedComponents;
+}
+
+void n_index::printGraph(buffer* buff) {
+    int numberOfNeighbors;
+    uint32_t *neighbors;
+    for (int i = 0; i < sizeOfIndex; i++) {
+        cout<<i<<" -> ";
+        neighbors = buff->getNeighbors(numberOfNeighbors, getEntry(i));
+        if(neighbors != NULL){
+            for (int j = 0; j < numberOfNeighbors; j++) {
+                cout<<neighbors[j]<<", ";
+            }
+        }
+
+        cout<<endl;
+    }
 }

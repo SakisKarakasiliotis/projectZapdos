@@ -1,6 +1,7 @@
 #ifndef INDEX_H
 #define INDEX_H
 #include "defines.h"
+#include "buffer.h"
 
 class n_index{
   private:
@@ -29,6 +30,7 @@ public:
     int getCCnum(int nodeName);
     OK_SUCCESS setCCnum(uint32_t nodeName, int CCname);
     void printCCnum();
+    void printGraph(buffer*);
 };
 
 #endif
