@@ -45,16 +45,16 @@ int staticGraph() {
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){//WORKLOAD
-          strcpy(get, "/media/sf_projectZapdosClion/small/smallWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/small/smallWorkload_FINAL.txt");
 //          strcpy(get, "/media/sf_projectZapdosClion/tiny/tinyWorkload_FINAL.txt");
 //          strcpy(get, "/media/sf_projectZapdosClion/b.txt");
-//          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
       }
       else{//GRAPH
-         strcpy(get,"/media/sf_projectZapdosClion/small/smallGraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/small/smallGraph.txt");
 //         strcpy(get,"/media/sf_projectZapdosClion/tiny/tinyGraph.txt");
 //         strcpy(get,"/media/sf_projectZapdosClion/a.txt");
-//         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
 
       }
 
@@ -142,7 +142,7 @@ int staticGraph() {
       }
 //---!!! Graph creation finished !!!!-----------------------------------------------------------------------------------
       else{
-         manager = new JobScheduler(2);
+         manager = new JobScheduler(THREAD_NUMBER);
          if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
 // -------------!! Workload execution started !!!----------------------------------------------------------------------
             cout<<"WORK FILE"<<endl;

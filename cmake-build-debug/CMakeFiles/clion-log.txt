@@ -1,6 +1,6 @@
-"M:\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Marcus\VirtualBox VMs\linuxmint\linux projects\projectZapdos"
--- The C compiler identification is GNU 5.3.0
--- The CXX compiler identification is GNU 5.3.0
+"C:\Program Files (x86)\JetBrains\CLion 2016.3\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Windows 8\projectZapdosClion"
+-- The C compiler identification is GNU 4.8.1
+-- The CXX compiler identification is GNU 4.8.1
 -- Check for working C compiler: C:/MinGW/bin/gcc.exe
 -- Check for working C compiler: C:/MinGW/bin/gcc.exe -- works
 -- Detecting C compiler ABI info
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Marcus/VirtualBox VMs/linuxmint/linux projects/projectZapdos/cmake-build-debug
+-- Build files have been written to: C:/Users/Windows 8/projectZapdosClion/cmake-build-debug

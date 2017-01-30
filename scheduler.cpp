@@ -12,6 +12,7 @@ unsigned int microseconds=200000;
 
 // void threadFun();
 static int remainingThreads;
+static int threadsFinished = 0;
 static pthread_mutex_t remainingMux;
 static pthread_mutex_t allThreadsReady;
 
@@ -21,6 +22,7 @@ static pthread_mutex_t queueLock;
 
 pthread_cond_t cond;
 pthread_cond_t tasksFinished;
+pthread_cond_t threadsReady;
 
 
 JobScheduler::JobScheduler( int execution_threads) {
@@ -35,6 +37,7 @@ JobScheduler::JobScheduler( int execution_threads) {
    remainingThreads = this->numberOfThreads;
    this->workers = (pthread_t*) malloc(execution_threads * sizeof(pthread_t));
    pthread_cond_init(&cond, NULL);
+   pthread_cond_init(&threadsReady, NULL);
    pthread_cond_init(&tasksFinished, NULL);
    this->jobs = new jobQueue(JOB_Q_SIZE);
 
@@ -57,48 +60,106 @@ JobScheduler::~JobScheduler(){
 
 int i=0;
 
+//void* JobScheduler::threadFun(void* params) {
+//   threadParams* k = (threadParams*) params;
+//   printf("No %d entered threadFun.\n", k->threadno);
+//   // OK_SUCCESS err;
+//   bool flag = true;
+//   pthread_mutex_lock(&condLock);
+//   printf("No %d passed mutex_lock.\n", k->threadno);
+//   // pid_t x = syscall(__NR_gettid);
+//   //------BARRIER TECHNIQUE-----
+//      pthread_mutex_lock(&remainingMux);
+//      remainingThreads--;
+//      pthread_mutex_unlock(&remainingMux);
+//   //---------------------------
+//   while (flag){
+//   //printf("No %d entered while.\n", k->threadno);
+//      if (remainingThreads==0) {
+//         pthread_mutex_unlock(&allThreadsReady);
+//      }
+//      pthread_cond_wait(&cond, &condLock);
+//
+//      while(!k->array_of_jobs->isEmpty()){
+//         pthread_mutex_lock(&queueLock);
+//         job* j = k->array_of_jobs->dequeue();
+//         pthread_mutex_unlock(&queueLock);
+//         if (j != NULL) {
+//            printf(" %d\n", k->threadno);
+//            j->executeQuery();
+//         }
+//         // usleep(microseconds);
+//         pthread_mutex_unlock(&condLock);
+//      }
+//
+//      //------BARRIER TECHNIQUE-----
+//      pthread_mutex_lock(&remainingMux);
+//      remainingThreads++;
+//      if (remainingThreads==k->numberOfThreads) {
+//         pthread_cond_broadcast(&tasksFinished);
+//      }
+//      pthread_mutex_unlock(&remainingMux);
+//   //---------------------------
+//      pthread_mutex_lock(&condLock);
+//   }
+//   // pthread_mutex_unlock(&condLock);
+//   printf("%d exiting.\n",k->threadno);
+//   pthread_exit(NULL);
+//   return NULL;
+//}
 void* JobScheduler::threadFun(void* params) {
-   threadParams* k = (threadParams*) params;
-   printf("No %d entered threadFun.\n", k->threadno);
+   threadParams* threadParameters = (threadParams*) params;
+   printf("No %d entered threadFun.\n", threadParameters->threadno);
    // OK_SUCCESS err;
    bool flag = true;
-   pthread_mutex_lock(&condLock);
-   printf("No %d passed mutex_lock.\n", k->threadno);
+   printf("No %d passed mutex_lock.\n", threadParameters->threadno);
    // pid_t x = syscall(__NR_gettid);
-   //------BARRIER TECHNIQUE-----
-      pthread_mutex_lock(&remainingMux);
-      remainingThreads--;
-      pthread_mutex_unlock(&remainingMux);
-   //---------------------------
+
+
    while (flag){
-   //printf("No %d entered while.\n", k->threadno);
-      if (remainingThreads==0) {
-         pthread_mutex_unlock(&allThreadsReady);
-      }
-      pthread_cond_wait(&cond, &condLock);
-      while(!k->array_of_jobs->isEmpty()){
+       //------BARRIER TECHNIQUE-----
+       pthread_mutex_lock(&remainingMux);
+       remainingThreads--;
+       pthread_mutex_unlock(&remainingMux);
+       //---------------------------
+       pthread_mutex_lock(&condLock);
+
+       if (remainingThreads==0) {
+           cout<<"remaining threads 0"<<endl;
+           remainingThreads = THREAD_NUMBER;
+           pthread_mutex_unlock(&allThreadsReady);
+           pthread_mutex_lock(&tasksLock);
+//          pthread_cond_broadcast( &threadsReady );
+       }
+      //while(threadParameters->array_of_jobs->isEmpty()) {
+          pthread_cond_wait(&cond, &condLock);
+     // }
+
+      while(!threadParameters->array_of_jobs->isEmpty()){
          pthread_mutex_lock(&queueLock);
-         job* j = k->array_of_jobs->dequeue();
+         job* j = threadParameters->array_of_jobs->dequeue();
          pthread_mutex_unlock(&queueLock);
          if (j != NULL) {
-            printf(" %d\n", k->threadno);
+            printf(" %d\n", threadParameters->threadno);
             j->executeQuery();
          }
-         // usleep(microseconds);
-         pthread_mutex_unlock(&condLock);
       }
+
+      pthread_mutex_unlock(&condLock);
       //------BARRIER TECHNIQUE-----
       pthread_mutex_lock(&remainingMux);
-      remainingThreads++;
-      if (remainingThreads==k->numberOfThreads) {
-         pthread_cond_broadcast(&tasksFinished);
-      }
+      threadsFinished++;
       pthread_mutex_unlock(&remainingMux);
+      if (threadsFinished==threadParameters->numberOfThreads) {
+//         pthread_cond_broadcast(&tasksFinished);
+          threadsFinished = 0;
+          pthread_mutex_unlock(&tasksLock);
+          pthread_mutex_lock(&allThreadsReady);
+      }
    //---------------------------
-      pthread_mutex_lock(&condLock);
    }
    // pthread_mutex_unlock(&condLock);
-   printf("%d exiting.\n",k->threadno);
+   printf("%d exiting.\n",threadParameters->threadno);
    pthread_exit(NULL);
    return NULL;
 }
@@ -110,9 +171,13 @@ bool JobScheduler::submit_job(job* j){
 }
 
 void JobScheduler::execute_all_jobs(){
+
    pthread_mutex_lock(&allThreadsReady);
+   //while(remainingThreads < this->numberOfThreads) {
+//    cout<<"going to wait"<<endl;
+//       pthread_cond_wait(&threadsReady, &allThreadsReady);
+ //  }
    cout << "Before broadcast"<<endl;
-  // usleep(microseconds);
    pthread_cond_broadcast( &cond );
    cout << "After broadcast"<<endl;
    pthread_mutex_unlock(&allThreadsReady);
@@ -125,7 +190,9 @@ pthread_t JobScheduler::getWorkers(int i){
 void JobScheduler::wait_all_tasks_finish()
 {
    pthread_mutex_lock(&tasksLock);
-   pthread_cond_wait(&tasksFinished, &tasksLock);
+   //while(threadsFinished < this->numberOfThreads){
+    // pthread_cond_wait(&tasksFinished, &tasksLock);
+  // }
    pthread_mutex_unlock(&tasksLock);
 }
 
