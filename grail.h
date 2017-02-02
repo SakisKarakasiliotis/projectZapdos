@@ -17,7 +17,7 @@
 class grail {
 private:
     n_index* index;
-    rank::rank *ranks;
+    g_rank *ranks;
     int sizeOfGrail; // number of SCC
     buffer* g_buffer;
     stronglyConnectedComponents* SCC;

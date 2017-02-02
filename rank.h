@@ -8,26 +8,26 @@
 
 #include "defines.h"
 
-class rank {
+class g_rank {
 
 private:
     int **table;
 public:
-    rank(int sizeOfGrail);
+    g_rank(int sizeOfGrail);
 
-    virtual ~rank();
+    virtual ~g_rank();
 
     int **getTable() const;
 
     void setTable(int **table);
-   
+
     OK_SUCCESS insert(int minrank , int rank , int nodeName);
-   
+
    OK_SUCCESS  askRank(int from ,int to);
-   
+
    int getMinRank(int nodeName);
    OK_SUCCESS setMinRank(int nodeName, int minRank);
-   
+
    int getRank(int nodeName);
    OK_SUCCESS setRank(int nodeName , int rank);
 };
