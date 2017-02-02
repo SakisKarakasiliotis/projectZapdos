@@ -45,16 +45,17 @@ int staticGraph() {
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){//WORKLOAD
-//          strcpy(get, "/media/sf_projectZapdosClion/small/smallWorkload_FINAL.txt");
-//          strcpy(get, "/media/sf_projectZapdosClion/tiny/tinyWorkload_FINAL.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/small2/smallWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
 //          strcpy(get, "/media/sf_projectZapdosClion/b.txt");
-          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
       }
       else{//GRAPH
-//         strcpy(get,"/media/sf_projectZapdosClion/small/smallGraph.txt");
-//         strcpy(get,"/media/sf_projectZapdosClion/tiny/tinyGraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/small2/smallGraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
 //         strcpy(get,"/media/sf_projectZapdosClion/a.txt");
-         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
 
       }
 
@@ -121,7 +122,7 @@ int staticGraph() {
             cout << "calculateSCC failed!" << endl;
             return FAIL;
          }
-          Index->printGraph(Buffer);
+//          Index->printGraph(Buffer);
 
          cout << "Initializing grail" << endl;
          if (goblet->initializeGrail() != OK) {
@@ -201,7 +202,7 @@ int staticGraph() {
 // Case F start --------------------------------------------------------------------------------------------------------
                {
                  cout << "About to execute all jobs" << endl;
-                 manager->printQueue();
+//                 manager->printQueue();
                  manager->execute_all_jobs();
                  manager->wait_all_tasks_finish();
                  int x;

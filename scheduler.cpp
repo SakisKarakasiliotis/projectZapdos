@@ -120,7 +120,6 @@ void* JobScheduler::threadFun(void* params) {
        //------BARRIER TECHNIQUE-----
        pthread_mutex_lock(&remainingMux);
        remainingThreads--;
-       pthread_mutex_unlock(&remainingMux);
        //---------------------------
        pthread_mutex_lock(&condLock);
 
@@ -128,10 +127,11 @@ void* JobScheduler::threadFun(void* params) {
            cout<<"remaining threads 0"<<endl;
            remainingThreads = THREAD_NUMBER;
            pthread_mutex_unlock(&allThreadsReady);
-           pthread_mutex_lock(&tasksLock);
 //          pthread_cond_broadcast( &threadsReady );
        }
-      //while(threadParameters->array_of_jobs->isEmpty()) {
+       pthread_mutex_unlock(&remainingMux);
+
+       //while(threadParameters->array_of_jobs->isEmpty()) {
           pthread_cond_wait(&cond, &condLock);
      // }
 
@@ -149,14 +149,17 @@ void* JobScheduler::threadFun(void* params) {
       //------BARRIER TECHNIQUE-----
       pthread_mutex_lock(&remainingMux);
       threadsFinished++;
-      pthread_mutex_unlock(&remainingMux);
       if (threadsFinished==threadParameters->numberOfThreads) {
 //         pthread_cond_broadcast(&tasksFinished);
+          cout<<"This is another cout"<<endl;
           threadsFinished = 0;
           pthread_mutex_unlock(&tasksLock);
           pthread_mutex_lock(&allThreadsReady);
+
       }
-   //---------------------------
+       pthread_mutex_unlock(&remainingMux);
+
+       //---------------------------
    }
    // pthread_mutex_unlock(&condLock);
    printf("%d exiting.\n",threadParameters->threadno);
@@ -177,7 +180,8 @@ void JobScheduler::execute_all_jobs(){
 //    cout<<"going to wait"<<endl;
 //       pthread_cond_wait(&threadsReady, &allThreadsReady);
  //  }
-   cout << "Before broadcast"<<endl;
+    pthread_mutex_lock(&tasksLock);
+    cout << "Before broadcast"<<endl;
    pthread_cond_broadcast( &cond );
    cout << "After broadcast"<<endl;
    pthread_mutex_unlock(&allThreadsReady);
@@ -193,6 +197,7 @@ void JobScheduler::wait_all_tasks_finish()
    //while(threadsFinished < this->numberOfThreads){
     // pthread_cond_wait(&tasksFinished, &tasksLock);
   // }
+    cout << "watf locked taskslock" << endl;
    pthread_mutex_unlock(&tasksLock);
 }
 
