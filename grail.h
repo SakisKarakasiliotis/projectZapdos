@@ -17,7 +17,7 @@
 class grail {
 private:
     n_index* index;
-    rank *ranks;
+    rank::rank *ranks;
     int sizeOfGrail; // number of SCC
     buffer* g_buffer;
     stronglyConnectedComponents* SCC;
@@ -61,21 +61,21 @@ class tarjanNode{
 public:
    tarjanNode(int nodeName);
    ~tarjanNode();
-   
+
    int getNodeName() const;
-   
+
    void setNodeName(int nodeName);
-   
+
    int getTIndex() const;
-   
+
    void setTIndex(int tIndex);
-   
+
    int getLowlink() const;
-   
+
    void setLowlink(int lowlink);
-   
+
    bool isDFSInitialized() const;
-   
+
    void setDFSInitialized(bool DFSInitialized);
 
 private:
@@ -85,7 +85,7 @@ private:
 //   int neighborsChecked;
    bool DFSInitialized;
    //bool onTarjanStack;
-   
+
 };
 
 

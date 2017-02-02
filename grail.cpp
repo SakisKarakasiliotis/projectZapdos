@@ -52,9 +52,9 @@ OK_SUCCESS grail::initializeGrail() {
     }
     this->index = new n_index(this->sizeOfGrail);
     this->g_buffer = new buffer(this->sizeOfGrail,LIST_NODE_SIZE);
-    this->ranks = (rank*) malloc(RANK_SIZE * sizeof(rank));
+    this->ranks = (rank::rank*) malloc(RANK_SIZE * sizeof(rank::rank));
     for (int i = 0; i < RANK_SIZE; ++i) {
-        ranks[i] = *new rank(this->sizeOfGrail);
+        ranks[i] = *new rank::rank(this->sizeOfGrail);
     }
     return OK;
 }
