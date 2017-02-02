@@ -6,7 +6,7 @@
 #include "defines.h"
 
 component::component() {
-    this->compId == INVALID;
+    this->compId = INVALID;
 }
 
 component::~component() {
