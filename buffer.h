@@ -29,6 +29,7 @@ public:
 	ptr addListNode();
 	OK_SUCCESS insertNeighbor(int offset, int neighborId);
 	uint32_t * getNeighbors(int& NON, int nodeOffset);
+	uint32_t * getNeighbors(int& NON, int nodeOffset, int version);
 
    int getNextListNode(int offset);
 	OK_SUCCESS setNextListNode(int offset,int target);

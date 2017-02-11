@@ -172,6 +172,58 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset){
    return NULL;
 }
 
+uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset, int version){
+   int arraySize=0;
+   if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
+      cout<<"No neighbors"<<endl;
+      return NULL;
+   }
+   static uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+// uint32_t * neighbors = (uint32_t*) malloc(this->listNodeSize * sizeof(uint32_t));
+
+   while(nodeOffset != INVALID && nodeOffset>=0) {
+       if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
+         for (int i = 0; i < this->listNodeSize; i++){
+            if (*(this->vertices[nodeOffset].getEdgeProperty()) <= version){
+               neighbors[arraySize] = this->vertices[nodeOffset].getNeighbor(i);
+               //cout<<neighbors[i]<<endl;
+               arraySize++;
+            }
+         }
+         if (this->vertices[nodeOffset].getNextListNode()==INVALID){
+                siiize = arraySize;
+            return neighbors;
+         }else{
+//          neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
+            neighbors = (uint32_t*) realloc(neighbors, 2*arraySize*sizeof(uint32_t));
+            nodeOffset = this->vertices[nodeOffset].getNextListNode();
+         }
+
+      }
+      else if(this->vertices[nodeOffset].getNumberOfNeighbors()>0){
+            int asd=0;
+         for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
+            neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
+//                cout<< arraySize+i <<" on else1 "<<this->vertices[nodeOffset].getNeighbor(i)<<endl;
+//                cout<< arraySize+i <<" on else2 "<<neighbors[arraySize+i]<<endl;
+                asd = i;
+         }
+            arraySize=arraySize+asd+1;
+            siiize = arraySize;
+            for (int k = 0; k < siiize; k++) {
+               // cout<<k<<" on else after "<<neighbors[k]<<endl;
+            }
+//       cout<<"It may break here"<<endl;
+         return neighbors;
+      }else if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){
+            cout<<"********************************-------------------lol wtf-----------------------********************"<<endl;
+            int dummy;
+            cin>>dummy;
+        }
+   }
+   return NULL;
+}
+
 int buffer::getNextListNode(int offset){
 	return this->vertices[offset].getNextListNode();
 }
