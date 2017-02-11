@@ -62,7 +62,7 @@ OK_SUCCESS buffer::resize(int newsize,int mode){//todo hello
       }
       return OK;
     default:
- 
+
     	return FAIL;
   }
 }
@@ -72,7 +72,7 @@ ptr buffer::addListNode(){
 	if (this->numberOfVertices >= 0.8*(this->bufferSize) ){
 		if(this->resize(1, 1) == FAIL) return FAIL;
 	}
-	
+
 	this->setNumberOfVertices(this->getNumberOfVertices() + 1);
 	return this->numberOfVertices-1;
 }
@@ -80,7 +80,7 @@ ptr buffer::addListNode(){
 OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 
 	if (neighborId < 0 || offset > numberOfVertices ){
-	
+
 		return FAIL;
 	}
 
@@ -113,6 +113,51 @@ OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId){
 		}else{
 
 			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId)==FAIL){
+				return FAIL;
+			}
+		}
+		return OK;
+	}
+	return OK;
+
+}
+
+OK_SUCCESS buffer::insertNeighbor(int offset, int neighborId, int version){
+
+	if (neighborId < 0 || offset > numberOfVertices ){
+
+		return FAIL;
+	}
+
+	if (this->vertices[offset].getNumberOfNeighbors() == 0){ //here is a new node
+
+		if(this->vertices[offset].setNeighbor((uint32_t) neighborId, version) == FAIL){
+			cout << "Unable to add neighbor on insertNeighbor case 0 returned FAIL space occupied" << endl;
+			return FAIL;
+		}
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);
+		return OK;
+	}
+	else if(this->vertices[offset].getNumberOfNeighbors() < this->listNodeSize && this->vertices[offset].getNumberOfNeighbors()!=FULL){//new neighbor
+
+		if(this->vertices[offset].setNeighbor((uint32_t) neighborId, version) == FAIL){
+			cout << "Unable to add neighbor on insertNeighbor case BETWEEN returned FAIL space occupied" << endl;
+			return FAIL;
+		}
+
+		this->vertices[offset].setNumberOfNeighbors(this->vertices[offset].getNumberOfNeighbors()+1);
+		return OK;
+	}
+	else if(this->vertices[offset].getNumberOfNeighbors() == FULL){//check next neighbor if empty
+
+		if(this->vertices[offset].getNextListNode()==INVALID){
+			this->vertices[offset].setNextListNode(this->addListNode());
+			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId, version)==FAIL){
+				return FAIL;
+			}
+		}else{
+
+			if(this->insertNeighbor(this->vertices[offset].getNextListNode(),neighborId, version)==FAIL){
 				return FAIL;
 			}
 		}
@@ -183,19 +228,26 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset, int version){
 
    while(nodeOffset != INVALID && nodeOffset>=0) {
        if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
-         for (int i = 0; i < this->listNodeSize; i++){
-            if (*(this->vertices[nodeOffset].getEdgeProperty()) <= version){
+         for (int i = 0; i < this->listNodeSize; i++){//TODO break this thing if reached top version
+             int nodeVersion = this->vertices[nodeOffset].getVersion(i);
+             cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
+            if (nodeVersion <= version){
                neighbors[arraySize] = this->vertices[nodeOffset].getNeighbor(i);
                //cout<<neighbors[i]<<endl;
                arraySize++;
+            }else{
+                cout << "we stopped after " << arraySize << " neighbors"<< endl;
+                siiize = arraySize;
+                return neighbors;
             }
          }
          if (this->vertices[nodeOffset].getNextListNode()==INVALID){
-                siiize = arraySize;
+             siiize = arraySize;
             return neighbors;
          }else{
 //          neighbors = (uint32_t*) realloc(neighbors, this->listNodeSize * sizeof(uint32_t) * 2);
-            neighbors = (uint32_t*) realloc(neighbors, 2*arraySize*sizeof(uint32_t));
+//          neighbors = (uint32_t*) realloc(neighbors, 2*arraySize*sizeof(uint32_t));
+            neighbors = (uint32_t*) realloc(neighbors, (arraySize+this->listNodeSize)*sizeof(uint32_t));
             nodeOffset = this->vertices[nodeOffset].getNextListNode();
          }
 
@@ -203,16 +255,22 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset, int version){
       else if(this->vertices[nodeOffset].getNumberOfNeighbors()>0){
             int asd=0;
          for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
-            neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
+             int nodeVersion = this->vertices[nodeOffset].getVersion(i);
+             cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
+             if(nodeVersion <= version){
+                 neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
 //                cout<< arraySize+i <<" on else1 "<<this->vertices[nodeOffset].getNeighbor(i)<<endl;
 //                cout<< arraySize+i <<" on else2 "<<neighbors[arraySize+i]<<endl;
-                asd = i;
+                 asd = i;
+             }else{
+                 cout << "we stopped after " << arraySize+asd+1 << " neighbors"<< endl;
+
+                 break;
+             }
+
          }
-            arraySize=arraySize+asd+1;
-            siiize = arraySize;
-            for (int k = 0; k < siiize; k++) {
-               // cout<<k<<" on else after "<<neighbors[k]<<endl;
-            }
+           arraySize=arraySize+asd+1;
+           siiize = arraySize;
 //       cout<<"It may break here"<<endl;
          return neighbors;
       }else if(this->vertices[nodeOffset].getNumberOfNeighbors()==0){

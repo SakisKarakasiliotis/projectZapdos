@@ -7,7 +7,7 @@ class list_node
 {
 private:
 	uint32_t neighbor[LIST_NODE_SIZE];
-	uint32_t edgeProperty[LIST_NODE_SIZE];
+	int edgeProperty[LIST_NODE_SIZE];
 	ptr nextListNode;
 	int numberOfNeighbors;
 	int listNodeSize;
@@ -16,13 +16,15 @@ public:
 	~list_node();
 
 	//You should raise the numberOfNeighbors
-	OK_SUCCESS setNeighbor(uint32_t);
+	OK_SUCCESS setNeighbor(uint32_t edge);
+	OK_SUCCESS setNeighbor(uint32_t edge, int version);
 
 	//THIS PROPABLY IS FUCKED UP
 	uint32_t getNeighbor(int ID);
+	int getVersion(int ID);
 
 	OK_SUCCESS setEdgeProperty(uint32_t);
-	uint32_t* getEdgeProperty();
+	int* getEdgeProperty();
 
 	OK_SUCCESS setNextListNode(int);
 	int getNextListNode();

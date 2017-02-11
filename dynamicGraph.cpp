@@ -33,27 +33,19 @@ int dynamicGraph() {
    updateIndex* update_index = new updateIndex();
    hashClass* indexHash = new hashClass(HASH_SIZE, HASH_PERCISION);
 //HELPERS --------------------------------------------------------------------------------------------------------------
-   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult;
+   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult , versionIter = 0;
 
 //START READING FILES FOR GRAPH CREATION--------------------------------------------------------------------------------
    cout<<"INSERT ENTRY FILE: "<<endl;
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){
-//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyWorkload_FINAL.txt");
-        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\tinyWorkload_FINAL.txt");
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallWorkload_FINAL.txt");
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyWorkload_FINAL.txt");
-//         strcpy(get,"C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\a.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
+
       }
       else{
-//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\a.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\projectZapdosClion\\b.txt");
-//        	strcpy(get,"C:\\Users\\Windows 8\\Desktop\\tiny\\tinyGraph.txt");
-          strcpy(get,"C:\\Users\\Windows 8\\Desktop\\small\\smallGraph.txt");
-//        	strcpy(get,"C:\\Users\\user\\Desktop\\datasets\\tiny\\tinyGraph.txt");
-//         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\small\\smallGraph.txt");
-//         strcpy(get, "C:\\Users\\Marcus\\VirtualBox VMs\\linuxmint\\linux projects\\projectZapdos\\tiny\\tinyGraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
+
       }
 
 // Initializing FILE getting first token--------------------------------------------------------------------------------
@@ -95,7 +87,7 @@ int dynamicGraph() {
                      else if(entry == INVALID){
                         int temp = Buffer->addListNode();
                         Index->addEntry(temp,startNode);
-                        Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
+                        Buffer->insertNeighbor(Index->getEntry(startNode),goalNode, versionIter);
                         int possibleCCnum = Index->getCCnum(goalNode);
                         if(possibleCCnum == FAIL) {
                            cout<<"Requested Node "<<goalNode<<" is out of bounds on getccnum"<<endl;
@@ -114,7 +106,7 @@ int dynamicGraph() {
                         }
                      }
                      else if(entry!=INVALID){
-                        Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
+                        Buffer->insertNeighbor(Index->getEntry(startNode),goalNode, versionIter);
                         int possibleCCnum = Index->getCCnum(startNode);
                         if(possibleCCnum == FAIL){
                            cout<<"Requested Node "<<startNode<<" is out of bounds on getccnum"<<endl;
@@ -164,10 +156,10 @@ int dynamicGraph() {
                      else if(entry_inv == INVALID){
                         int temp_inv = Buffer_inv->addListNode();
                         Index_inv->addEntry(temp_inv,goalNode);
-                        Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
+                        Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode, versionIter);
                      }
                      else if(entry_inv!=INVALID){
-                        Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
+                        Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode, versionIter);
                      }
                   }
 // End of case A -------------------------------------------------------------------------------------------------------
@@ -175,6 +167,7 @@ int dynamicGraph() {
 
 // Case Q for question on the graph ------------------------------------------------------------------------------------
                else if(!strcmp(initial,"Q")){
+
                   cout<<"Question "<<numberOfQuestions<<":"<<endl;
                   int startNode = atoi(part2);
                   int goalNode = atoi(part3);
@@ -187,7 +180,14 @@ int dynamicGraph() {
                      }
                      else if(hasUpdateConnection == ALREADY_IN_UPDATE_INDEX)
                      {
-                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+//                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+//                        BFSresult = DBBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE, 0);
+                        int numberOfNeighbors;
+                         uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
+                         cout << "neighbors of " << goalNode <<":" <<endl;
+                         for (int i=0; i<numberOfNeighbors; i++) {
+                             cout << neighbors[i] << endl;
+                         }
                      }
                      else
                      {
@@ -197,11 +197,23 @@ int dynamicGraph() {
                      update_index->setMetricValue(update_index->getMetricValue()+1);
                   }
                   else{
-                     BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+                      int numberOfNeighbors;
+                      uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
+                      cout << "neighbors of " << goalNode <<" (version sensitive):" <<endl;
+                      for (int i=0; i<numberOfNeighbors; i++) {
+                          cout << neighbors[i] << endl;
+                      }
+                      neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3));
+                      cout << "neighbors of " << goalNode <<":" <<endl;
+                      for (int i=0; i<numberOfNeighbors; i++) {
+                          cout << neighbors[i] << endl;
+                      }
+//                     BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
                   }
                   cout<<"Path length is: "<<BFSresult<<endl;
                   BFSresult = 0;
                   numberOfQuestions++;
+                  versionIter++;
                }
 // End of case Q -------------------------------------------------------------------------------------------------------
             }
@@ -264,14 +276,14 @@ int dynamicGraph() {
                Index->addEntry(temp,startNode);
             }
 
-            Buffer->insertNeighbor(Index->getEntry(startNode),goalNode);
+            Buffer->insertNeighbor(Index->getEntry(startNode),goalNode, 0);
 
             if(Index_inv->getEntry(goalNode)==INVALID){
                int temp_inv = Buffer_inv->addListNode();
                Index_inv->addEntry(temp_inv,goalNode);
             }
 
-            Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode);
+            Buffer_inv->insertNeighbor(Index_inv->getEntry(goalNode),startNode, 0);
             getline(inpoutFile,inpout);
 
             if(!inpoutFile){

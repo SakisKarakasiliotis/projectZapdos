@@ -9,6 +9,9 @@ list_node::list_node(int listNodeSize){
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = LIST_NODE_SIZE;
+    for (int i=0; i<LIST_NODE_SIZE; i++) {
+        edgeProperty[i] = 0;
+    }
 }
 
 list_node::~list_node(){
@@ -26,6 +29,26 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge)
    {
        try{
            this->neighbor[this->numberOfNeighbors] = edge;
+           //cout<<"Adding edge: "<<edge<<endl;
+           if((int) this->neighbor[this->numberOfNeighbors] < 0) {
+               throw edge;
+           }
+
+       }catch (uint32_t e){
+           cout<<"Unable to add neighbor on list node "<<e<<endl;
+       }
+       return OK;
+
+   }
+   return FAIL;
+}
+OK_SUCCESS list_node::setNeighbor(uint32_t edge, int version)
+{
+   if(this->numberOfNeighbors != INVALID)
+   {
+       try{
+           this->neighbor[this->numberOfNeighbors] = edge;
+           this->edgeProperty[this->numberOfNeighbors] = version;
            //cout<<"Adding edge: "<<edge<<endl;
            if((int) this->neighbor[this->numberOfNeighbors] < 0) {
                throw edge;
@@ -60,7 +83,7 @@ OK_SUCCESS list_node::setEdgeProperty(uint32_t edgeProperty){
 	return FAIL;
 }
 
-uint32_t* list_node::getEdgeProperty(){
+int* list_node::getEdgeProperty(){
 	if(this->numberOfNeighbors){
 		return this->edgeProperty;
 	}
@@ -99,4 +122,11 @@ OK_SUCCESS list_node::setListNodeSize(int listNodeSize){
 
 int list_node::getListNodeSize(){
 	return this->listNodeSize;
+}
+
+int list_node::getVersion(int ID) {
+    if(ID<0 || ID >= listNodeSize){
+        return FAIL;
+    }
+    return edgeProperty[ID];
 }
