@@ -15,6 +15,7 @@ static int remainingThreads;
 static int threadsFinished = 0;
 static pthread_mutex_t remainingMux;
 static pthread_mutex_t allThreadsReady;
+static int* results;
 
 static pthread_mutex_t condLock;
 static pthread_mutex_t tasksLock;
@@ -41,16 +42,13 @@ JobScheduler::JobScheduler( int execution_threads) {
    pthread_cond_init(&tasksFinished, NULL);
    this->jobs = new jobQueue(JOB_Q_SIZE);
 
-   std::cout<<"POYTSES 22"<<std::endl;
    for (int i=0; i<execution_threads; i++) {
-      std::cout<<"POYTSES 33"<<std::endl;
       threadParams* params= new threadParams;
       params->threadno = i;
       params->numberOfThreads = this->numberOfThreads;
       params->array_of_jobs = this->jobs;
+      //params->results = this->result_table;
       pthread_create(&*(workers+i), NULL, &threadFun, (void*) params);
-      std::cout<<"POYTSES 4"<<std::endl;
-
    }
 }
 
@@ -111,6 +109,8 @@ void* JobScheduler::threadFun(void* params) {
    threadParams* threadParameters = (threadParams*) params;
    printf("No %d entered threadFun.\n", threadParameters->threadno);
    // OK_SUCCESS err;
+
+   int bfs_result = 0;
    bool flag = true;
    printf("No %d passed mutex_lock.\n", threadParameters->threadno);
    // pid_t x = syscall(__NR_gettid);
@@ -140,8 +140,11 @@ void* JobScheduler::threadFun(void* params) {
          job* j = threadParameters->array_of_jobs->dequeue();
          pthread_mutex_unlock(&queueLock);
          if (j != NULL) {
-            printf(" %d\n", threadParameters->threadno);
-            j->executeQuery();
+//            printf(" %d\n", threadParameters->threadno);
+            bfs_result = j->executeQuery();
+            int id = j->getID();
+             cout <<"this is the job id :"<< id << endl;
+             results[id]=bfs_result;
          }
       }
 
@@ -174,7 +177,8 @@ bool JobScheduler::submit_job(job* j){
 }
 
 void JobScheduler::execute_all_jobs(){
-
+   this->numOfJobs = jobs->getNumberOfElements();
+   results = new int[numOfJobs];
    pthread_mutex_lock(&allThreadsReady);
    //while(remainingThreads < this->numberOfThreads) {
 //    cout<<"going to wait"<<endl;
@@ -193,12 +197,18 @@ pthread_t JobScheduler::getWorkers(int i){
 
 void JobScheduler::wait_all_tasks_finish()
 {
+    cout<<"in wait all"<<endl;
    pthread_mutex_lock(&tasksLock);
    //while(threadsFinished < this->numberOfThreads){
     // pthread_cond_wait(&tasksFinished, &tasksLock);
   // }
     cout << "watf locked taskslock" << endl;
    pthread_mutex_unlock(&tasksLock);
+
+   for (int j = 0; j < this->numOfJobs; j++) {
+       cout<< results[j] << endl;
+   }
+   delete[] results;
 }
 
 bool JobScheduler::printQueue(){

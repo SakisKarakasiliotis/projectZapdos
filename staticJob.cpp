@@ -25,15 +25,10 @@ int staticJob :: executeQuery(){
    int grailResponse = goblet->askGrail(startNode, goalNode);
    if (grailResponse == YES || grailResponse == MAYBE) {
       BFSresult = SBBFS(goblet, outIndex, outgoing, startNode, inIndex, incoming, goalNode, BFS_FRINGE_SIZE);
-      if (BFSresult == INVALID) {
-         cout<<"There is no path from node "<<startNode<<" to "<<goalNode<<endl;
-      } else {
-         cout<<"Path length is: "<<BFSresult<<endl;
-      }
    }
    else {
       BFSresult = INVALID;
-      cout<<"There is no path from node "<<startNode<<" to "<<goalNode<<endl;
+     // cout<<"There is no path from node "<<startNode<<" to "<<goalNode<<endl;
    }
    return BFSresult;
 }

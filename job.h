@@ -5,6 +5,7 @@
 #include "index.h"
 #include "buffer.h"
 #include "grail.h"
+#include "updateIndex.h"
 
 class job {
 protected:
@@ -25,7 +26,7 @@ public:
 
   int getGoalNode();
   OK_SUCCESS setGoalNode(int node);
-   
+
   // virtual int executeQuery(grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming) = 0;
    virtual int executeQuery() = 0;
 };
@@ -33,8 +34,9 @@ public:
 class dynamicJob: public job{
 private:
    int version;
+   updateIndex* update_index;
 public:
-   dynamicJob(int id, int start, int goal, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming);
+   dynamicJob(int id, int start, int goal, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming , int version, updateIndex* update_index);
    ~dynamicJob();
 
    int getVersion();

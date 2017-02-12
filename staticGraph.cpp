@@ -204,6 +204,7 @@ int staticGraph() {
                  cout << "About to execute all jobs" << endl;
 //                 manager->printQueue();
                  manager->execute_all_jobs();
+                 currentJobID = 0;
                  manager->wait_all_tasks_finish();
                  int x;
                  cout << "Press any key to run next batch" << endl;

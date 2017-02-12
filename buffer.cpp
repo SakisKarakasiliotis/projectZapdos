@@ -230,13 +230,13 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset, int version){
        if(this->vertices[nodeOffset].getNumberOfNeighbors()==FULL){
          for (int i = 0; i < this->listNodeSize; i++){//TODO break this thing if reached top version
              int nodeVersion = this->vertices[nodeOffset].getVersion(i);
-             cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
+            // cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
             if (nodeVersion <= version){
                neighbors[arraySize] = this->vertices[nodeOffset].getNeighbor(i);
                //cout<<neighbors[i]<<endl;
                arraySize++;
             }else{
-                cout << "we stopped after " << arraySize << " neighbors"<< endl;
+              //  cout << "we stopped after " << arraySize << " neighbors"<< endl;
                 siiize = arraySize;
                 return neighbors;
             }
@@ -256,14 +256,14 @@ uint32_t* buffer::getNeighbors(int& siiize, int nodeOffset, int version){
             int asd=0;
          for (int i = 0; i < this->vertices[nodeOffset].getNumberOfNeighbors(); i++){
              int nodeVersion = this->vertices[nodeOffset].getVersion(i);
-             cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
+           //  cout<< "nodeVersion for " << nodeOffset <<"("<< i <<"): "<< nodeVersion << endl;
              if(nodeVersion <= version){
                  neighbors[arraySize+i] = this->vertices[nodeOffset].getNeighbor(i);
 //                cout<< arraySize+i <<" on else1 "<<this->vertices[nodeOffset].getNeighbor(i)<<endl;
 //                cout<< arraySize+i <<" on else2 "<<neighbors[arraySize+i]<<endl;
                  asd = i;
              }else{
-                 cout << "we stopped after " << arraySize+asd+1 << " neighbors"<< endl;
+             //    cout << "we stopped after " << arraySize+asd+1 << " neighbors"<< endl;
 
                  break;
              }

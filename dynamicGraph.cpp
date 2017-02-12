@@ -18,7 +18,7 @@
 #include "job.h"
 
 int dynamicGraph() {
-   //FILE READING VARIABLES -----------------------------------------------------------------------------------------------
+//FILE READING VARIABLES -----------------------------------------------------------------------------------------------
    string inpout;
    char *part1,part2[80],part3[80],initial[80],get[600];
    ifstream inpoutFile;
@@ -33,7 +33,9 @@ int dynamicGraph() {
    updateIndex* update_index = new updateIndex();
    hashClass* indexHash = new hashClass(HASH_SIZE, HASH_PERCISION);
 //HELPERS --------------------------------------------------------------------------------------------------------------
-   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, BFSresult , versionIter = 0;
+   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, versionIter = 0 , currentJobID = 0;
+//JOB AND SCHEDLER VARIABLES -------------------------------------------------------------------------------------------
+   JobScheduler* manager;
 
 //START READING FILES FOR GRAPH CREATION--------------------------------------------------------------------------------
    cout<<"INSERT ENTRY FILE: "<<endl;
@@ -60,7 +62,8 @@ int dynamicGraph() {
       if(!strcmp(part1,"A")||!strcmp(part1,"Q")){
 // -------------!! Workload execution started !!!----------------------------------------------------------------------
          cout<<"WORK FILE"<<endl;
-         while(!strcmp(part1,"A")||!strcmp(part1,"Q")||!strcmp(part1, "F")){
+          manager = new JobScheduler(THREAD_NUMBER);
+          while(!strcmp(part1,"A")||!strcmp(part1,"Q")||!strcmp(part1, "F")){
             if(strcmp(part1,"F")){
                strcpy(initial,part1);
                part1=strtok(NULL," \n\t");
@@ -171,55 +174,70 @@ int dynamicGraph() {
                   cout<<"Question "<<numberOfQuestions<<":"<<endl;
                   int startNode = atoi(part2);
                   int goalNode = atoi(part3);
-                  if( Index->getCCnum(startNode) != Index->getCCnum(goalNode) ){
-                     int hasUpdateConnection = update_index->findConnection( Index->getCCnum(startNode), Index->getCCnum(goalNode) );
-                     if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
-                     {
-                        cout<<"No path between "<<startNode<<" and "<<goalNode<<endl;
-                        BFSresult = INVALID;
-                     }
-                     else if(hasUpdateConnection == ALREADY_IN_UPDATE_INDEX)
-                     {
-//                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
-//                        BFSresult = DBBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE, 0);
-                        int numberOfNeighbors;
-                         uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
-                         cout << "neighbors of " << goalNode <<":" <<endl;
-                         for (int i=0; i<numberOfNeighbors; i++) {
-                             cout << neighbors[i] << endl;
-                         }
-                     }
-                     else
-                     {
-                        cout<<"Error in updateIndex->findConnection with startNode "<<startNode<<" goalNode "<<goalNode<<endl;
-                        return FAIL;
-                     }
-                     update_index->setMetricValue(update_index->getMetricValue()+1);
-                  }
-                  else{
-                      int numberOfNeighbors;
-                      uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
-                      cout << "neighbors of " << goalNode <<" (version sensitive):" <<endl;
-                      for (int i=0; i<numberOfNeighbors; i++) {
-                          cout << neighbors[i] << endl;
-                      }
-                      neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3));
-                      cout << "neighbors of " << goalNode <<":" <<endl;
-                      for (int i=0; i<numberOfNeighbors; i++) {
-                          cout << neighbors[i] << endl;
-                      }
-//                     BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
-                  }
-                  cout<<"Path length is: "<<BFSresult<<endl;
-                  BFSresult = 0;
-                  numberOfQuestions++;
-                  versionIter++;
+                    dynamicJob* newJob = new dynamicJob(currentJobID, startNode, goalNode, Index, Buffer, Index_inv, Buffer_inv, versionIter , update_index);
+                    currentJobID++;
+                    cout<<"About to enqueue a new job"<<endl;
+                    string res;
+                    if(manager->submit_job(newJob)){
+                        res = "true";
+                    } else {
+                        res = "false";
+                    }
+                    cout<<res<<endl;
+
+//                  if( Index->getCCnum(startNode) != Index->getCCnum(goalNode) ){
+//                     int hasUpdateConnection = update_index->findConnection( Index->getCCnum(startNode), Index->getCCnum(goalNode) );
+//                     if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
+//                     {
+//                        cout<<"No path between "<<startNode<<" and "<<goalNode<<endl;
+//                        BFSresult = INVALID;
+//                     }
+//                     else if(hasUpdateConnection == ALREADY_IN_UPDATE_INDEX)
+//                     {
+////                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+////                        BFSresult = DBBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE, 0);
+//                        int numberOfNeighbors;
+//                         uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
+//                         cout << "neighbors of " << goalNode <<":" <<endl;
+//                         for (int i=0; i<numberOfNeighbors; i++) {
+//                             cout << neighbors[i] << endl;
+//                         }
+//                     }
+//                     else
+//                     {
+//                        cout<<"Error in updateIndex->findConnection with startNode "<<startNode<<" goalNode "<<goalNode<<endl;
+//                        return FAIL;
+//                     }
+//                     update_index->setMetricValue(update_index->getMetricValue()+1);
+//                  }
+//                  else{
+//                      int numberOfNeighbors;
+//                      uint32_t* neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3), 0);
+//                      cout << "neighbors of " << goalNode <<" (version sensitive):" <<endl;
+//                      for (int i=0; i<numberOfNeighbors; i++) {
+//                          cout << neighbors[i] << endl;
+//                      }
+//                      neighbors = Buffer->getNeighbors(numberOfNeighbors, Index->getEntry(3));
+//                      cout << "neighbors of " << goalNode <<":" <<endl;
+//                      for (int i=0; i<numberOfNeighbors; i++) {
+//                          cout << neighbors[i] << endl;
+//                      }
+////                     BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+//                  }
+//                  cout<<"Path length is: "<<BFSresult<<endl;
+//                  BFSresult = 0;
+//                  numberOfQuestions++;
                }
 // End of case Q -------------------------------------------------------------------------------------------------------
             }
             else if(!strcmp(part1,"F"))
 // Case F start --------------------------------------------------------------------------------------------------------
             {
+               manager->execute_all_jobs();
+               manager->wait_all_tasks_finish();
+               int x;
+               cout << "Press any key to run next batch" << endl;
+               cin >> x;
                if(update_index->calculateMetricValue(numberOfQuestions) >= RECALCULATE_CONECTED_COMPONENTS){
                   for( int i=0; i<Index->getSizeOfIndex(); i++){
                      Index->setCCnum(i, INVALID);
@@ -231,6 +249,7 @@ int dynamicGraph() {
 
                }
                numberOfQuestions = 0;
+               currentJobID = 0;
 // End of case F -------------------------------------------------------------------------------------------------------
             }
 
@@ -239,6 +258,9 @@ int dynamicGraph() {
             if(!inpoutFile.eof()){
                strcpy(inpoutLine,inpout.c_str());
                part1=strtok(inpoutLine," \n\t");
+               if(!strcmp(part1,"A") && !strcmp(initial,"Q")){
+                   versionIter++;
+               }
             }
             else{
                strcpy(part1,"done");

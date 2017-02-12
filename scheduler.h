@@ -23,6 +23,8 @@ private:
    pthread_t* workers;
    pthread_t worker;
    jobQueue* jobs;
+   int numOfJobs;
+
 
 public:
    JobScheduler( int execution_threads);

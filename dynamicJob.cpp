@@ -5,11 +5,11 @@
 #include "job.h"
 #include "bfs.h"
 
-dynamicJob::dynamicJob(int id, int start, int goal, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming, int version) {
+dynamicJob::dynamicJob(int id, int start, int goal, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming, int version , updateIndex* update_index){
    this->ID = id;
    this->startNode = start;
    this->goalNode = goal;
-   this->goblet = goblet;
+   this->update_index = update_index;
    this->outIndex = outIndex;
    this->inIndex = inIndex;
    this->incoming = incoming;
@@ -31,13 +31,32 @@ OK_SUCCESS dynamicJob::setVersion(int ver) {
 
 //  int executeQuery(grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming);
 int dynamicJob::executeQuery() {
-   int BFSresult = 0;
-   BFSresult = BBFS(outIndex, outgoing, start, inIndex, incoming, dest, BFS_FRINGE_SIZE, version);
-   if (BFSresult == INVALID) {
-      cout<<"There is no path from node "<<startNode<<" to "<<goalNode<<endl;
-   } else {
-      cout<<"Path length is: "<<BFSresult<<endl;
+    int BFSresult;
+   if( outIndex->getCCnum(startNode) != outIndex->getCCnum(goalNode) ){
+      int hasUpdateConnection = update_index->findConnection( outIndex->getCCnum(startNode), outIndex->getCCnum(goalNode) );
+      if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
+      {
+         cout<<"No path between "<<startNode<<" and "<<goalNode<<endl;
+         BFSresult = INVALID;
+      }
+      else if(hasUpdateConnection == ALREADY_IN_UPDATE_INDEX)
+      {
+//                        BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+        BFSresult = DBBFS(outIndex, outgoing, startNode, inIndex, incoming, goalNode, BFS_FRINGE_SIZE, this->version);
+
+      }
+      else
+      {
+         cout<<"Error in updateIndex->findConnection with startNode "<<startNode<<" goalNode "<<goalNode<<endl;
+         return FAIL;
+      }
+      update_index->setMetricValue(update_index->getMetricValue()+1);
    }
-   
-   return BFSresult;
+   else{
+       BFSresult = DBBFS(outIndex, outgoing, startNode, inIndex, incoming, goalNode, BFS_FRINGE_SIZE, this->version);
+//                     BFSresult = BBFS(Index, Buffer, startNode, Index_inv, Buffer_inv, goalNode, BFS_FRINGE_SIZE);
+   }
+
+return BFSresult;
+
 }

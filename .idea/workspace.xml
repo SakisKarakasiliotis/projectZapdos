@@ -14,10 +14,14 @@
     <list default="true" id="74d1d121-351e-4651-a967-94781ac49959" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zapdos" afterPath="$PROJECT_DIR$/zapdos" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buffer.cpp" afterPath="$PROJECT_DIR$/buffer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buffer.h" afterPath="$PROJECT_DIR$/buffer.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dynamicGraph.cpp" afterPath="$PROJECT_DIR$/dynamicGraph.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/list_node.cpp" afterPath="$PROJECT_DIR$/list_node.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/list_node.h" afterPath="$PROJECT_DIR$/list_node.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dynamicJob.cpp" afterPath="$PROJECT_DIR$/dynamicJob.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/job.h" afterPath="$PROJECT_DIR$/job.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scheduler.cpp" afterPath="$PROJECT_DIR$/scheduler.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scheduler.h" afterPath="$PROJECT_DIR$/scheduler.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staticGraph.cpp" afterPath="$PROJECT_DIR$/staticGraph.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staticJob.cpp" afterPath="$PROJECT_DIR$/staticJob.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +43,8 @@
       <file leaf-file-name="dynamicJob.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dynamicJob.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="7" column="151" lean-forward="false" selection-start-line="7" selection-start-column="139" selection-end-line="7" selection-end-column="151" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -48,33 +52,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staticJob.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/staticJob.cpp">
+      <file leaf-file-name="job.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/job.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="301">
+              <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#29#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dynamicGraph.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dynamicGraph.cpp">
+      <file leaf-file-name="job.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/job.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="201" column="36" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateIndex.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/updateIndex.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,62 +77,71 @@
       <file leaf-file-name="staticGraph.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staticGraph.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1532">
-              <caret line="48" column="48" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#61#0" expanded="true" />
-                <element signature="e#345#361#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bfs.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bfs.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1219">
-              <caret line="151" column="71" lean-forward="false" selection-start-line="151" selection-start-column="71" selection-end-line="151" selection-end-column="71" />
+            <state relative-caret-position="594">
+              <caret line="210" column="26" lean-forward="false" selection-start-line="206" selection-start-column="17" selection-end-line="210" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buffer.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="buffer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buffer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4446">
-              <caret line="251" column="10" lean-forward="true" selection-start-line="251" selection-start-column="10" selection-end-line="251" selection-end-column="10" />
+            <state relative-caret-position="319">
+              <caret line="265" column="15" lean-forward="false" selection-start-line="265" selection-start-column="15" selection-end-line="265" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buffer.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buffer.h">
+      <file leaf-file-name="tinyWorkload_FINAL.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tiny/tinyWorkload_FINAL.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="522">
-              <caret line="30" column="15" lean-forward="false" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+              <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_node.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/list_node.cpp">
+      <file leaf-file-name="scheduler.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scheduler.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="44" column="58" lean-forward="false" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+            <state relative-caret-position="414">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_node.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/list_node.h">
+      <file leaf-file-name="scheduler.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scheduler.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+            <state relative-caret-position="270">
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dynamicGraph.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dynamicGraph.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="236" column="48" lean-forward="false" selection-start-line="236" selection-start-column="48" selection-end-line="236" selection-end-column="48" />
+              <folding>
+                <element signature="e#42#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,6 +172,8 @@
       <find>threadParameters</find>
       <find>rank</find>
       <find>contains</find>
+      <find>index</find>
+      <find>updateIndex1</find>
     </findStrings>
     <replaceStrings>
       <replace>subGraphBuffer</replace>
@@ -203,11 +208,8 @@
         <option value="$PROJECT_DIR$/index.cpp" />
         <option value="$PROJECT_DIR$/a.txt" />
         <option value="$PROJECT_DIR$/b.txt" />
-        <option value="$PROJECT_DIR$/makefile" />
         <option value="$PROJECT_DIR$/stack.cpp" />
-        <option value="$PROJECT_DIR$/scheduler.cpp" />
         <option value="$PROJECT_DIR$/defines.h" />
-        <option value="$PROJECT_DIR$/staticGraph.cpp" />
         <option value="$PROJECT_DIR$/rank.h" />
         <option value="$PROJECT_DIR$/rank.cpp" />
         <option value="$PROJECT_DIR$/grail.h" />
@@ -216,8 +218,15 @@
         <option value="$PROJECT_DIR$/buffer.h" />
         <option value="$PROJECT_DIR$/list_node.cpp" />
         <option value="$PROJECT_DIR$/list_node.h" />
+        <option value="$PROJECT_DIR$/staticJob.cpp" />
+        <option value="$PROJECT_DIR$/staticGraph.cpp" />
+        <option value="$PROJECT_DIR$/makefile" />
+        <option value="$PROJECT_DIR$/dynamicJob.cpp" />
+        <option value="$PROJECT_DIR$/job.h" />
         <option value="$PROJECT_DIR$/dynamicGraph.cpp" />
+        <option value="$PROJECT_DIR$/scheduler.h" />
         <option value="$PROJECT_DIR$/buffer.cpp" />
+        <option value="$PROJECT_DIR$/scheduler.cpp" />
       </list>
     </option>
   </component>
@@ -258,6 +267,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="projectZapdosClion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectZapdos" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectZapdosClion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tiny2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -503,12 +526,12 @@
       <workItem from="1485621522894" duration="11609000" />
       <workItem from="1485803630845" duration="6149000" />
       <workItem from="1486060727701" duration="8605000" />
-      <workItem from="1486832146640" duration="11167000" />
+      <workItem from="1486832146640" duration="20284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141753000" />
+    <option name="totallyTimeSpent" value="150870000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -520,13 +543,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10906217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30877572" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -538,7 +562,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3217768" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -618,13 +641,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myHash.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1242">
@@ -694,7 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tiny/tinyWorkload_FINAL.txt" />
     <entry file="file://$PROJECT_DIR$/component.h" />
     <entry file="file://$PROJECT_DIR$/stack.h" />
     <entry file="file://$PROJECT_DIR$/small/smallGraph.txt" />
@@ -713,13 +728,6 @@
           <folding>
             <element signature="e#42#61#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -751,24 +759,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/job.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/job.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stronglyConnectedComponents.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="954">
           <caret line="53" column="33" lean-forward="false" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,20 +772,6 @@
         <state relative-caret-position="468">
           <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scheduler.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scheduler.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="934">
-          <caret line="118" column="16" lean-forward="false" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -806,14 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jobQueue.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="72" column="23" lean-forward="false" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -842,14 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="119" lean-forward="false" selection-start-line="2" selection-start-column="119" selection-end-line="2" selection-end-column="119" />
           <folding />
         </state>
       </provider>
@@ -894,37 +859,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staticGraph.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1532">
-          <caret line="48" column="48" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-            <element signature="e#345#361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staticJob.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dynamicJob.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/updateIndex.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -933,10 +867,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dynamicGraph.cpp">
+    <entry file="file://$PROJECT_DIR$/jobQueue.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="201" column="36" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+        <state relative-caret-position="859">
+          <caret line="72" column="23" lean-forward="false" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -949,10 +883,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/updateIndex.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="290" lean-forward="false" selection-start-line="1" selection-start-column="290" selection-end-line="1" selection-end-column="290" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staticJob.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dynamicJob.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="151" lean-forward="false" selection-start-line="7" selection-start-column="139" selection-end-line="7" selection-end-column="151" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staticGraph.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="210" column="26" lean-forward="false" selection-start-line="206" selection-start-column="17" selection-end-line="210" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/job.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+          <folding>
+            <element signature="e#29#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/job.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scheduler.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/buffer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4446">
-          <caret line="251" column="10" lean-forward="true" selection-start-line="251" selection-start-column="10" selection-end-line="251" selection-end-column="10" />
+        <state relative-caret-position="319">
+          <caret line="265" column="15" lean-forward="false" selection-start-line="265" selection-start-column="15" selection-end-line="265" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tiny/tinyWorkload_FINAL.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dynamicGraph.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="236" column="48" lean-forward="false" selection-start-line="236" selection-start-column="48" selection-end-line="236" selection-end-column="48" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scheduler.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding />
         </state>
       </provider>
