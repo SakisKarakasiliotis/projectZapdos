@@ -33,7 +33,7 @@ OK_SUCCESS dynamicJob::setVersion(int ver) {
 int dynamicJob::executeQuery() {
     int BFSresult;
    if( outIndex->getCCnum(startNode) != outIndex->getCCnum(goalNode) ){
-      int hasUpdateConnection = update_index->findConnection( outIndex->getCCnum(startNode), outIndex->getCCnum(goalNode) );
+      int hasUpdateConnection = update_index->findConnection( outIndex->getCCnum(startNode), outIndex->getCCnum(goalNode) , this->version);
       if( hasUpdateConnection == NOT_IN_UPDATE_INDEX )
       {
          cout<<"No path between "<<startNode<<" and "<<goalNode<<endl;

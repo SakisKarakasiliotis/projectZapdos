@@ -238,6 +238,19 @@ int grail::getSCCId(int nodeName) {
    return this->SCC->checkBelongsToComponent(nodeName);
 }
 
+OK_SUCCESS grail::iterateStronglyConnectedComponentID(componentCursor *cursor) {
+    cursor->component_ptr = SCC->getComponent(0);
+    cursor->currentID = 0;
+    return OK;
+}
+
+bool grail::next_StronglyConnectedComponentID(componentCursor *cursor) {
+    cursor->currentID = cursor->currentID + 1;
+    if(cursor->currentID > SCC->getComponentsCount()) return FAIL;
+    cursor->component_ptr = SCC->getComponent(cursor->currentID);
+    return true;
+}
+
 tarjanNode::tarjanNode(int nodeName) {
    this->nodeName = nodeName;
    this->tIndex = INVALID;

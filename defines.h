@@ -19,6 +19,7 @@
 #define FROM 0
 #define TO 1
 #define RECALCULATE_CONECTED_COMPONENTS 0.6
+#define VERSION 2
 
 #define MIN_RANK 0
 #define RANK 1

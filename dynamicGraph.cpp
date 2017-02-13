@@ -33,7 +33,7 @@ int dynamicGraph() {
    updateIndex* update_index = new updateIndex();
    hashClass* indexHash = new hashClass(HASH_SIZE, HASH_PERCISION);
 //HELPERS --------------------------------------------------------------------------------------------------------------
-   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, versionIter = 0 , currentJobID = 0;
+   int entry=0, lineNumber=0, OPTION=2,entry_inv=0, numberOfQuestions=0, versionIter = 0 , currentJobID = 0, ui_result;
 //JOB AND SCHEDLER VARIABLES -------------------------------------------------------------------------------------------
    JobScheduler* manager;
 
@@ -42,11 +42,13 @@ int dynamicGraph() {
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){
-          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
+//          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/small2/smallWorkload_FINAL.txt");
 
       }
       else{
-         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
+//         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/small2/smallGraph.txt");
 
       }
 
@@ -90,7 +92,7 @@ int dynamicGraph() {
                      else if(entry == INVALID){
                         int temp = Buffer->addListNode();
                         Index->addEntry(temp,startNode);
-                        Buffer->insertNeighbor(Index->getEntry(startNode),goalNode, versionIter);
+                        Buffer->insertNeighbor(Index->getEntry(startNode), goalNode, versionIter);
                         int possibleCCnum = Index->getCCnum(goalNode);
                         if(possibleCCnum == FAIL) {
                            cout<<"Requested Node "<<goalNode<<" is out of bounds on getccnum"<<endl;
@@ -134,9 +136,12 @@ int dynamicGraph() {
                            }
                            else{
                               if(possibleCCnum != goalNodeCCnum){
-                                 int foundInUpdateIndex = update_index->findConnection(possibleCCnum,goalNodeCCnum);
+                                 int foundInUpdateIndex = update_index->findConnection(possibleCCnum,goalNodeCCnum, versionIter);
                                  if(foundInUpdateIndex == NOT_IN_UPDATE_INDEX){
-                                    update_index->addNewConnection(possibleCCnum,goalNodeCCnum);
+                                     ui_result = update_index->addNewConnection(possibleCCnum,goalNodeCCnum, versionIter);
+                                     if(ui_result == FAIL){
+                                         cout<<"Something went wrong with ui"<<endl;
+                                     }
                                  }
                                  else if(foundInUpdateIndex == FAIL){
                                     cout<<"out of bounds in adding to update index "<<possibleCCnum << " and "<< goalNodeCCnum <<endl;

@@ -14,6 +14,13 @@
 #include "stronglyConnectedComponents.h"
 #include "rank.h"
 
+
+typedef struct{
+    component* component_ptr;
+    int currentID;
+} componentCursor;
+
+
 class grail {
 private:
     n_index* index;
@@ -55,6 +62,8 @@ public:
     OK_SUCCESS askGrail(int from , int to);
 
    int getSCCId(int nodeName);
+    OK_SUCCESS iterateStronglyConnectedComponentID(componentCursor* cursor);
+    bool next_StronglyConnectedComponentID(componentCursor* cursor);
 };
 
 class tarjanNode{

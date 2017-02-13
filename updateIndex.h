@@ -20,14 +20,19 @@ public:
 
     float calculateMetricValue(int);
 
+    OK_SUCCESS resize();
+
     OK_SUCCESS addNewConnection(int, int);
+    OK_SUCCESS addNewConnection(int, int, int);
 
     OK_SUCCESS findConnection(int, int);
+    OK_SUCCESS findConnection(int, int, int);
 
 private:
         int **table;
         int metricValue;
         int latestEntry;
+        int size;
 public:
     int getLatestEntry() const;
 
