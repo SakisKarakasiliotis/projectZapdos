@@ -44,18 +44,14 @@ int staticGraph() {
    cout<<"INSERT ENTRY FILE: "<<endl;
    do{
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
-      if(OPTION==1){//WORKLOAD
-          strcpy(get, "/media/sf_projectZapdosClion/small2/smallWorkload_FINAL.txt");
+      if(OPTION==1){
 //          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
-//          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
-//          strcpy(get, "/media/sf_projectZapdosClion/b.txt");
-//          strcpy(get, "/media/sf_projectZapdosClion/wikigraph/wikigraph_work.txt");
+         strcpy(get, "/media/sf_projectZapdosClion/medium2/mediumWorkload_FINAL.txt");
+
       }
-      else{//GRAPH
-         strcpy(get,"/media/sf_projectZapdosClion/small2/smallGraph.txt");
+      else{
 //         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
-//         strcpy(get,"/media/sf_projectZapdosClion/a.txt");
-//         strcpy(get,"/media/sf_projectZapdosClion/wikigraph/wikigraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/medium2/mediumGraph.txt");
 
       }
 

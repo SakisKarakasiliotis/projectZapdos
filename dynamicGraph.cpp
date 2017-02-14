@@ -43,12 +43,12 @@ int dynamicGraph() {
       //TODO: SELECT PATH ACCORDING TO FILE REQUIRED !!!!!!!
       if(OPTION==1){
 //          strcpy(get, "/media/sf_projectZapdosClion/tiny2/tinyWorkload_FINAL.txt");
-          strcpy(get, "/media/sf_projectZapdosClion/small2/smallWorkload_FINAL.txt");
+          strcpy(get, "/media/sf_projectZapdosClion/medium2/mediumWorkload_FINAL.txt");
 
       }
       else{
 //         strcpy(get,"/media/sf_projectZapdosClion/tiny2/tinyGraph.txt");
-         strcpy(get,"/media/sf_projectZapdosClion/small2/smallGraph.txt");
+         strcpy(get,"/media/sf_projectZapdosClion/medium2/mediumGraph.txt");
 
       }
 
@@ -241,8 +241,8 @@ int dynamicGraph() {
                manager->execute_all_jobs();
                manager->wait_all_tasks_finish();
                int x;
-               cout << "Press any key to run next batch" << endl;
-               cin >> x;
+               //cout << "Press any key to run next batch" << endl;
+               //cin >> x;
                if(update_index->calculateMetricValue(numberOfQuestions) >= RECALCULATE_CONECTED_COMPONENTS){
                   for( int i=0; i<Index->getSizeOfIndex(); i++){
                      Index->setCCnum(i, INVALID);

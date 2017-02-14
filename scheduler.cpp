@@ -143,7 +143,7 @@ void* JobScheduler::threadFun(void* params) {
 //            printf(" %d\n", threadParameters->threadno);
             bfs_result = j->executeQuery();
             int id = j->getID();
-             cout <<"this is the job id :"<< id << endl;
+             //cout <<"this is the job id :"<< id << endl;
              results[id]=bfs_result;
          }
       }
@@ -206,6 +206,7 @@ void JobScheduler::wait_all_tasks_finish()
    pthread_mutex_unlock(&tasksLock);
 
    for (int j = 0; j < this->numOfJobs; j++) {
+
        cout<< results[j] << endl;
    }
    delete[] results;
