@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #ifndef PROJECTZAPDOS_COMPONENT_H
 #define PROJECTZAPDOS_COMPONENT_H
 

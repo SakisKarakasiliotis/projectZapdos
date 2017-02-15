@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #ifndef PROJECTZAPDOS_STACK_H
 #define PROJECTZAPDOS_STACK_H
 

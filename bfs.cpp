@@ -16,9 +16,7 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
    queue* inChecked = new queue(inIndex->getNumberOfEntries());
 
    int pathLength = 1;
-   //--------------TEST CODE--------------
-   //srand(time(NULL));
-   //--------------TEST CODE--------------
+
 
    outFringe->enqueue(start);
    inFringe->enqueue(dest);
@@ -37,7 +35,6 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
 
    while (!outFringe->isEmpty() && !inFringe->isEmpty())
    {
-      //*error = OK;
       error = OK;
       if (inFringe->getNumberOfElements() > outFringe->getNumberOfElements())
       {
@@ -61,16 +58,9 @@ int BBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex, 
          node = workingIndex->getEntry(fringe->dequeue(error));
           if (node == INVALID) continue;
           neighbors = graph->getNeighbors(numberOfNeighbors, node);
-         //--------------TEST CODE--------------
-         // node = 8;
-         // numberOfNeighbors = 10;
-         // neighbors = (uint32_t*) malloc(numberOfNeighbors*sizeof(uint32_t));
-         // for (int i=0; i<numberOfNeighbors; i++)
-         //    neighbors[i] = rand()%100;
-         //--------------TEST CODE--------------
+
          for (int i=0; i<numberOfNeighbors; i++)
          {
-             //Scout<<"in dbfs "<<neighbors[i]<<endl;
             if (otherFringe->contains(neighbors[i]))
             {
                delete inChecked;
@@ -105,9 +95,6 @@ int DBBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex,
    queue* inChecked = new queue(inIndex->getNumberOfEntries());
 
    int pathLength = 1;
-   //--------------TEST CODE--------------
-   //srand(time(NULL));
-   //--------------TEST CODE--------------
 
    outFringe->enqueue(start);
    inFringe->enqueue(dest);
@@ -126,7 +113,6 @@ int DBBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex,
 
    while (!outFringe->isEmpty() && !inFringe->isEmpty())
    {
-      //*error = OK;
       error = OK;
       if (inFringe->getNumberOfElements() > outFringe->getNumberOfElements())
       {
@@ -150,16 +136,9 @@ int DBBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex,
          node = workingIndex->getEntry(fringe->dequeue(error));
           if (node == INVALID) continue;
           neighbors = graph->getNeighbors(numberOfNeighbors, node, version);
-         //--------------TEST CODE--------------
-         // node = 8;
-         // numberOfNeighbors = 10;
-         // neighbors = (uint32_t*) malloc(numberOfNeighbors*sizeof(uint32_t));
-         // for (int i=0; i<numberOfNeighbors; i++)
-         //    neighbors[i] = rand()%100;
-         //--------------TEST CODE--------------
+
          for (int i=0; i<numberOfNeighbors; i++)
          {
-             //Scout<<"in dbfs "<<neighbors[i]<<endl;
             if (otherFringe->contains(neighbors[i]))
             {
                delete inChecked;
@@ -183,10 +162,9 @@ int DBBFS(n_index* outIndex, buffer* outgoing, uint32_t start, n_index* inIndex,
    delete outFringe;
    return INVALID;
 }
-//24921 important for small
+
 OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming)
 {
-    cout<<"INIT GCC"<<endl;
     bool key = true;
     bool updateCCNum = false;
     uint32_t startNode;
@@ -204,25 +182,16 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
         startNode = rand() % outIndex->getSizeOfIndex();
         if(outIndex->getEntry(startNode) != INVALID || inIndex->getEntry(startNode) != INVALID ) key = false;
     }while( key );
-    cout<<"First node: "<<startNode<<endl;
     fringe->enqueue(startNode);
 
-
-
-
-    cout<<"First GO at GCC"<<endl;
     while (iterNo < outIndex->getNumberOfEntries())
     {
-       // cout<<"Before inner While: "<<iterNo<<endl;
         while (!fringe->isEmpty())
         {
             int nodeName = fringe->dequeue(error);
-           // cout<<"nodename: "<<nodeName<<endl;
             if((ccnum = outIndex->getCCnum(nodeName)) == FAIL ){
-                cout<<nodeName<<" Out of bounds on GetVonnectedComponents"<<endl;
                 return FAIL;
             }else if(ccnum != INVALID){
-                //cout<<"got not invalid ccnum"<<endl;
                 continue;
             }
             else if(ccnum == INVALID){
@@ -231,16 +200,10 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
                 int outNodeOffset = outIndex->getEntry(nodeName);
                 if(outNodeOffset != INVALID){
                     outNeighbors = outgoing->getNeighbors(numberOfNeighbors, outNodeOffset);//TODO:: reinitialize outNeighhor!!!!!!!!!!!
-                    //cout<<"This should print NON "<<numberOfNeighbors<<endl;
-                    if(outNeighbors == NULL){
-                        cout<<"OK"<<endl;
-                        //continue;
-                    }else{
+                    if(outNeighbors != NULL){
                         updateCCNum = true;
                         for (int i=0; i<numberOfNeighbors; i++)
                         {
-                            // cout<<"adding in queue from outN"<<numberOfNeighbors<<endl;
-//                        cout<<"adding in queue from outN "<<(int) outNeighbors[i]<<endl;
                             fringe->enqueue(outNeighbors[i]);
                         }
                         numberOfNeighbors=0;
@@ -254,9 +217,6 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
                     }else{
                         updateCCNum = true;
                         for (int i = 0; i < numberOfNeighbors; i++) {
-                            //   cout<<"adding in queue from inN"<<numberOfNeighbors<<endl;
-                            //  cout<<"adding in queue from inN"<<" "<<inNeighbors[i]<<endl;
-
                             fringe->enqueue(inNeighbors[i]);
                         }
                         numberOfNeighbors = 0;
@@ -271,13 +231,11 @@ OK_SUCCESS GetConnectedComponents(n_index* outIndex, buffer* outgoing, n_index* 
         }
 
         while(iterNo<outIndex->getNumberOfEntries()){
-            //cout<<"inside for stat"<<iterNo<<endl;
-            //int nodeOffset = outIndex->getEntry(iterNo);
+
             if (outIndex->getCCnum(iterNo) == INVALID)
             {
                 startNode = iterNo;
                 fringe->enqueue(startNode);
-                //cout<<iterNo<<"if inside for"<<endl;
                 iterNo++;
                 break;
             }

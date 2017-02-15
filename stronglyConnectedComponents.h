@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #ifndef PROJECTZAPDOS_STRONGLYCONNECTEDCOMPONENTS_H
 #define PROJECTZAPDOS_STRONGLYCONNECTEDCOMPONENTS_H
 
@@ -32,7 +28,7 @@ public:
 
 
 private:
-    component* components; //this should not contain empty spots
+    component* components;
     int componentsCount; //1 based
     int* belongsToComponent;
 

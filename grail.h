@@ -1,14 +1,7 @@
-//
-// Created by Windows 8 on 09-Dec-16.
-//
-
 #ifndef PROJECTZAPDOS_GRAIL_H
 #define PROJECTZAPDOS_GRAIL_H
 
 #include <iostream>
-
-
-
 #include "index.h"
 #include "buffer.h"
 #include "stronglyConnectedComponents.h"
@@ -91,10 +84,7 @@ private:
    int nodeName;
    int tIndex;
    int lowlink;
-//   int neighborsChecked;
    bool DFSInitialized;
-   //bool onTarjanStack;
-
 };
 
 

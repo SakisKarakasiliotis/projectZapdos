@@ -1,6 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
 #include <iostream>
 #include "stronglyConnectedComponents.h"
 #include "defines.h"
@@ -41,11 +38,9 @@ void stronglyConnectedComponents::setBelongsToComponent(int *belongsToComponent)
 
 component *stronglyConnectedComponents::getComponent(int id) {
     if(id < 0 || id >= this->componentsCount){
-        std::cout<<"Requested component is out of Bounds on getComponent"<<std::endl;
         return NULL;
     }
     if(this->components[id].getCompId() == INVALID || this->components[id].getCompId() < 0){
-        std::cout<<"Requested component doesn't exist getComponent"<<std::endl;
         return NULL;
     }
     return components+id;
@@ -53,7 +48,6 @@ component *stronglyConnectedComponents::getComponent(int id) {
 
 int stronglyConnectedComponents::checkBelongsToComponent(int id) {
     if(id < 0 ){
-        std::cout<<"Requested component is out of Bounds on checkBelongsToComponent"<<std::endl;
         return FAIL;
     }
     return this->belongsToComponent[id];

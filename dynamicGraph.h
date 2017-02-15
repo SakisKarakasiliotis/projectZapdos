@@ -1,7 +1,3 @@
-//
-// Created by Marcus on 11/12/2016.
-//
-
 #ifndef PROJECTZAPDOS_DYNAMICGRAPH_H
 #define PROJECTZAPDOS_DYNAMICGRAPH_H
 

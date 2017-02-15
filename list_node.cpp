@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-
 #include "list_node.h"
 
 using namespace std;
@@ -20,7 +19,6 @@ list_node::~list_node(){
 	this->nextListNode = INVALID;
 	this->numberOfNeighbors = 0;
 	this->listNodeSize = INVALID;
-	cout<<"List node Destructed"<<endl;
 }
 
 OK_SUCCESS list_node::setNeighbor(uint32_t edge)
@@ -29,7 +27,6 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge)
    {
        try{
            this->neighbor[this->numberOfNeighbors] = edge;
-           //cout<<"Adding edge: "<<edge<<endl;
            if((int) this->neighbor[this->numberOfNeighbors] < 0) {
                throw edge;
            }
@@ -49,7 +46,6 @@ OK_SUCCESS list_node::setNeighbor(uint32_t edge, int version)
        try{
            this->neighbor[this->numberOfNeighbors] = edge;
            this->edgeProperty[this->numberOfNeighbors] = version;
-           //cout<<"Adding edge: "<<edge<<endl;
            if((int) this->neighbor[this->numberOfNeighbors] < 0) {
                throw edge;
            }

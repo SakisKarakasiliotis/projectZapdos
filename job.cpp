@@ -14,15 +14,7 @@ OK_SUCCESS job::setID(int ID)
    return OK;
 }
 
-// char[] job::getQuerryString()
-// {
-//    return this->queryString;
-// }
 
-// OK_SUCCESS job::setQuerryString(string qStr){
-//    strcpy(this->queryString,qStr.c_str());
-//    return OK;
-// }
 int job :: getStartNode() {
    return this->startNode;
 }

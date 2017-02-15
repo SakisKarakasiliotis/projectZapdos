@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 09-Dec-16.
-//
-
 #include <time.h>
 #include "grail.h"
 #include "stack.h"
@@ -60,9 +56,7 @@ OK_SUCCESS grail::initializeGrail() {
 }
 
 OK_SUCCESS grail::generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuffer) {
-    cout<<"GENERATING HYPERGRAPH"<<endl;
     if(subGraphIndex == NULL || subGraphBuffer==NULL){
-        cout<<"Parameters contain NULL values"<<endl;
         return FAIL;
     }
     for (int i = 0; i < this->sizeOfGrail; i++) {
@@ -83,7 +77,6 @@ OK_SUCCESS grail::generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuf
                 return FAIL;
             }
             if(currentNodeOffset == INVALID){
-                cout<<"Node "<<currentNode<<" with offset "<<currentNodeOffset<<" requested has no neighbors on generateHypergraph"<<endl;
                 continue;
             }
             int numberOfNeighbors;
@@ -112,14 +105,10 @@ OK_SUCCESS grail::generateHyperGraph(n_index *subGraphIndex, buffer *subGraphBuf
             }
         }
     }
-    cout<<"HOUSTON WE HAVE A HYPERGRAPH"<<endl;
     return OK;
 }
 
 OK_SUCCESS grail::calculateRanks() {
-
-
-
    for(int rankiter = 0 ; rankiter <RANK_SIZE ; rankiter++){
       stack *Stack = new stack(this->sizeOfGrail);
       int startNode;
@@ -139,7 +128,6 @@ OK_SUCCESS grail::calculateRanks() {
 
 
       do {
-          cout<<startNode<<endl;
          int nodeOffset = index->getEntry(startNode);
          int numberOfNeighbors;
          uint32_t *neighbors;
@@ -162,9 +150,8 @@ OK_SUCCESS grail::calculateRanks() {
 
                    continue;
                } else {
-                   Stack->push(neighbors[i]); //------check this --
+                   Stack->push(neighbors[i]);
 
-                  //Stack->push(startNode);
                   startNode = neighbors[i];
 
                    break;
@@ -172,9 +159,7 @@ OK_SUCCESS grail::calculateRanks() {
             }
             if (i == numberOfNeighbors) {
                 int tempNode;
-              // this->ranks[rankiter].setRank(neighbors[i],rank);
                this->ranks[rankiter].setRank(startNode,rank);
-               //this->ranks[rankiter].setMinRank(neighbors[i],minrank);
                this->ranks[rankiter].setMinRank(startNode,minrank);
                rank++;
                tempNode = Stack->pop();

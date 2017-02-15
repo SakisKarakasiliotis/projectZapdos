@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #ifndef PROJECTZAPDOS_RANK_H
 #define PROJECTZAPDOS_RANK_H
 

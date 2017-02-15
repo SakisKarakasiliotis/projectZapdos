@@ -52,7 +52,6 @@ bool jobQueue::enqueue(job *x)
    rear = next(rear);
    q[rear]=x;
    this->occupiedSpaces++;
-   printf("enqueue [%d %d->%d ?] in position %d\n", q[rear]->getID(), q[rear]->getStartNode(), q[rear]->getGoalNode(), rear);
    return true;
 }
 
@@ -60,8 +59,6 @@ job* jobQueue::dequeue()
 {
    if(this->isEmpty())
    {
-      cout<<"\nQueue underflow!!\n";
-      //error = FAIL;
       return NULL;
    }
    job* x = q[front];
@@ -77,7 +74,7 @@ bool jobQueue::contains(job &target)
    // job tmp = front;
    // for (int i=0; i<occupiedSpaces; i++)
    // {
-     
+
    //    if (this->q[tmp] == target) return true;
    //    tmp = next(tmp);
    // }

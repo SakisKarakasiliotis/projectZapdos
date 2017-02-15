@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Q.h"
 
 using namespace std;
@@ -52,12 +51,7 @@ bool queue::enqueue(uint32_t x)
 
 uint32_t queue::dequeue(OK_SUCCESS error)
 {
-   if(this->isEmpty())
-   {
-      cout<<"\nQueue underflow!!\n";
-      error = FAIL;
-      return 0;//teleios la8os!!!
-   }
+
    uint32_t x = q[front];
    front = next(front);
    error = OK;
@@ -72,7 +66,7 @@ bool queue::contains(uint32_t target)
    uint32_t tmp = front;
    for (int i=0; i<occupiedSpaces; i++)
    {
-     
+
       if (this->q[tmp] == target) return true;
       tmp = next(tmp);
    }

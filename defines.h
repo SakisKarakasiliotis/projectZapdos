@@ -1,7 +1,6 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 #include <stdint.h>
-// #include <memory.h>
 #include <stdlib.h>
 
 #define YES -9

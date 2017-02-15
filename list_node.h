@@ -19,7 +19,6 @@ public:
 	OK_SUCCESS setNeighbor(uint32_t edge);
 	OK_SUCCESS setNeighbor(uint32_t edge, int version);
 
-	//THIS PROPABLY IS FUCKED UP
 	uint32_t getNeighbor(int ID);
 	int getVersion(int ID);
 

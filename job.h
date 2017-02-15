@@ -27,7 +27,6 @@ public:
   int getGoalNode();
   OK_SUCCESS setGoalNode(int node);
 
-  // virtual int executeQuery(grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming) = 0;
    virtual int executeQuery() = 0;
 };
 
@@ -42,7 +41,6 @@ public:
    int getVersion();
    OK_SUCCESS setVersion(int ver);
 
- //  int executeQuery(grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming);
    int executeQuery();
 };
 
@@ -53,7 +51,7 @@ public:
    staticJob(int id, int start, int goal, grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming);
    ~staticJob();
 
-  // int executeQuery(grail* holy, n_index* outIndex, buffer* outgoing, n_index* inIndex, buffer* incoming);
+
    int executeQuery();
 };
 

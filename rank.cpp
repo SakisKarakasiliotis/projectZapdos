@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #include <stdlib.h>
 #include "rank.h"
 #include "defines.h"

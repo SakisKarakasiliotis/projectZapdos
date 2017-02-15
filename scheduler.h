@@ -3,15 +3,13 @@
 
 #include <pthread.h>
 #include "defines.h"
-//#include "Q.h"
 #include "jobQueue.h"
 #include "bfs.h"
 #include "job.h"
 
 
 typedef struct {
-   // nodeIndex* in;
-   // index*out;
+
    int threadno;
    int numberOfThreads;
    jobQueue* array_of_jobs;
@@ -31,10 +29,9 @@ public:
    ~JobScheduler();
    bool printQueue();
    pthread_t getWorkers(int);
-   // void submit_job(job j);
    bool submit_job(job* j);
    void execute_all_jobs();
-   void wait_all_tasks_finish(); //waits all submitted tasks to finish
+   void wait_all_tasks_finish();
    OK_SUCCESS destroy_scheduler();
    static  void *threadFun(void *);
 };

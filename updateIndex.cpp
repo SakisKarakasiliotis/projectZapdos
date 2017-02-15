@@ -1,8 +1,4 @@
-//
-// Created by Windows 8 on 07-Dec-16.
-//
 #include <iostream>
-
 #include "updateIndex.h"
 updateIndex::updateIndex() {
    table =(int**) malloc(UPDATE_INDEX_SIZE*sizeof(int*));
@@ -23,11 +19,9 @@ updateIndex::~updateIndex() {
         delete table[i];
     }
     free(table);
-    std::cout<<"Update Index deleted"<<std::endl;
 }
 
 OK_SUCCESS updateIndex::resize() {
-    cout<< "size of update index: "<< size << endl;
     table = (int**) realloc(table, 2*size*sizeof(int*));
     if(table == NULL) return FAIL;
     for (int i = size; i < 2*size; ++i) {

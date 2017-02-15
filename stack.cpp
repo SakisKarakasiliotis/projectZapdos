@@ -1,7 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
-
 #include "stack.h"
 
 #include <cstdlib>
@@ -21,12 +17,8 @@ stack::~stack() {
 
 bool stack::push(int elem) {
     if (this->isFull()) {
-        std::cout << "Stack overflow!" << std::endl;
         this->resize();
     }
-//    if (position == 7954) {
-//        std::cout << "What's inside, yo?" << std::endl;
-//    }
     this->stck[position] = elem;
     position++;
     return true;
@@ -38,14 +30,10 @@ int stack::pop() {
         return INVALID;
     }
     position--;
-    if (stck[position] == 216756096) {
-        std::cout << "The cursed one is upon us!" << std::endl;
-    }
     return this->stck[position];
 }
 int stack::softPop() {
     if (this->isEmpty()) {
-        std::cout << "Stack is empty!" << std::endl;
         return INVALID;
     }
     return this->stck[position];

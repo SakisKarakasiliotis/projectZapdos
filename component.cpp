@@ -1,6 +1,3 @@
-//
-// Created by Windows 8 on 10-Dec-16.
-//
 #include <iostream>
 #include "component.h"
 #include "defines.h"
@@ -39,7 +36,6 @@ void component::setNodesContained(int *nodesContained) {
 
 int component::getNode(int node) {
     if(node<0 || node>=this->numberOfNodes){
-        cout<<"Requested node "<<node<<" is out of bounds on getNode"<<endl;
         return FAIL;
     }
     return nodesContained[node];

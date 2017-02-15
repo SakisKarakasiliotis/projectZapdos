@@ -3,7 +3,6 @@
 #include <string.h>
 #include "myHash.h"
 
-//-------------HASH CLASS-------------
 hashClass::hashClass(int initialSize, short int precision)
 {
    this->table = new bucket[initialSize];
@@ -29,7 +28,6 @@ bool hashClass::checkHash(const char* input)
    return false;
 }
 
-//-------------BUCKET CLASS-------------
 bucket::bucket()
 {
    this->tableSize = 2;
@@ -49,7 +47,7 @@ void bucket::insert(const char* input)
    if (this->numOfElements == this->tableSize)
    {
       this->tableSize *= 2;
-      this->bucketTable = (char**) realloc(bucketTable, this->tableSize*sizeof(char*)); 
+      this->bucketTable = (char**) realloc(bucketTable, this->tableSize*sizeof(char*));
    }
     this->bucketTable[numOfElements] = (char*) malloc ((strlen(input)+1)*sizeof(char));
    sprintf(this->bucketTable[numOfElements], "%s", input);

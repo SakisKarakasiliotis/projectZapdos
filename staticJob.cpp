@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
-
 #include "job.h"
 #include "staticBFS.h"
 
@@ -17,7 +16,6 @@ staticJob :: staticJob(int id, int start, int goal, grail* goblet, n_index* outI
 }
 
 staticJob :: ~staticJob(){
-   cout<<"job: "<<this->ID<<" finished"<<endl;
 }
 
 int staticJob :: executeQuery(){
@@ -28,7 +26,6 @@ int staticJob :: executeQuery(){
    }
    else {
       BFSresult = INVALID;
-     // cout<<"There is no path from node "<<startNode<<" to "<<goalNode<<endl;
    }
    return BFSresult;
 }
